@@ -25,7 +25,7 @@ SECRET_KEY = 'zfpf_2b=ctlsps5scy-0(a@mbeu#=sv$j2*e5_&s1lh^2$1&8y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'fitfamoz.pythonanywhere.com']
+ALLOWED_HOSTS = [u'fitfamoz.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition

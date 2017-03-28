@@ -2,9 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>My Friends</title>
+  <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/custom.css" media="all" />
   </head>
   <body>
-
+    <div class="row">
+    <div class="container col-lg-12" id="sidebar-filter">
+        <form class="form-horizontal">
+          <h4>Filters</h4>
+            <div class="form-group row">
+                <div class="form-inline col-lg-2 col-md-6 col-sm-6 col-xs-6">
+                  <h5>Location</h5>
+                  <input class="form-control" type="text" placeholder="Suburb or Postcode">
+                </div>
+                <div class="form-inline col-lg-1 col-md-6 col-sm-6 col-xs-6">
+                  <h5>Radius</h5>
+                  <select class="form-control" id="radius">
+                    <option>5km</option>
+                    <option>10km</option>
+                    <option>15km</option>
+                    <option>30km</option>
+                  </select>
+                </div>
+              </div>
+                <div class="form-group row">
+                    <div class="form-inline col-lg-2 col-md-6 col-sm-6 col-xs-6">
+                      <h5>Activites</h5>
+                      <input class="form-control" type="activities" placeholder="Find an activity">
+                    </div>
+                  <div class="form-inline col-lg-1 col-md-6 col-sm-6 col-xs-6">
+                    <h5>Skill Level</h5>
+                    <select class="form-control" id="radius">
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
   </body>
 </html>

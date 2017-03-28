@@ -6,7 +6,7 @@ html, body {
 }
 
 .user-profile {
-  background-image: url("../../static/img/denin-williams-690.jpg");
+  background-image: url("../../static/img/profile-background.jpg");
   background-size: cover;
   min-height: 100%;
 }
@@ -161,6 +161,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .profile-summary .location {
   color: #acadab; /* grey */
   font-size: 1em;
+  font-weight: 300;
   margin-bottom: 80px;
   text-align: center;
 }

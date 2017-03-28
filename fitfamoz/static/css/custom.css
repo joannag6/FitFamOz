@@ -1,5 +1,109 @@
 /****** PLACE YOUR CUSTOM STYLES HERE ******/
+html {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: grey;
+}
+
 #sidebar-filter {
   padding-top: 50px;
   padding-left: 50px;
+}
+
+/* * * * * * * * * * * *
+ *       NAVBAR        *
+ * * * * * * * * * * * */
+
+.navbar-default {
+  background-color: #fff;
+  border-radius: 0;
+  padding: 0px;
+}
+
+.navbar-brand {
+  height: auto;
+  padding: 0px 20px;
+}
+
+.navbar li {
+  border-left: 1px solid #cdcecc;
+  /*padding: 0px 5px;*/
+}
+
+.navbar li a {
+  padding: 0px;
+}
+
+.navbar-toggle {
+  margin: 11px;
+}
+
+.navbar-brand img {
+  height: 55px;
+  margin-left: 10px;
+  float: left;
+}
+
+.material-icons.md-36 {
+  color: #C05243; /* red */
+  font-size: 36px;
+  margin: 10px 20px;
+}
+
+.material-icons.md-36:hover {
+  color: #994135; /* darker red */
+}
+
+.profilepic-icon {
+  border-radius: 100px;
+  border: 4px solid #C05243; /* red */
+  height: 50px;
+  margin: 3px 20px;
+  width: 50px;
+}
+
+.profilepic-icon:hover {
+  border-color: #994135; /* darker red */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+  width: 200%;
+}
+
+.dropdown-menu li {
+  border: 0px;
+  padding: 3px 10px;
+}
+
+.dropdown-menu .btn {
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 8px 15px;
+  width: 100%;
+}
+
+.dropdown-menu .btn-red {
+  background-color: #C05243; /* red */
+}
+
+.dropdown-menu .btn-red:hover {
+  background-color: #994135; /* darker red */
+  color: #fff;
+}
+
+.dropdown-menu .btn-blue {
+  background-color: #126BAB; /* blue */
+}
+
+.dropdown-menu .btn-blue:hover {
+  background-color: #0e5385; /* darker blue */
+  color: #fff;
 }

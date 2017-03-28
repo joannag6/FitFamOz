@@ -5,6 +5,7 @@
     <title>Messages & Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link href="{% static 'css/messages.css'%}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/themify-icons.css'%}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'css/flexslider.css'%}" rel="stylesheet" type="text/css" media="all"/>
@@ -17,6 +18,86 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="nav-container">
+        <a id="top"></a>
+        <nav class="absolute transparent">
+            <div class="nav-bar">
+                <div class="module left">
+                    <a href="index.html">
+                        <img class="logo" alt="Xplorer" src="{% static 'img/logo-dark.png'%}" />
+                    </a>
+                </div>
+                <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
+                    <i class="ti-menu"></i>
+                </div>
+                <div class="module-group right">
+                    <div class="module left">
+                        <ul class="menu">
+                            <li>
+                                <a href="../templates/index.html">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Region
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    What's hot
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Experience
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    My Page
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end of menu module-->
+                    <div class="module widget-handle search-widget-handle left">
+                        <div class="search">
+                            <i class="ti-search"></i>
+                            <span class="title">Search Site</span>
+                        </div>
+                        <div class="function">
+                            <form class="search-form">
+                                <input type="text" placeholder="Type Here" />
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--end of widget-->
+
+                    <div class="module widget-handle language left">
+                        <ul class="menu">
+                            <li class="has-dropdown">
+                                <a href="#">ENG</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">French</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Deutsch</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end of module group-->
+            </div>
+        </nav>
+    </div>
+    <!-- end of navbar -->
+
+    <!-- message box -->
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-md-4 bg-white ">

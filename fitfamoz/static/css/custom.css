@@ -1,15 +1,53 @@
 /****** PLACE YOUR CUSTOM STYLES HERE ******/
-html {
+html, body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
-body {
-  background-color: grey;
+.user-profile {
+  background-image: url("../../static/img/denin-williams-690.jpg");
+  background-size: cover;
+  min-height: 100%;
 }
 
 #sidebar-filter {
   padding-top: 50px;
   padding-left: 50px;
+}
+
+/* * * * * * * * * * * * * *
+ *       COMPONENTS        *
+ * * * * * * * * * * * * * */
+
+a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
+  color: #fff;
+  font-weight: bold;
+  width: 100%;
+}
+
+.dropdown-menu .btn-red, .btn-red {
+  background-color: #C05243; /* red */
+}
+
+.dropdown-menu .btn-red:hover, .btn-red:hover {
+  background-color: #994135; /* darker red */
+}
+
+.dropdown-menu .btn-blue, .btn-blue {
+  background-color: #126BAB; /* blue */
+}
+
+.dropdown-menu .btn-blue:hover, .btn-blue:hover {
+  background-color: #0e5385; /* darker blue */
+}
+
+.btn-light-blue {
+  background-color: #7ea2ca; /* lightest blue */
+}
+
+.btn-light-blue:hover {
+  background-color: #7191b5; /* lighter blue */
 }
 
 /* * * * * * * * * * * *
@@ -29,7 +67,6 @@ body {
 
 .navbar li {
   border-left: 1px solid #cdcecc;
-  /*padding: 0px 5px;*/
 }
 
 .navbar li a {
@@ -57,8 +94,8 @@ body {
 }
 
 .profilepic-icon {
-  border-radius: 100px;
   border: 4px solid #C05243; /* red */
+  border-radius: 100px;
   height: 50px;
   margin: 3px 20px;
   width: 50px;
@@ -73,7 +110,7 @@ body {
 }
 
 .dropdown-menu {
-  width: 200%;
+  width: 250%;
 }
 
 .dropdown-menu li {
@@ -87,23 +124,65 @@ body {
   font-size: 0.8em;
   font-weight: bold;
   padding: 8px 15px;
-  width: 100%;
 }
 
-.dropdown-menu .btn-red {
-  background-color: #C05243; /* red */
+/* * * * * * * * * * * * * * * * *
+ *       PROFILE SUMMARY         *
+ * * * * * * * * * * * * * * * * */
+.profile-summary, .profile-details, .recent-activities {
+  background-color: rgba(255, 255, 255, 0.8); /* white */
+  border-radius: 10px;
+  height: 100%;
+  margin: 50px 10px;
+  min-height: 550px;
+  min-width: 240px;
+  padding-bottom: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.dropdown-menu .btn-red:hover {
-  background-color: #994135; /* darker red */
-  color: #fff;
+.profile-summary img {
+  border: 5px solid #C05243; /* red */
+  border-radius: 100px;
+  display: block;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
-.dropdown-menu .btn-blue {
-  background-color: #126BAB; /* blue */
+.profile-summary .profile-name {
+  color: #C05243; /* red */
+  font-size: 2em;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
 }
 
-.dropdown-menu .btn-blue:hover {
-  background-color: #0e5385; /* darker blue */
-  color: #fff;
+.profile-summary .location {
+  color: #acadab; /* grey */
+  font-size: 1em;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.profile-summary .row {
+  margin: 5px 15px;
+}
+
+.profile-details {
+  background-color: rgba(228, 237, 248, 0.8); /* light blue */
+  min-width: 400px;
+}
+
+.section-name {
+  border-bottom: 1px solid #acadab; /* light grey */
+  color: #5A5C58; /* grey */
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.recent-activities .section-name {
+  color: #C05243; /* red */
 }

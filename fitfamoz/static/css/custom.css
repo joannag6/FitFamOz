@@ -5,6 +5,40 @@ html, body {
   margin: 0;
 }
 
+#main-body {
+  background-image: url(../img/keit-trysh-167890.jpg);
+  background-size: cover;
+}
+
+.main {
+  padding-top: 250px;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.main h1 {
+  font-size: 80px;
+  font-weight: bolder;
+}
+
+.main h2 {
+  font-weight: lighter;
+  padding-bottom: 30px;
+}
+
+.btn-get-started {
+  border-radius: 50px;
+  border: 2px solid #C05243;
+  background-color: #C05243;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.btn-get-started:hover {
+  border-color: #994135;
+  background-color: #994135;
+}
+
 .user-profile {
   background-image: url("../../static/img/profile-background.jpg");
   background-size: cover;

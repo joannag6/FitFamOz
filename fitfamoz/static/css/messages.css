@@ -1,14 +1,30 @@
-body {
-    padding-top: 0;
+.chatbox {
+    padding-top: 3em;
     font-size: 12px;
-    color: #777;
-    background: #f9f9f9;
+    color: #ffffff;
     font-family: 'Open Sans',sans-serif;
     margin-top:20px;
+    opacity: 1;
+    padding-bottom: 3em;
 }
 
-.bg-white {
-    background-color: #fff;
+h4 {
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    padding-top: 20px;
+}
+
+.background {
+    background: url("../img/home-2-2.jpg") no-repeat;
+    background-size: cover;
+}
+
+.bg-white{
+    background-color: rgba(255,255,255,1);
+}
+
+.bg-lightblue{
+    background-color: rgba(202,220,241, 0.5);
 }
 
 .friend-list {
@@ -81,10 +97,6 @@ small, .small {
     margin: 0;
 }
 
-.chat-message{
-    background: #f9f9f9;
-}
-
 .chat li img {
     width: 45px;
     height: 45px;
@@ -143,6 +155,18 @@ img {
     -o-transform: rotate(-45deg);
 }
 
+.btn-send {
+    background-color: #C05243;
+    color: #fff;
+    border: 0px;
+}
+
+.btn-send:hover {
+    background-color: #994135;
+    color: #fff;
+    border: 0px;
+}
+
 .chat li.right .chat-body:before {
     position: absolute;
     top: 10px;
@@ -171,17 +195,17 @@ img {
 }
 
 .chat-box {
-    position: fixed;
-    bottom: 0;
-    left: 444px;
-    right: 0;
+    position: absolute;
+    bottom: 1em;
     padding: 15px;
+    width: 90%;
     border-top: 1px solid #eee;
     transition: all .5s ease;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -ms-transition: all .5s ease;
     -o-transition: all .5s ease;
+    border-radius: 5px;
 }
 
 .primary-font {

@@ -450,3 +450,87 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   border: 1px solid black;
   text-align: center;
 }
+
+/* * * * * * * * * * * * * * * * *
+ *       ABOUT US                *
+ * * * * * * * * * * * * * * * * */
+
+#about-us {
+  background-image: url(../img/keit-trysh-167890.jpg);
+}
+
+#submit {
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  margin-bottom: 50px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.contactformbox {
+  background-color: rgba(202, 220, 241, 0.8); /* light blue */
+  border-radius: 10px;
+  height: 100%;
+  min-height: 300px;
+  min-width: 240px;
+  margin: 10px;
+  margin-top: 5px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.about-subheadings {
+  font-weight: bold;
+  color: white;
+  font-size: 1.5em;
+}
+
+.about-heading {
+  color: white;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 2.5em;
+  padding-bottom: 30px;
+}
+
+#about-us {
+  color: white;
+  padding-top: 30px;
+  font-weight: bold;
+}
+
+#contactform {
+  padding: 20px;
+  padding-top: 20px;
+}
+
+.theteambox {
+  background-color: rgba(255, 255, 255, 0.8); /* light blue */
+  border-radius: 10px;
+  height: 100%;
+  margin: 5px;
+  margin-top: 5px;
+  min-height: 180px;
+  min-width: 240px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.teammember {
+  padding: 20px;
+  text-align: center;
+  color: #5A5C58;
+  font-weight: bold;
+}
+
+.memberpic {
+  margin-top: 30px;
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}

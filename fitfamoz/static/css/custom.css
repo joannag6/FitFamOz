@@ -10,36 +10,7 @@ html, body {
   background-size: cover;
 }
 
-.main {
-  padding-top: 250px;
-  color: white;
-  text-shadow: 1px 1px black;
-}
-
-.main h1 {
-  font-size: 80px;
-  font-weight: bolder;
-}
-
-.main h2 {
-  font-weight: lighter;
-  padding-bottom: 30px;
-}
-
-.btn-get-started {
-  border-radius: 50px;
-  border: 2px solid #C05243;
-  background-color: #C05243;
-  padding: 10px 20px;
-  font-size: 20px;
-}
-
-.btn-get-started:hover {
-  border-color: #994135;
-  background-color: #994135;
-}
-
-.user-profile {
+#user-profile, #my-profile {
   background-image: url("../img/profile-background.jpg");
   background-size: cover;
   min-height: 100%;
@@ -66,6 +37,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 
 .dropdown-menu .btn-red:hover, .btn-red:hover {
   background-color: #994135; /* darker red */
+  color: #fff;
 }
 
 .dropdown-menu .btn-blue, .btn-blue {
@@ -74,6 +46,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 
 .dropdown-menu .btn-blue:hover, .btn-blue:hover {
   background-color: #0e5385; /* darker blue */
+  color: #fff;
 }
 
 .btn-light-blue {
@@ -82,12 +55,12 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 
 .btn-light-blue:hover {
   background-color: #7191b5; /* lighter blue */
+  color: #fff;
 }
 
 /* * * * * * * * * * * *
  *       NAVBAR        *
  * * * * * * * * * * * */
-
 .navbar-default {
   background-color: #fff;
   border-radius: 0;
@@ -100,11 +73,19 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .navbar li {
-  border-left: 1px solid #cdcecc;
+  border-left: 1px solid #cdcecc; /* light grey */
 }
 
 .navbar li a {
   padding: 0px;
+}
+
+.before-login li a {
+  padding: 18px 25px;
+}
+
+.before-login li:hover {
+  background-color: #eeeeee; /* lightest grey */
 }
 
 .navbar-toggle {
@@ -158,6 +139,39 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   font-size: 0.8em;
   font-weight: bold;
   padding: 8px 15px;
+}
+
+
+/* * * * * * * * * * * * * *
+ *       INDEX PAGE        *
+ * * * * * * * * * * * * * */
+.main {
+  padding-top: 250px;
+  color: #fff;
+  text-shadow: 1px 1px black;
+}
+
+.main h1 {
+  font-size: 80px;
+  font-weight: bolder;
+}
+
+.main h2 {
+  font-weight: lighter;
+  padding-bottom: 30px;
+}
+
+.btn-get-started {
+  border-radius: 50px;
+  border: 2px solid #C05243;
+  background-color: #C05243;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.btn-get-started:hover {
+  border-color: #994135;
+  background-color: #994135;
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -216,7 +230,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .section-name {
-  border-bottom: 1px solid #acadab; /* light grey */
+  border-bottom: 1px solid #cdcecc; /* light grey */
   color: #5A5C58; /* grey */
   font-size: 1.3em;
   font-weight: bold;

@@ -521,6 +521,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   width:60%;
 }
 
+.search-icon {
+  top: 8px;
+}
+
 #search-friend-bar {
   padding-left: 250px;
 

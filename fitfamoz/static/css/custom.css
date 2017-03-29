@@ -341,6 +341,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   height: 200px;
 }
 
+#signupform i {
+  font-size: 1.3em;
+}
+
 .log-in {
   min-height: 100%;
   margin-top: 200px;

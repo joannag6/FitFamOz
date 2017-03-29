@@ -9,7 +9,7 @@ def messages(request):
     return render_to_response("messages.html")
 
 def about(request):
-    return render_to_response("about.html")
+    return render_to_response("about-us.html")
 
 def match(request):
     return render_to_response("matches.html")

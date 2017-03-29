@@ -40,7 +40,7 @@ html, body {
 }
 
 .user-profile {
-  background-image: url("../../static/img/profile-background.jpg");
+  background-image: url("../img/profile-background.jpg");
   background-size: cover;
   min-height: 100%;
 }

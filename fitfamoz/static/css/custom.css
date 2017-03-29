@@ -168,7 +168,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   border-radius: 10px;
   height: 100%;
   margin: 50px 10px;
-  min-height: 550px;
+  min-height: 520px;
   min-width: 240px;
   padding-bottom: 30px;
   padding-left: 0px;
@@ -196,8 +196,14 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #acadab; /* grey */
   font-size: 1em;
   font-weight: 300;
-  margin-bottom: 80px;
   text-align: center;
+}
+
+.profile-summary .action-items {
+  bottom: 0;
+  margin-bottom: 30px;
+  position: absolute;
+  width: 100%;
 }
 
 .profile-summary .row {

@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^match/', include('mysite.urls')),
     url(r'^profile/', include('mysite.urls')),
     url(r'^user/', include('mysite.urls')),
+    url(r'^signup/', include('mysite.urls')),
+    url(r'^signupcont/', include('mysite.urls')),
     url(r'^admin/', admin.site.urls),
 ]

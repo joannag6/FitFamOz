@@ -19,3 +19,9 @@ def profile(request):
 
 def user(request):
     return render_to_response("user-profile.html")
+
+def signup1(request):
+    return render_to_response("signup1.html")
+
+def signup2(request):
+    return render_to_response("signup2.html")

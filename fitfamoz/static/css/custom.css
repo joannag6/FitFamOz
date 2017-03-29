@@ -413,3 +413,25 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
   background-color: #337ab7;
 }
+
+/* * * * * * * * * * * * * * * * *
+ *       MATCHES                *
+ * * * * * * * * * * * * * * * * */
+ 
+#sidebar-filter {
+  padding-top: 20px;
+  padding-left: 50px;
+  border: 1px solid black;
+}
+
+#profile-view {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+}
+
+#profile-view-content {
+  padding: 0px 10px 0px 10px;
+  border: 1px solid black;
+  text-align: center;
+}

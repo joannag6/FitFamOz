@@ -161,17 +161,17 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding-bottom: 30px;
 }
 
-.btn-get-started {
+#btn-get-started {
   border-radius: 50px;
-  border: 2px solid #C05243;
-  background-color: #C05243;
+  border: 2px solid #C05243;  /* red */
   padding: 10px 20px;
   font-size: 20px;
+  width: auto;
 }
 
-.btn-get-started:hover {
-  border-color: #994135;
-  background-color: #994135;
+#btn-get-started:hover {
+  border-color: #994135;  /* darker red */
+  background-color: #994135;  /* darker red */
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -256,8 +256,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
  #signup, #continue {
+   font-size: 1.6em;
    font-weight: bold;
-   color: white;
+   color: #fff;
    width: 100%;
    margin-top: 10px;
    height: 50px;

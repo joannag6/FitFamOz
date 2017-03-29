@@ -241,3 +241,36 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .recent-activities .section-name {
   color: #C05243; /* red */
 }
+
+
+/* * * * * * * * * * * * * * * * *
+ *       SIGN UP FORM            *
+ * * * * * * * * * * * * * * * * */
+
+#subheading {
+    color: #5A5C58; /* grey */
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+
+ #signup, #continue {
+   font-weight: bold;
+   color: white;
+   width: 100%;
+   margin-top: 10px;
+ }
+
+ #signupform {
+   padding: 30px;
+ }
+
+ .input-group {
+   margin-bottom: 5px;
+ }
+
+ #picksports {
+   padding: 10px;
+ }

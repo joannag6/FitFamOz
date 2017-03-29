@@ -17,11 +17,17 @@ html, body {
   min-height: 100%;
 }
 
-#sidebar-filter {
-  padding-top: 50px;
-  padding-left: 50px;
+#matches {
+  background-image: url("../img/kalen-emsley-99660.jpg");
+  background-size: cover;
+  min-height: 100%;
 }
 
+.material-icons {
+  position: relative;
+  top: 5px;
+  bottom: 5px;
+}
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
@@ -435,23 +441,91 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
 
+ .match-profile-name {
+   color: #C05243; /* red */
+   font-size: 16px;
+   font-weight: bold;
+   margin: 10px;
+   text-align: center;
+   padding-bottom: 10px;
+ }
+
+.profile-view img {
+   border: 5px solid #C05243; /* red */
+   border-radius: 100px;
+   display: block;
+   height: 100px;
+   margin: 0 auto;
+   margin-top: 30px;
+ }
+
+ .profile-view {
+   color: #C05243; /* red */
+   font-size: 14px;
+   font-weight: bold;
+   margin: 10px;
+   text-align: center;
+   padding-bottom: 20px;
+ }
+
+ .profile-view .action-items {
+   bottom: 0;
+   position: absolute;
+   width: 100%;
+ }
+
+ .match-profile-summary {
+   font-size: 12px;
+   color: black;
+   font-weight: normal;
+   padding-bottom: 10px;
+   text-align: left;
+ }
+
+#profile-view {
+  background-color: rgba(255, 255, 255, 0.8); /* white */
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
 #sidebar-filter {
-  padding-top: 20px;
-  padding-left: 50px;
-  border: 1px solid black;
+  padding-left: 60px;
+  display: inline-block;
 }
 
 #profile-view {
-  border: 1px solid black;
   text-align: center;
-  padding: 0px 10px 0px 10px;
 }
 
 #profile-view-content {
-  padding: 0px 10px 0px 10px;
-  border: 1px solid black;
+  padding-left: 50px;
   text-align: center;
+  display: inline-block;
 }
+
+#matches-btn {
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+
+#match-next {
+  display: inline-block;
+  padding-top: 30px;
+}
+
+#header-friends {
+  padding-bottom: 10px;
+}
+
+#search-friend {
+  width:60%;
+}
+
+#search-friend-bar {
+  padding-left: 250px;
+
+}
+
 
 /* * * * * * * * * * * * * * * * *
  *       ABOUT US                *

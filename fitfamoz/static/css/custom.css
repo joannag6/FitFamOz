@@ -292,7 +292,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
  #createprofileheading {
    color: white;
    text-align: center;
-   padding-top: 60px;
+   padding-top: 30px;
    font-weight: bold;
    text-shadow: 1px 1px #5A5C58;
  }

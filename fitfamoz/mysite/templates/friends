@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../static/css/custom.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <title>My Matches</title>
+  </head>
+  <body>
+    <div id="matches">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default bg-faded">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <img src="../../static/img/logo-with-name.png" alt="FitFamOz">
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="messages.html">
+              <i class="material-icons md-36">mail_outline</i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#"
+                 class="dropdown-toggle"
+                 data-toggle="dropdown"
+                 role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                    <img class="profilepic-icon" src="../../static/img/profilepic.jpg" alt="pp">
+               </a>
+              <ul class="dropdown-menu">
+                <li><a href="my-profile.html" class="btn btn-red">Edit Your Profile</a> </li>
+                <li><a href="settings.html" class="btn btn-red">Preferences</a></li>
+                <li><a href="aboutus.html" class="btn btn-red">About Us</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="index.html" class="btn btn-blue">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- /.NAVBAR -->
+
+    <!-- Content page for matches -->
+    <!-- Sidebar filter -->
+    <div class="container-fluid">
+      <div class="container col-lg-4" id="sidebar-filter">
+      <h2 id="header-friends">MY FRIENDS</h2>
+      <h4>Filters</h4>
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <div class="form-inline col-xs-7">
+                  <h5>Location</h5>
+                  <input class="form-control" type="text" placeholder="Suburb or Postcode">
+                </div>
+                <div class="form-inline col-xs-3">
+                  <h5>Radius</h5>
+                  <select class="form-control" id="radius">
+                    <option>5 km</option>
+                    <option>10 km</option>
+                    <option>15 km</option>
+                    <option>30 km</option>
+                  </select>
+                </div>
+              </div>
+                <div class="form-group row">
+                    <div class="form-inline col-xs-7">
+                      <h5>Activites</h5>
+                      <input class="form-control" type="activities" placeholder="Find an activity">
+                    </div>
+                  <div class="form-inline col-xs-3">
+                    <h5>Skill Level</h5>
+                    <select class="form-control" id="skill-level">
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                    </select>
+                  </div>
+                </div>
+                  <a href="#" class="btn btn-blue" id="matches-btn">
+                    <i class="material-icons">add_circle_outline</i> Add an activity</a>
+                </form>
+            </div>
+          <div class="container col-lg-8" id="profile-view-content">
+              <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
+                <div class="form-inline">
+                  <i class="material-icons">search</i>&nbsp
+                  <input class="form-control" type="text" placeholder="Search a friend" id="search-friend">
+              </div>
+              </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+            <div class="col-xs-1 profile-view" id="match-next">
+              <a href="#" class="btn btn-red">></a>
+            </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+            <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+                <div>
+                  <img src="../../static/img/profilepic.jpg" alt="pp">
+                </div>
+                <div class="match-profile-name">
+                  John Smith
+                </div>
+                <div class="match-profile-summary">
+                  <table style="width:100%">
+                    <tr>
+                      <td>Swimming</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td>Hockey</td>
+                      <td>High</td>
+                    </tr>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-blue">View profile</a>
+            </div>
+          </div>
+        </div>
+  </div>
+  </body>
+</html>

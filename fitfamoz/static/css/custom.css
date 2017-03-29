@@ -177,7 +177,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 /* * * * * * * * * * * * * * * * *
  *       PROFILE SUMMARY         *
  * * * * * * * * * * * * * * * * */
-.profile-summary, .profile-details, .recent-activities .create-profile {
+.profile-summary, .profile-details, .recent-activities {
   background-color: rgba(255, 255, 255, 0.8); /* white */
   border-radius: 10px;
   height: 100%;

@@ -6,8 +6,9 @@ html, body {
 }
 
 #main-body {
-  background-image: url(../img/keit-trysh-167890.jpg);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url(../img/keit-trysh-167890.jpg);
   background-size: cover;
+  min-height: 100%;
 }
 
 #user-profile, #my-profile {
@@ -147,8 +148,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
  *       INDEX PAGE        *
  * * * * * * * * * * * * * */
 .main {
-  padding-top: 250px;
-  color: #fff;
+  padding-top: 175px;
+  color: #ffffff;
   text-shadow: 1px 1px black;
 }
 
@@ -158,13 +159,14 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .main h2 {
-  font-weight: lighter;
+  font-weight: 100;
   padding-bottom: 30px;
 }
 
 #btn-get-started {
   border-radius: 50px;
-  border: 2px solid #C05243;  /* red */
+  border: 2px solid #C05243;
+  background-color: #C05243;
   padding: 10px 20px;
   font-size: 20px;
   width: auto;

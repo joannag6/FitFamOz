@@ -20,5 +20,9 @@ urlpatterns = [
     url(r'^index/', include('mysite.urls')),
     url(r'^', include('mysite.urls')),
     url(r'^message/', include('mysite.urls')),
+    url(r'^about/', include('mysite.urls')),
+    url(r'^match/', include('mysite.urls')),
+    url(r'^profile/', include('mysite.urls')),
+    url(r'^user/', include('mysite.urls')),
     url(r'^admin/', admin.site.urls),
 ]

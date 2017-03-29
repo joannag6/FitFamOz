@@ -7,3 +7,15 @@ def index(request):
 
 def messages(request):
     return render_to_response("messages.html")
+
+def about(request):
+    return render_to_response("about.html")
+
+def match(request):
+    return render_to_response("matches.html")
+
+def profile(request):
+    return render_to_response("my-profile.html")
+
+def user(request):
+    return render_to_response("user-profile.html")

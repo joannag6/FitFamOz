@@ -17,8 +17,9 @@ h4 {
 }
 
 .background {
-    background: url("../img/home-2-2.jpg") no-repeat;
+    background: url("../img/annie-spratt-216208.jpg") no-repeat;
     background-size: cover;
+    opacity: 0.8;
 }
 
 .bg-white{

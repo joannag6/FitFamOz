@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{% url 'index'%}">
             <img src="../../static/img/logo-with-name.png" alt="FitFamOz">
           </a>
         </div>
@@ -32,7 +32,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="messages.html">
+            <li><a href="{% url 'message'%}">
               <i class="material-icons md-36">mail_outline</i></a>
             </li>
             <li class="dropdown">
@@ -45,11 +45,11 @@
                     <img class="profilepic-icon" src="../../static/img/profilepic.jpg" alt="pp">
                </a>
               <ul class="dropdown-menu">
-                <li><a href="my-profile.html" class="btn btn-red">Edit Your Profile</a> </li>
-                <li><a href="settings.html" class="btn btn-red">Preferences</a></li>
-                <li><a href="aboutus.html" class="btn btn-red">About Us</a></li>
+                <li><a href="{% url 'my_profile'%}" class="btn btn-red">Edit Your Profile</a> </li>
+                <li><a href="{% url 'my_profile'%}" class="btn btn-red">Preferences</a></li>
+                <li><a href="{% url 'about_us'%}" class="btn btn-red">About Us</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="index.html" class="btn btn-blue">Sign Out</a></li>
+                <li><a href="{% url 'index'%}" class="btn btn-blue">Sign Out</a></li>
               </ul>
             </li>
           </ul>
@@ -117,7 +117,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
             <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
                 <div>
@@ -138,7 +138,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
             <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
                 <div>
@@ -159,7 +159,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
             <div class="col-xs-1 profile-view" id="match-next">
               <a href="#" class="btn btn-red">></a>
@@ -183,7 +183,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
             <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
                 <div>
@@ -204,7 +204,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
             <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
                 <div>
@@ -225,7 +225,7 @@
                     </tr>
                   </table>
                 </div>
-                <a href="user-profile.html" class="btn btn-blue">View profile</a>
+                <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
             </div>
           </div>
         </div>

@@ -14,6 +14,9 @@ def about(request):
 def match(request):
     return render_to_response("matches.html")
 
+def friends(request):
+    return render_to_response("friends.html")
+
 def profile(request):
     return render_to_response("my-profile.html")
 

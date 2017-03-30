@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index/">
+          <a class="navbar-brand" href="{% url 'index'%}">
             <img src="../../static/img/logo.png" alt="FitFamOz">
           </a>
         </div>
@@ -35,10 +35,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="about/">
+            <li><a href="{% url 'about_us'%}">
               <span>About Us</span></a>
             </li>
-            <li><a href="login/">
+            <li><a href="{% url 'login'%}">
               <span>Log In</span></a>
             </li>
           </ul>
@@ -82,7 +82,7 @@
 
 
             <div class="form-group">
-              <a href="matches.html" id="signup" class="btn btn-red">Sign Up</a>
+              <a href="{% url 'matches'%}" id="signup" class="btn btn-red">Sign Up</a>
             </div>
 
         </form>

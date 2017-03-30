@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^user/', views.user, name='user_profile'),
     url(r'^signup/', views.signup1, name='signup1'),
     url(r'^signupcont/', views.signup2, name='signup2'),
+    url(r'^login/', views.login, name='login'),
 ]

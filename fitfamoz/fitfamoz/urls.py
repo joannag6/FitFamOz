@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^user/', include('mysite.urls')),
     url(r'^signup/', include('mysite.urls')),
     url(r'^signupcont/', include('mysite.urls')),
+    url(r'^login/', include('mysite.urls')),
     url(r'^admin/', admin.site.urls),
 ]

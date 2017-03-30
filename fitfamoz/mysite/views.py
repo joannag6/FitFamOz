@@ -25,3 +25,6 @@ def signup1(request):
 
 def signup2(request):
     return render_to_response("signup2.html")
+
+def login(request):
+    return render_to_response("login.html")

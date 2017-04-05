@@ -589,6 +589,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding-top: 20px;
 }
 
+#contactform label {
+  margin: 5px 0px;
+}
+
 .theteambox {
   background-color: rgba(255, 255, 255, 0.8); /* light blue */
   border-radius: 10px;

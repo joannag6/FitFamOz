@@ -29,10 +29,18 @@ html, body {
   bottom: 5px;
 }
 
-.edit-button {
+.profile-name, .section-name {
+  position:relative;
+
+}
+
+a .edit-button {
   color: #5A5C58; /* grey */
   cursor: pointer;
-  float: right;
+  /*float: right;*/
+  position:absolute;
+  right:10px;
+  top: 8px;
 }
 
 .edit-button:hover {

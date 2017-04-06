@@ -277,6 +277,12 @@ a .edit-button {
   font-size: 3em;
 }
 
+#report-button {
+  color: #fff;
+  font-weight: bold;
+  width: 100%;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       SIGN UP FORM            *
  * * * * * * * * * * * * * * * * */

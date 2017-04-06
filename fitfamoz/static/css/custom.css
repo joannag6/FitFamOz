@@ -599,25 +599,37 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   height: 100%;
   margin: 5px;
   margin-top: 5px;
-  min-height: 180px;
   min-width: 240px;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
 }
 
-.teammember {
-  padding: 20px;
+.about-box {
+  display: flex;
+  justify-content: center;
+}
+
+.about-text {
+  align-self: center;
+  color: #5A5C58; /* grey */
+  font-size: 1em;
+  margin: 25px;
   text-align: center;
+}
+
+.teammember {
   color: #5A5C58; /* grey */
   font-weight: bold;
+  padding: 20px;
+  text-align: center;
 }
 
 .memberpic {
-  margin-top: 30px;
   display: block;
   height: 100px;
-  width: 100px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30px;
+  width: 100px;
 }

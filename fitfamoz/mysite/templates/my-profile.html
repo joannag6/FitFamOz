@@ -68,8 +68,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-3 profile-summary">
-            <div>
+            <div class="profilepic">
               <img src="../../static/img/profilepic.jpg" alt="pp">
+              <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
             </div>
             <div class="profile-name">
               <span>John Smith</span>
@@ -80,7 +81,7 @@
               <div class="row">
                 <a class="btn btn-blue" ng-click="editMode=!editMode" ng-class="{'btn-red': editMode}">
                   <span ng-if="!editMode">Edit Your Profile</span>
-                  <span ng-if="editMode">Stop Editing</span>
+                  <span ng-if="editMode">Save Changes</span>
                 </a>
               </div>
             </div>

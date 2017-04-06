@@ -34,19 +34,6 @@ html, body {
 
 }
 
-a .edit-button {
-  color: #5A5C58; /* grey */
-  cursor: pointer;
-  /*float: right;*/
-  position:absolute;
-  right:10px;
-  top: 8px;
-}
-
-.edit-button:hover {
-  color: #484946; /* dark grey */
-}
-
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
@@ -82,6 +69,18 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .btn-light-blue:hover {
   background-color: #7191b5; /* lighter blue */
   color: #fff;
+}
+
+a .edit-button {
+  color: #5A5C58; /* grey */
+  cursor: pointer;
+  position:absolute;
+  right:10px;
+  top: 8px;
+}
+
+.edit-button:hover {
+  color: #484946; /* dark grey */
 }
 
 /* * * * * * * * * * * *
@@ -271,6 +270,12 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #C05243; /* red */
 }
 
+.profilepic a .edit-button {
+  position: absolute;
+  top: 21%;
+  right: 42%;
+  font-size: 3em;
+}
 
 /* * * * * * * * * * * * * * * * *
  *       SIGN UP FORM            *

@@ -28,6 +28,17 @@ html, body {
   top: 5px;
   bottom: 5px;
 }
+
+.edit-button {
+  color: #5A5C58; /* grey */
+  cursor: pointer;
+  float: right;
+}
+
+.edit-button:hover {
+  color: #484946; /* dark grey */
+}
+
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
@@ -38,21 +49,21 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   width: 100%;
 }
 
-.dropdown-menu .btn-red, .btn-red {
-  background-color: #C05243; /* red */
-}
-
-.dropdown-menu .btn-red:hover, .btn-red:hover {
-  background-color: #994135; /* darker red */
-  color: #fff;
-}
-
 .dropdown-menu .btn-blue, .btn-blue {
   background-color: #126BAB; /* blue */
 }
 
 .dropdown-menu .btn-blue:hover, .btn-blue:hover {
   background-color: #0e5385; /* darker blue */
+  color: #fff;
+}
+
+.dropdown-menu .btn-red, .btn-red {
+  background-color: #C05243; /* red */
+}
+
+.dropdown-menu .btn-red:hover, .btn-red:hover {
+  background-color: #994135; /* darker red */
   color: #fff;
 }
 
@@ -217,7 +228,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .profile-summary .location {
-  color: #acadab; /* grey */
+  color: #acadab; /* light ish grey */
   font-size: 1em;
   font-weight: 300;
   text-align: center;

@@ -11,6 +11,7 @@
 
     <script src="../../static/js/jquery.min.js"></script>
     <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
@@ -18,7 +19,7 @@
     <title>My Profile</title>
   </head>
   <body>
-    <div id="my-profile">
+    <div id="my-profile" ng-app="" ng-init="editMode=false">
       <!-- NAVBAR -->
       <nav class="navbar navbar-default bg-faded">
         <div class="container-fluid">
@@ -76,13 +77,17 @@
 
             <div class="action-items">
               <div class="row">
-                <a href="#" class="btn btn-blue">Edit Your Profile</a>
+                <a class="btn btn-blue" ng-click="editMode=!editMode" ng-class="{'btn-red': editMode}">
+                  <span ng-if="!editMode">Edit Your Profile</span>
+                  <span ng-if="editMode">Stop Editing</span>
+                </a>
               </div>
             </div>
           </div>
 
           <div class="col-sm-5 profile-details">
             <div class="section-name">Profile Details
+              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
             </div>
           </div>
 

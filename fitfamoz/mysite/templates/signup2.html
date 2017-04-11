@@ -56,36 +56,37 @@
         <div class="col-sm-4 col-sm-push-4 create-profile">
           <div class="section-name">Create your Profile </div>
 
-          <form action="" method="" id="signupform">
+          <form name="signupform" autocomplete=""action="" id="signupform">
 
             <div class="input-group">
               <span class="input-group-addon"><i class="material-icons">email</i></span>
-              <input id="email" type="text" class="form-control" name="email" placeholder="Email address">
+              <input id="email" type="text" class="form-control" name="email" placeholder="Email address" required>
             </div>
 
             <div class="input-group">
               <span class="input-group-addon"><i class="material-icons">person</i></span>
-              <input id="firstname" type="text" class="form-control" name="firstname" placeholder="First name">
-              <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Last name">
+              <input id="firstname" type="text" class="form-control" name="firstname" placeholder="First name" required>
+              <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Last name" required>
             </div>
 
             <div class="input-group">
               <span class="input-group-addon"><i class="material-icons">lock</i></span>
-              <input id="password" type="password" class="form-control" name="password" placeholder="Create a password">
-              <input id="confirmpassword" type="password" class="form-control" name="confirmpassword" placeholder="Confirm password">
+              <input id="password" type="password" class="form-control" name="password" placeholder="Create a password" required>
+              <input id="confirmpassword" type="password" class="form-control" name="confirmpassword" placeholder="Confirm password" required>
 
             </div>
 
             <div class="input-group"> <!-- Date input -->
               <span class="input-group-addon"><i class="material-icons">cake</i></span>
-              <input id="birthday" type="date" class="form-control" name="birthday" placeholder="Birthday">
+              <input id="birthday" type="date" class="form-control" name="birthday" placeholder="Birthday" required>
 
             </div>
 
-
-
             <div class="form-group">
-              <a href="{% url 'matches'%}" id="signup" class="btn btn-red">Sign Up</a>
+              <div class="row">
+<!--                <input id="signup" type="submit" class="btn btn-red" value="Sign Up" onclick="location.href="{% url 'matches'%}""/>
+              </div> -->
+              <a href="{% url 'matches'%}" id="signup" class="btn btn-red">Sign Up</a> </div>
             </div>
 
         </form>

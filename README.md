@@ -4,8 +4,8 @@ This is an assignment for INFO30005 Web Information Technologies, University of 
 
 ### We are: ###
 
-Nelson CHEN
-Elles LE
-Joanna Grace Cho Ern LEE
-Nam NGUYEN
-Qing Yi YAP
+* Nelson CHEN (743322)
+* Elles LE (694003)
+* Joanna Grace Cho Ern LEE (710094)
+* Nam NGUYEN
+* Qing Yi YAP (732114)

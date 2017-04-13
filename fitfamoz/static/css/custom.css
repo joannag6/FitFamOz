@@ -6,19 +6,19 @@ html, body {
 }
 
 #main-body {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url(../img/keit-trysh-167890.jpg);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("https://source.unsplash.com/3cCe37VGDiQ");
   background-size: cover;
   min-height: 100%;
 }
 
 #user-profile, #my-profile {
-  background-image: url("https://source.unsplash.com/dDCf0-c4RTU/1600x900");
+  background-image: url("https://source.unsplash.com/dDCf0-c4RTU");
   background-size: cover;
   min-height: 100%;
 }
 
 #matches {
-  background-image: url("../img/kalen-emsley-99660.jpg");
+  background-image: url("https://source.unsplash.com/7bwQXzbF6KE");
   background-size: cover;
   min-height: 100%;
 }
@@ -572,7 +572,7 @@ a .edit-button {
  * * * * * * * * * * * * * * * * */
 
 #about-us {
-  background-image: url(../img/keit-trysh-167890.jpg);
+  background-image: url("https://source.unsplash.com/3cCe37VGDiQ");
 }
 
 #submit {

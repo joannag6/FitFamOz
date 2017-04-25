@@ -36,4 +36,12 @@ myApp.controller('indexCtrl', ['$scope', function($scope) {
     }
   };
 
+  $scope.prevPage = function() {
+    if ($scope.currPage == 'signup1') {
+      $scope.currPage = 'index';
+    } else if ($scope.currPage == 'signup2') {
+      $scope.currPage = 'signup1';
+    }
+  };
+
 }]);

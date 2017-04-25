@@ -18,9 +18,13 @@
       </div>
   </section>
 
-  <section ng-if="isSignUp1()">
+  <div ng-if="isSignUp1()">
     <% include ../partials/signup1%>
-  </section>
+  </div>
+
+  <div ng-if="isSignUp2()">
+    <% include ../partials/signup2%>
+  </div>
 
   <footer>
 

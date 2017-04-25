@@ -32,6 +32,10 @@ myApp.controller('indexCtrl', ['$scope', function($scope) {
     return $scope.currPage == 'login';
   };
 
+  $scope.isAbout = function() {
+    return $scope.currPage == 'about';
+  };
+
   $scope.nextPage = function() {
     if ($scope.currPage == 'index') {
       $scope.currPage = 'signup1';
@@ -53,5 +57,13 @@ myApp.controller('indexCtrl', ['$scope', function($scope) {
   $scope.loginPage = function() {
     $scope.currPage = 'login';
   };
+
+  $scope.aboutPage = function() {
+    $scope.currPage = 'about';
+  }
+
+  $scope.indexPage = function() {
+    $scope.currPage = 'index';
+  }
 
 }]);

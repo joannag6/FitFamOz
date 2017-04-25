@@ -5,7 +5,7 @@
     <% include ../partials/head %>
     <% include ../partials/footer%>
   </head>
-  <body id="matches">
+  <body id="matches" ng-app="myApp" ng-controller="matchesCtrl">
       <header>
           <% include ../partials/navbar_login%>
       </header>
@@ -53,134 +53,28 @@
 
       <!-- Matches -->
       <div class="container col-lg-8" id="profile-view-content">
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
-        </div>
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
-        </div>
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
-        </div>
-        <div class="col-xs-1 profile-view" id="match-next">
-          <a href="#" class="btn btn-red">></a>
-        </div>
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
-        </div>
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
-        </div>
-        <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-            <div>
-              <img src="/img/profilepic.jpg" alt="pp">
-            </div>
-            <div class="match-profile-name">
-              John Smith
-            </div>
-            <div class="match-profile-summary">
-              <table style="width:100%">
-                <tr>
-                  <td>Swimming</td>
-                  <td>Low</td>
-                </tr>
-                <tr>
-                  <td>Hockey</td>
-                  <td>High</td>
-                </tr>
-              </table>
-            </div>
-            <a href="{% url 'user_profile'%}" class="btn btn-blue">View profile</a>
+        <div ng-repeat="user in users">
+          <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+              <div>
+                <img src="/img/profilepic.jpg" alt="pp">
+              </div>
+              <div class="match-profile-name">
+                John Smith
+              </div>
+              <div class="match-profile-summary">
+                <table style="width:100%">
+                  <tr>
+                    <td>Swimming</td>
+                    <td>Low</td>
+                  </tr>
+                  <tr>
+                    <td>Hockey</td>
+                    <td>High</td>
+                  </tr>
+                </table>
+              </div>
+              <a href="/user" class="btn btn-blue">View profile</a>
+          </div>
         </div>
       </div>
     </div>

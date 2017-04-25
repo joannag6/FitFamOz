@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-sm-3 profile-summary">
             <div>
-              <img src="../../static/img/profilepic.jpg" alt="pp">
+              <img src="/img/profilepic.jpg" alt="pp">
             </div>
             <div class="profile-name">
               John Smith
@@ -30,10 +30,9 @@
                 <a href="#" class="btn btn-blue">Message John</a>
               </div>
               <div class="row">
-                <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"
-                  onclick="return confirm('Are you sure you want to report this user?')"
-                />
-<!--                <a href="#" class="btn btn-light-blue">Report John</a> -->
+                <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"
+                  onclick="return confirm('Are you sure you want to report this user?')"/> -->
+                <a class="btn btn-light-blue" ng-click="reportUser()">Report John</a>
               </div>
             </div>
           </div>

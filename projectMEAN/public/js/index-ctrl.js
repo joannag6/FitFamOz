@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp",[]);
 
-myApp.controller("IndexCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
   $scope.currPage = "index";
 
   $scope.activities = [
@@ -23,8 +23,7 @@ myApp.controller("IndexCtrl", ["$scope", "$http", "$location", function($scope, 
                 .then(function(data) {
                     $scope.formData = {};
                     console.log(data);
-                    $location.path('/matches');
-
+                    window.location.href = '/matches';
                 }, function(error) {
                     console.log('Error: ' + error);
                 });

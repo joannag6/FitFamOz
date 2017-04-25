@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('indexCtrl', ['$scope', function($scope) {
+myApp.controller('IndexCtrl', ['$scope', function($scope) {
   $scope.currPage = 'index';
 
   $scope.activities = [

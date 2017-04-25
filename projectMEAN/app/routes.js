@@ -38,9 +38,24 @@ module.exports = function(app) {
         res.render('./pages/about');
     });
 
-    // about page
+    // matches page
     app.get('/matches', function(req, res) {
         res.render('./pages/matches');
+    });
+
+    // friends page
+    app.get('/friends', function(req, res) {
+        res.render('./pages/friends');
+    });
+
+    // my-profile page
+    app.get('/my-profile', function(req, res) {
+        res.render('./pages/my-profile');
+    });
+
+    // user page
+    app.get('/user', function(req, res) {
+        res.render('./pages/user-profile');
     });
 
     // route to handle all angular requests

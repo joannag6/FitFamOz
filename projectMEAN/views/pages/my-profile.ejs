@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Profile</title>
+    <% include ../partials/head %>
+    <% include ../partials/footer%>
+  </head>
+  <body id="matches">
+      <header>
+          <% include ../partials/navbar_login%>
+      </header>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 profile-summary">
+            <div class="profilepic">
+              <img src="../../static/img/profilepic.jpg" alt="pp">
+              <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
+            </div>
+            <div class="profile-name">
+              <span>John Smith</span>
+              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
+            </div>
+
+            <div class="action-items">
+              <div class="row">
+                <a class="btn btn-blue" ng-click="editMode=!editMode" ng-class="{'btn-red': editMode}">
+                  <span ng-if="!editMode">Edit Your Profile</span>
+                  <span ng-if="editMode">Save Changes</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-5 profile-details">
+            <div class="section-name">Profile Details
+              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
+            </div>
+            <form action="" method="" id="editprofile" ng-if="editMode">
+
+              <div class="input-group">
+                <input id="profile-details" type="text" class="form-control" name="email" placeholder="Enter details">
+              </div>
+
+            </form>
+          </div>
+
+          <div class="col-sm-3 recent-activities">
+            <div class="section-name">Recent Activity
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

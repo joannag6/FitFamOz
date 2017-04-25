@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp",[]);
 
-myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
+myApp.controller("IndexCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
   $scope.currPage = "index";
 
   $scope.activities = [
@@ -20,12 +20,13 @@ myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
 
   $scope.signUp = function() {
     $http.post('/api', $scope.newUser)
-                .success(function(data) {
+                .then(function(data) {
                     $scope.formData = {};
                     console.log(data);
-                })
-                .error(function(data) {
-                    console.log('Error: ' + data);
+                    $location.path('/matches');
+
+                }, function(error) {
+                    console.log('Error: ' + error);
                 });
   }
 

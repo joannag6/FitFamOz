@@ -28,6 +28,10 @@ myApp.controller('indexCtrl', ['$scope', function($scope) {
     return $scope.currPage == 'signup2';
   };
 
+  $scope.isLogIn = function() {
+    return $scope.currPage == 'login';
+  };
+
   $scope.nextPage = function() {
     if ($scope.currPage == 'index') {
       $scope.currPage = 'signup1';
@@ -41,7 +45,13 @@ myApp.controller('indexCtrl', ['$scope', function($scope) {
       $scope.currPage = 'index';
     } else if ($scope.currPage == 'signup2') {
       $scope.currPage = 'signup1';
+    } else {
+      $scope.currPage = 'index';
     }
+  };
+
+  $scope.loginPage = function() {
+    $scope.currPage = 'login';
   };
 
 }]);

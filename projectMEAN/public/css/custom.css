@@ -382,7 +382,7 @@ a .edit-button {
   height: 200px;
 }
 
-#signupform i {
+#signupform i, #login-form i {
   font-size: 1.3em;
 }
 

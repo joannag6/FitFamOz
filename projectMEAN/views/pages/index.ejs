@@ -3,23 +3,28 @@
 <head>
     <title>FitFamOz</title>
     <% include ../partials/head %>
-</head>
-<body id="main-body">
-    <header>
-        <% include ../partials/navbar_nologin%>
-    </header>
-
-<section class="jumbotran text-center">
-    <div class="main">
-        <h1>FitFamOz</h1>
-        <h2>Connecting People To A Healthier Lifestyle</h2>
-        <a href="/signup" class="btn btn-red" id="btn-get-started">Get Started!</a>
-    </div>
-</section>
-
-<footer>
     <% include ../partials/footer%>
-</footer>
+</head>
+<body id="main-body" ng-app="myApp" ng-controller="indexCtrl">
+  <header>
+      <% include ../partials/navbar_nologin%>
+  </header>
+
+  <section ng-if="isIndex()" class="jumbotran text-center">
+      <div class="main">
+          <h1>FitFamOz</h1>
+          <h2>Connecting People To A Healthier Lifestyle</h2>
+          <a class="btn btn-red" id="btn-get-started" ng-click="nextPage()">Get Started!</a>
+      </div>
+  </section>
+
+  <section ng-if="isSignUp1()">
+    <% include ../partials/signup1%>
+  </section>
+
+  <footer>
+
+  </footer>
 
 </body>
 </html>

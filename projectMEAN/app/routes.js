@@ -38,6 +38,11 @@ module.exports = function(app) {
         res.render('./pages/about');
     });
 
+    // about page
+    app.get('/matches', function(req, res) {
+        res.render('./pages/matches');
+    });
+
     // route to handle all angular requests
     app.get('/', controller.loadIndex);
 

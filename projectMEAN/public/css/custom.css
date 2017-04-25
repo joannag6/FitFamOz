@@ -38,6 +38,10 @@ html, body {
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
 
+a {
+  cursor: pointer;
+}
+
 a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
   font-weight: bold;

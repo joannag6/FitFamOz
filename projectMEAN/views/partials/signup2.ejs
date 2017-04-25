@@ -11,29 +11,71 @@
 
         <div class="input-group">
           <span class="input-group-addon"><i class="material-icons">email</i></span>
-          <input id="email" type="text" class="form-control" name="email" placeholder="Email address" required>
+          <input
+            id="email"
+            type="text"
+            class="form-control"
+            name="email"
+            placeholder="Email address"
+            ng-model="newUser.email"
+            required>
         </div>
 
         <div class="input-group">
           <span class="input-group-addon"><i class="material-icons">person</i></span>
-          <input id="firstname" type="text" class="form-control" name="firstname" placeholder="First name" required>
-          <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Last name" required>
+          <input
+            id="firstname"
+            type="text"
+            class="form-control"
+            name="firstname"
+            placeholder="First name"
+            ng-model="newUser.firstName"
+            required>
+          <input
+            id="lastname"
+            type="text"
+            class="form-control"
+            name="lastname"
+            placeholder="Last name"
+            ng-model="newUser.lastName"
+            required>
         </div>
 
         <div class="input-group">
           <span class="input-group-addon"><i class="material-icons">lock</i></span>
-          <input id="password" type="password" class="form-control" name="password" placeholder="Create a password" required>
-          <input id="confirmpassword" type="password" class="form-control" name="confirmpassword" placeholder="Confirm password" required>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Create a password"
+            ng-model="newUser.password"
+            required>
+          <input
+            id="confirmpassword"
+            type="password"
+            class="form-control"
+            name="confirmpassword"
+            placeholder="Confirm password"
+            ng-model="newUser.password"
+            required>
         </div>
 
         <div class="input-group"> <!-- Date input -->
           <span class="input-group-addon"><i class="material-icons">cake</i></span>
-          <input id="birthday" type="date" class="form-control" name="birthday" placeholder="Birthday" required>
+          <input
+            id="birthday"
+            type="date"
+            class="form-control"
+            name="birthday"
+            placeholder="Birthday"
+            ng-model="newUser.dob"
+            required>
         </div>
 
         <div class="form-group">
           <div class="row">
-          <a href="/matches" id="signup" class="btn btn-red">Sign Up</a> </div>
+          <a href="/matches" id="signup" class="btn btn-red" ng-click="signUp()">Sign Up</a> </div>
         </div>
 
     </form>

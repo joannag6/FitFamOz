@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp",[]);
 
-myApp.controller("IndexCtrl", ["$scope", function($scope) {
+myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
   $scope.currPage = "index";
 
   $scope.activities = [
@@ -15,6 +15,19 @@ myApp.controller("IndexCtrl", ["$scope", function($scope) {
     "Football",
     "Soccer"
   ];
+
+  $scope.newUser = {};
+
+  $scope.signUp = function() {
+    $http.post('/api', $scope.newUser)
+                .success(function(data) {
+                    $scope.formData = {};
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log('Error: ' + data);
+                });
+  }
 
   $scope.isIndex = function() {
     return $scope.currPage == "index";

@@ -16,8 +16,8 @@ var createUser = function(req,res){
         "lastName":req.body.lastName,
         "email":req.body.email,
         "password":req.body.password,
-        "doB":req.body.doB,
-        "location":req.body.location,
+        "dob":req.body.dob,
+        // "location":req.body.location,
         "activities":req.body.activities,
         "friends":req.body.friends
     });

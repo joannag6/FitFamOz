@@ -11,7 +11,7 @@ var loadIndex = function (req, res) {
 
 var createUser = function(req,res){
     var user = new User({
-        "userID":req.body.userID,
+        // "userID":req.body.userID,
         "firstName":req.body.firstName,
         "lastName":req.body.lastName,
         "email":req.body.email,

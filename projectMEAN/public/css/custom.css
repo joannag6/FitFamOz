@@ -314,11 +314,15 @@ a .edit-button {
 }
 
 .profile-details ul {
-  margin-bottom: 30px;
+  padding: 5px 20px;
 }
 
 .profile-details li {
-  margin: 10px 20px;
+  border: 1px solid #cdcecc; /* light grey */
+  border-radius: 5px;
+  list-style-type: none;
+  margin: 2px 0px;
+  padding: 10px 20px;
 }
 
 /* * * * * * * * * * * * * * * * *

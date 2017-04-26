@@ -556,6 +556,8 @@ a .edit-button {
   font-size: 16px;
   margin-top: 15px;
   padding-bottom: 20px;
+  color: white;
+  width: 100%;
 }
 
 #match-next {

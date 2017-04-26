@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp",[]);
+var myApp = angular.module("myApp");
 
 myApp.controller("MyProfileCtrl", ["$scope", "$http", function($scope, $http) {
   $scope.editMode = false;

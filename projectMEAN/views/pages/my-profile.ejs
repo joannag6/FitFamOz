@@ -40,11 +40,23 @@
               <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
 
               <div class="profile-details-section">Activities</div>
-              <ul class="fa-ul">
+              <!-- <ul class="fa-ul">
                 <div ng-repeat="activity in myActivities">
                   <li><i class="fa-li fa fa-arrow-right"></i>{{ activity }}</li>
                 </div>
-              </ul>
+              </ul> -->
+              <div class="funkyradio">
+                <div ng-repeat="activity in myActivities">
+                  <div class="funkyradio-primary">
+                    <input
+                      type="checkbox"
+                      name="checkbox"
+                      ng-model="checked"
+                      ng-change="chooseActivity(activity)"/>
+                    <label for="{{ 'checkbox-' + $index }}">{{ activity }}</label>
+                  </div>
+                </div>
+              </div>
 
               <!-- <div class="profile-details-section">Birthday</div> -->
 

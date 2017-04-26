@@ -16,16 +16,29 @@ myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
     "Soccer"
   ];
 
+  $scope.chosenActivities = [];
+
+  $scope.chooseActivity = function(activity) {
+    var index = $scope.chosenActivities.indexOf(activity);
+    if (index > -1) {
+      $scope.chosenActivities.splice(index, 1);
+    } else {
+      $scope.chosenActivities.push(activity);
+    }
+  }
+
   $scope.newUser = {};
 
   $scope.signUp = function() {
+    $scope.newUser.activities = $scope.chosenActivities;
     $http.post('/api', $scope.newUser)
                 .then(function(data) {
-                    $scope.formData = {};
+                    $scope.newUser = {};
                     console.log(data);
                     window.location.href = '/matches';
                 }, function(error) {
-                    console.log('Error: ' + error);
+                    console.log('Error!!');
+                    console.log(error);
                 });
   }
 
@@ -53,6 +66,7 @@ myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
     if ($scope.currPage == "index") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
+
       $scope.currPage = "signup2";
     }
   };

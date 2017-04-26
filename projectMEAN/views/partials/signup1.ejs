@@ -13,7 +13,12 @@
         <div class="funkyradio">
           <div ng-repeat="activity in activities">
             <div class="funkyradio-primary">
-              <input type="checkbox" name="checkbox" id="{{ 'checkbox-' + $index }}"/>
+              <input
+                type="checkbox"
+                name="checkbox"
+                id="{{ 'checkbox-' + $index }}"
+                ng-model="checked"
+                ng-change="chooseActivity(activity)"/> <!-- is id necessary? -->
               <label for="{{ 'checkbox-' + $index }}">{{ activity }}</label>
             </div>
           </div>

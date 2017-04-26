@@ -106,8 +106,9 @@ a .edit-button {
 }
 
 .navbar li a {
-  padding: 0px;
   cursor: pointer;
+  padding: 0px;
+  text-align: center;
 }
 
 .before-login li a {
@@ -128,26 +129,37 @@ a .edit-button {
   float: left;
 }
 
+.navbar-nav>li>a.navbar-link {
+  color: #C05243; /* red */
+}
+
+.navbar-nav>li>a.navbar-link:hover {
+  color: #994135; /* darker red */
+}
+
+.navbar-link-labels {
+  font-size: 0.8em;
+  font-weight: bold;
+  width: 100%;
+}
+
 .material-icons {
   top: 0px;
   bottom: 0px;
 }
 
 .material-icons.md-36 {
-  color: #C05243; /* red */
+  display: block;
   font-size: 36px;
-  margin: 10px 20px;
-}
-
-.material-icons.md-36:hover {
-  color: #994135; /* darker red */
+  margin: 5px 20px 0px 20px;
+  text-align: center;
 }
 
 .profilepic-icon {
   border: 4px solid #C05243; /* red */
   border-radius: 100px;
   height: 50px;
-  margin: 3px 20px;
+  margin: 6px 20px;
   width: 50px;
 }
 

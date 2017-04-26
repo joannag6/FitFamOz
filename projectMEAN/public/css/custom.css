@@ -31,7 +31,6 @@ html, body {
 
 .profile-name, .section-name {
   position:relative;
-
 }
 
 /* * * * * * * * * * * * * *
@@ -301,6 +300,25 @@ a .edit-button {
   max-width: 380px;
   width: 200%;
   vertical-align: text-top;
+}
+
+.profile-details-section {
+  color: #5A5C58; /* grey */
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 10px 20px;
+}
+
+.profile-details ul, .profile-details li {
+  position: relative;
+}
+
+.profile-details ul {
+  margin-bottom: 30px;
+}
+
+.profile-details li {
+  margin: 10px 20px;
 }
 
 /* * * * * * * * * * * * * * * * *

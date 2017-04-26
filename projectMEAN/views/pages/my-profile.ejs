@@ -10,7 +10,7 @@
           <% include ../partials/navbar_login%>
       </header>
 
-      <div class="container">
+      <div class="container" ng-app="myApp" ng-controller="MyProfileCtrl">
         <div class="row">
           <div class="col-sm-3 profile-summary">
             <div class="profilepic">
@@ -24,7 +24,7 @@
 
             <div class="action-items">
               <div class="row">
-                <a class="btn btn-blue" ng-click="editMode=!editMode" ng-class="{'btn-red': editMode}">
+                <a class="btn btn-blue" ng-click="toggleEditMode()" ng-class="{'btn-red': editMode}">
                   <span ng-if="!editMode">Edit Your Profile</span>
                   <span ng-if="editMode">Save Changes</span>
                 </a>
@@ -36,11 +36,18 @@
             <div class="section-name">Profile Details
               <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
             </div>
-            <form action="" method="" id="editprofile" ng-if="editMode">
+            <form action="" method="" id="editprofile">
+              <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
 
-              <div class="input-group">
-                <input id="profile-details" type="text" class="form-control" name="email" placeholder="Enter details">
-              </div>
+              <div class="profile-details-section">Activities</div>
+              <ul>
+                <div ng-repeat="activity in myActivities">
+                  <li>{{ activity }}</li>
+                </div>
+              </ul>
+
+              <!-- <div class="profile-details-section">Birthday</div> -->
+
 
             </form>
           </div>

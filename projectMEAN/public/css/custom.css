@@ -31,7 +31,6 @@ html, body {
 
 .profile-name, .section-name {
   position:relative;
-
 }
 
 /* * * * * * * * * * * * * *
@@ -301,6 +300,29 @@ a .edit-button {
   max-width: 380px;
   width: 100%;
   vertical-align: text-top;
+}
+
+.profile-details-section {
+  color: #5A5C58; /* grey */
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 10px 20px;
+}
+
+.profile-details ul, .profile-details li {
+  position: relative;
+}
+
+.profile-details ul {
+  padding: 5px 20px;
+}
+
+.profile-details li {
+  border: 1px solid #cdcecc; /* light grey */
+  border-radius: 5px;
+  list-style-type: none;
+  margin: 2px 0px;
+  padding: 10px 20px;
 }
 
 /* * * * * * * * * * * * * * * * *

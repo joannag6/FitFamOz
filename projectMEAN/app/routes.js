@@ -49,7 +49,7 @@ module.exports = function(app) {
     });
 
     // my-profile page
-    app.get('/my-profile', function(req, res) {
+    app.get('/myprofile', function(req, res) {
         res.render('./pages/my-profile');
     });
 

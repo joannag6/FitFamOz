@@ -25,23 +25,19 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     } else {
       $scope.chosenActivities.push(activity);
     }
-  }
+  };
 
   $scope.newUser = {};
 
   $scope.signUp = function() {
     $scope.newUser.activities = $scope.chosenActivities;
-    User.create($scope.newUser);
-    // $http.post('/api', $scope.newUser)
-    //             .then(function(data) {
-    //                 $scope.newUser = {};
-    //                 console.log(data);
-    //                 window.location.href = '/matches';
-    //             }, function(error) {
-    //                 console.log('Error!!');
-    //                 console.log(error);
-    //             });
-  }
+    User.create($scope.newUser, function(data) {
+      console.log(data);
+      // window.location.href = '/matches';
+    }, function(error) {
+      console.log(error);
+    })
+  };
 
   $scope.isIndex = function() {
     return $scope.currPage == "index";

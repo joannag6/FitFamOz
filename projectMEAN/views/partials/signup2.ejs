@@ -9,7 +9,7 @@
 
       <form name="signupform" autocomplete=""action="" id="signupform">
 
-        <div class="input-group">
+        <div class="input-group"> <!-- Email input -->
           <span class="input-group-addon"><i class="material-icons">email</i></span>
           <input
             id="email"
@@ -21,7 +21,7 @@
             required>
         </div>
 
-        <div class="input-group">
+        <div class="input-group"> <!-- Name input -->
           <span class="input-group-addon"><i class="material-icons">person</i></span>
           <input
             id="firstname"
@@ -41,7 +41,7 @@
             required>
         </div>
 
-        <div class="input-group">
+        <div class="input-group"> <!-- Password input -->
           <span class="input-group-addon"><i class="material-icons">lock</i></span>
           <input
             id="password"
@@ -58,6 +58,18 @@
             name="confirmpassword"
             placeholder="Confirm password"
             ng-model="newUser.password"
+            required>
+        </div>
+
+        <div class="input-group"> <!-- Location (suburb) input -->
+          <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+          <input
+            id="location"
+            type="text"
+            class="form-control"
+            name="location"
+            placeholder="Suburb"
+            ng-model="newUser.location"
             required>
         </div>
 

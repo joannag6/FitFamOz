@@ -128,6 +128,15 @@ a .edit-button {
   float: left;
 }
 
+.navbar-link-labels {
+  /*bottom: -10px;*/
+  color: #C05243;
+  font-size: 0.8em;
+  /*position: absolute;*/
+  text-align: center;
+  width: 100%;
+}
+
 .material-icons {
   top: 0px;
   bottom: 0px;
@@ -135,11 +144,12 @@ a .edit-button {
 
 .material-icons.md-36 {
   color: #C05243; /* red */
+  display: block;
   font-size: 36px;
-  margin: 10px 20px;
+  margin: 5px 20px 0px 20px;
 }
 
-.material-icons.md-36:hover {
+.material-icons.md-36:hover, .navbar-link-labels:hover {
   color: #994135; /* darker red */
 }
 

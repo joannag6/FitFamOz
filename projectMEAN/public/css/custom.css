@@ -568,6 +568,14 @@ a .edit-button {
 
 }
 
+#view-btn {
+  color: white;
+  width: 100%;
+}
+
+#custom-modal-body {
+  width: 70%;
+}
 
 /* * * * * * * * * * * * * * * * *
  *       ABOUT US                *

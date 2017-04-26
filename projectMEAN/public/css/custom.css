@@ -224,8 +224,8 @@ a .edit-button {
   background-color: rgba(255, 255, 255, 0.8); /* white */
   border-radius: 10px;
   height: 100%;
-  margin: 50px 10px;
-  min-height: 520px;
+  margin: 10px 10px;
+  min-height: 380px;
   min-width: 240px;
   padding-bottom: 30px;
   padding-left: 0px;
@@ -295,10 +295,10 @@ a .edit-button {
 #profile-details {
   height: 100%;
   margin: 10px;
-  min-height: 380px;
+  min-height: 300px;
   min-width: 300px;
   max-width: 380px;
-  width: 200%;
+  width: 100%;
   vertical-align: text-top;
 }
 
@@ -606,7 +606,8 @@ a .edit-button {
 }
 
 #custom-modal-body {
-  width: 100%;
+  max-width: 1024px;
+  min-width: 730px;
 }
 
 

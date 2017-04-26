@@ -4,10 +4,9 @@ myApp.factory("User", ["$resource", "$http", function($resource, $http) {
   return $resource("/api/:id", { id: "@_id" },
     {
       'create':  { method: 'POST' },
-      'index':   { method: 'GET', isArray: true },
-      'show':    { method: 'GET', isArray: false },
+      'showAll':    { method: 'GET', isArray: true },
       'update':  { method: 'PUT' },
-      'destroy': { method: 'DELETE' }
+      'delete': { method: 'DELETE' }
     }
   );
 }]);

@@ -32,8 +32,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   $scope.signUp = function() {
     $scope.newUser.activities = $scope.chosenActivities;
     User.create($scope.newUser, function(data) {
-      console.log(data);
-      // window.location.href = '/matches';
+      // console.log(data);
+      window.location.href = '/matches';
     }, function(error) {
       console.log(error);
     })

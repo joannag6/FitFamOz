@@ -36,7 +36,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
       window.location.href = '/matches';
     }, function(error) {
       console.log(error);
-    })
+    });
   };
 
   $scope.isIndex = function() {

@@ -39,23 +39,24 @@
             <form action="" method="" id="editprofile">
               <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
 
-              <div class="profile-details-section">Activities</div>
-              <ul>
-                <div ng-repeat="activity in myActivities">
-                  <li>
-                    <span class="activity-name">{{ activity.name }}</span>
-                    <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
-                    <select class="form-control activity-level"
-                      ng-disabled="!editMode"
-                      ng-model="activity.level"
-                      ng-options="level for level in activityLevels">
-                    </select>
-                  </li>
-                </div>
-              </ul>
-
-              <!-- <div class="profile-details-section">Birthday</div> -->
-
+              <div class="profile-details-section"><div class="section-title">About Me</div>
+                <div class="profile-details-text">Hi, I'm looking for a cool gym partner.</div>
+              </div>
+              <div class="profile-details-section"><div class="section-title">Activities</div>
+                <ul>
+                  <div ng-repeat="activity in myActivities">
+                    <li>
+                      <span class="activity-name">{{ activity.name }}</span>
+                      <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
+                      <select class="form-control activity-level"
+                        ng-disabled="!editMode"
+                        ng-model="activity.level"
+                        ng-options="level for level in activityLevels">
+                      </select>
+                    </li>
+                  </div>
+                </ul>
+              </div>
 
             </form>
           </div>

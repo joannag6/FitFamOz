@@ -303,9 +303,13 @@ a .edit-button {
 }
 
 .profile-details-section {
+  border-bottom: 1px solid #cdcecc; /* light grey */
   color: #5A5C58; /* grey */
-  font-size: 1.1em;
   font-weight: 400;
+}
+
+.section-title {
+  font-size: 1.2em;
   margin: 10px 20px;
 }
 
@@ -325,8 +329,10 @@ a .edit-button {
   margin: 2px 0px;
 }
 
-.activity-name, .activity-level {
+.activity-name, .activity-level, .profile-details-text {
   color: #5A5C58; /* grey */
+  font-size: 1em;
+  margin: 10px 30px;
 }
 
 .activity-name {

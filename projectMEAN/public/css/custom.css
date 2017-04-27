@@ -78,6 +78,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 a .edit-button {
   color: #5A5C58; /* grey */
   cursor: pointer;
+  /*float: right;*/
   position:absolute;
   right:10px;
   top: 8px;
@@ -288,9 +289,14 @@ a .edit-button {
 
 .profilepic a .edit-button {
   position: absolute;
-  top: 21%;
+  top: 25%;
   right: 42%;
   font-size: 3em;
+}
+
+.profile-edit-name {
+  text-align: center;
+  margin: 5px 0px;
 }
 
 #profile-details {
@@ -304,10 +310,18 @@ a .edit-button {
 }
 
 .profile-details-section {
+  border-bottom: 1px solid #cdcecc; /* light grey */
   color: #5A5C58; /* grey */
-  font-size: 1.1em;
   font-weight: 400;
+}
+
+.section-title {
+  font-size: 1.2em;
   margin: 10px 20px;
+}
+
+.profile-edit-text {
+  padding: 0px 20px 10px 20px;
 }
 
 .profile-details ul, .profile-details li {
@@ -319,11 +333,31 @@ a .edit-button {
 }
 
 .profile-details li {
+  background-color: #dcdcdb; /* lightest grey */
   border: 1px solid #cdcecc; /* light grey */
   border-radius: 5px;
   list-style-type: none;
   margin: 2px 0px;
-  padding: 10px 20px;
+}
+
+.activity-name, .activity-level, .profile-details-text {
+  color: #5A5C58; /* grey */
+  font-size: 1em;
+  margin: 10px 30px;
+}
+
+.activity-name {
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+.activity-level {
+  display: inline-block;
+  float: right;
+  font-size: 1em;
+  margin: 3px;
+  width: auto;
 }
 
 /* * * * * * * * * * * * * * * * *

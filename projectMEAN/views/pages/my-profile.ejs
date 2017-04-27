@@ -44,11 +44,12 @@
                 <div ng-repeat="activity in myActivities">
                   <li>
                     <span class="activity-name">{{ activity.name }}</span>
+                    <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
                     <select class="form-control activity-level"
+                      ng-disabled="!editMode"
                       ng-model="activity.level"
                       ng-options="level for level in activityLevels">
                     </select>
-                    <!-- <span class="activity-level">{{ activity.level }}</span> -->
                   </li>
                 </div>
               </ul>

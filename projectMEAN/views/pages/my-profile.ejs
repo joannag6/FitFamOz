@@ -42,7 +42,14 @@
               <div class="profile-details-section">Activities</div>
               <ul>
                 <div ng-repeat="activity in myActivities">
-                  <li>{{ activity }}</li>
+                  <li>
+                    <span class="activity-name">{{ activity.name }}</span>
+                    <select class="form-control activity-level"
+                      ng-model="activity.level"
+                      ng-options="level for level in activityLevels">
+                    </select>
+                    <!-- <span class="activity-level">{{ activity.level }}</span> -->
+                  </li>
                 </div>
               </ul>
 

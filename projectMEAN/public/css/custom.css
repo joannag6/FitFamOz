@@ -318,11 +318,29 @@ a .edit-button {
 }
 
 .profile-details li {
+  background-color: #dcdcdb; /* lightest grey */
   border: 1px solid #cdcecc; /* light grey */
   border-radius: 5px;
   list-style-type: none;
   margin: 2px 0px;
-  padding: 10px 20px;
+}
+
+.activity-name, .activity-level {
+  color: #5A5C58; /* grey */
+}
+
+.activity-name {
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+.activity-level {
+  display: inline-block;
+  float: right;
+  font-size: 1em;
+  margin: 3px;
+  width: auto;
 }
 
 /* * * * * * * * * * * * * * * * *

@@ -24,9 +24,10 @@ html, body {
 }
 
 .material-icons {
-  position: relative;
-  top: 5px;
-  bottom: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
 }
 
 .profile-name, .section-name {
@@ -226,7 +227,7 @@ a .edit-button {
   border-radius: 10px;
   height: 100%;
   margin: 10px 10px;
-  min-height: 400px;
+  min-height: 450px;
   min-width: 240px;
   padding-bottom: 30px;
   padding-left: 0px;
@@ -648,6 +649,9 @@ a .edit-button {
   min-width: 730px;
 }
 
+.space-btn {
+  padding:2px;
+}
 
 /* * * * * * * * * * * * * * * * *
  *       ABOUT US                *

@@ -18,8 +18,21 @@
               <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
             </div>
             <div class="profile-name">
-              <span>John Smith</span>
-              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
+              <span ng-if="!editMode">John Smith</span>
+              <div class="row profile-edit-text" ng-if="editMode">
+                <input
+                  type="text"
+                  class="form-control profile-edit-name"
+                  placeholder="First Name"
+                  ng-model="thisUser.firstName"
+                  required>
+                <input
+                  type="text"
+                  class="form-control profile-edit-name"
+                  placeholder="Last Name"
+                  ng-model="thisUser.lastName"
+                  required>
+              </div>
             </div>
 
             <div class="action-items">
@@ -40,7 +53,6 @@
               <div class="profile-details-section">
                 <div class="section-title">About Me</div>
                 <div ng-if="!editMode" class="profile-details-text"> {{thisUser.aboutMe}}
-                  <!-- <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a> -->
                 </div>
                 <div class="profile-edit-text" ng-if="editMode">
                   <input

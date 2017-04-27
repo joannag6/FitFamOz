@@ -37,9 +37,11 @@
 
             <div class="action-items">
               <div class="row">
-                <a class="btn btn-blue" ng-click="toggleEditMode()" ng-class="{'btn-red': editMode}">
-                  <span ng-if="!editMode">Edit Your Profile</span>
-                  <span ng-if="editMode">Save Changes</span>
+                <a class="btn btn-blue" ng-if="!editMode" ng-click="toggleEditMode()">
+                  <span>Edit Your Profile</span>
+                </a>
+                <a class="btn btn-red" ng-if="editMode" ng-click="saveChanges()">
+                  <span>Save Changes</span>
                 </a>
               </div>
             </div>

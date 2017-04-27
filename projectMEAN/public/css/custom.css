@@ -289,7 +289,7 @@ a .edit-button {
 
 .profilepic a .edit-button {
   position: absolute;
-  top: 25%;
+  top: -42%;
   right: 42%;
   font-size: 3em;
 }
@@ -652,7 +652,6 @@ a .edit-button {
 .space-btn {
   padding:2px;
 }
-
 
 /* * * * * * * * * * * * * * * * *
  *       ABOUT US                *

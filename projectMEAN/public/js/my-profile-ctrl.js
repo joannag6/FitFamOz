@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp");
 
-myApp.controller("MyProfileCtrl", ["$scope", "$http", function($scope, $http) {
+myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
   $scope.editMode = false;
 
   $scope.activityLevels = ["High", "Low", "Medium"];
@@ -16,5 +16,16 @@ myApp.controller("MyProfileCtrl", ["$scope", "$http", function($scope, $http) {
 
   $scope.toggleEditMode = function() {
     $scope.editMode = !$scope.editMode;
-  }
+  };
+
+  $scope.saveChanges = function() {
+    $scope.toggleEditMode();
+    // figure out how to put in ID
+  //   User.update($scope.thisUser, function(data) {
+  //     // console.log(data);
+  //     $scope.editMode = !$scope.editMode;
+  //   }, function(error) {
+  //     console.log(error);
+  //   })
+  };
 }]);

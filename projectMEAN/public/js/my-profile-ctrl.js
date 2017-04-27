@@ -12,6 +12,8 @@ myApp.controller("MyProfileCtrl", ["$scope", "$http", function($scope, $http) {
     {"name": "Weight Lifting", "level": "Medium"}
   ];
 
+  $scope.thisUser = {"firstName": "John", "lastName": "Smith", "aboutMe": "Hi, I'm looking for a cool gym partner."};
+
   $scope.toggleEditMode = function() {
     $scope.editMode = !$scope.editMode;
   }

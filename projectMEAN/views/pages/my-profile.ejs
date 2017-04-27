@@ -33,14 +33,22 @@
           </div>
 
           <div class="col-sm-5 profile-details">
-            <div class="section-name">Profile Details
-              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
-            </div>
+            <div class="section-name">Profile Details</div>
             <form action="" method="" id="editprofile">
               <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
 
-              <div class="profile-details-section"><div class="section-title">About Me</div>
-                <div class="profile-details-text">Hi, I'm looking for a cool gym partner.</div>
+              <div class="profile-details-section">
+                <div class="section-title">About Me</div>
+                <div ng-if="!editMode" class="profile-details-text"> {{thisUser.aboutMe}}
+                  <!-- <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a> -->
+                </div>
+                <div class="profile-edit-text" ng-if="editMode">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Write something about yourself!"
+                    ng-model="thisUser.aboutMe">
+                </div>
               </div>
               <div class="profile-details-section"><div class="section-title">Activities</div>
                 <ul>
@@ -62,7 +70,7 @@
           </div>
 
           <div class="col-sm-3 recent-activities">
-            <div class="section-name">Recent Activity
+            <div class="section-name">Available Times
             </div>
           </div>
         </div>

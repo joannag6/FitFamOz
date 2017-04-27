@@ -1,6 +1,6 @@
-var myApp = angular.module("myApp",[]);
+var myApp = angular.module("myApp");
 
-myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
+myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   $scope.currPage = "index";
 
   $scope.activities = [
@@ -25,22 +25,19 @@ myApp.controller("IndexCtrl", ["$scope", "$http", function($scope, $http) {
     } else {
       $scope.chosenActivities.push(activity);
     }
-  }
+  };
 
   $scope.newUser = {};
 
   $scope.signUp = function() {
     $scope.newUser.activities = $scope.chosenActivities;
-    $http.post('/api', $scope.newUser)
-                .then(function(data) {
-                    $scope.newUser = {};
-                    console.log(data);
-                    window.location.href = '/matches';
-                }, function(error) {
-                    console.log('Error!!');
-                    console.log(error);
-                });
-  }
+    User.create($scope.newUser, function(data) {
+      // console.log(data);
+      window.location.href = '/matches';
+    }, function(error) {
+      console.log(error);
+    })
+  };
 
   $scope.isIndex = function() {
     return $scope.currPage == "index";

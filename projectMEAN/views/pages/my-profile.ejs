@@ -18,8 +18,21 @@
               <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
             </div>
             <div class="profile-name">
-              <span>John Smith</span>
-              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
+              <span ng-if="!editMode">John Smith</span>
+              <div class="row profile-edit-text" ng-if="editMode">
+                <input
+                  type="text"
+                  class="form-control profile-edit-name"
+                  placeholder="First Name"
+                  ng-model="thisUser.firstName"
+                  required>
+                <input
+                  type="text"
+                  class="form-control profile-edit-name"
+                  placeholder="Last Name"
+                  ng-model="thisUser.lastName"
+                  required>
+              </div>
             </div>
 
             <div class="action-items">
@@ -33,27 +46,43 @@
           </div>
 
           <div class="col-sm-5 profile-details">
-            <div class="section-name">Profile Details
-              <a><i ng-if="editMode" class="material-icons edit-button">mode_edit</i></a>
-            </div>
+            <div class="section-name">Profile Details</div>
             <form action="" method="" id="editprofile">
               <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
 
-              <div class="profile-details-section">Activities</div>
-              <ul>
-                <div ng-repeat="activity in myActivities">
-                  <li>{{ activity }}</li>
+              <div class="profile-details-section">
+                <div class="section-title">About Me</div>
+                <div ng-if="!editMode" class="profile-details-text"> {{thisUser.aboutMe}}
                 </div>
-              </ul>
-
-              <!-- <div class="profile-details-section">Birthday</div> -->
-
+                <div class="profile-edit-text" ng-if="editMode">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Write something about yourself!"
+                    ng-model="thisUser.aboutMe">
+                </div>
+              </div>
+              <div class="profile-details-section"><div class="section-title">Activities</div>
+                <ul>
+                  <div ng-repeat="activity in myActivities">
+                    <li>
+                      <span class="activity-name">{{ activity.name }}</span>
+                      <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
+                      <select class="form-control activity-level"
+                        ng-disabled="!editMode"
+                        ng-model="activity.level"
+                        ng-options="level for level in activityLevels">
+                      </select>
+                    </li>
+                  </div>
+                </ul>
+              </div>
 
             </form>
           </div>
 
           <div class="col-sm-3 recent-activities">
-            <div class="section-name">Recent Activity
+            <div class="section-name">Available Times
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ myApp.factory("User", ["$resource", "$http", function($resource, $http) {
     {
       'create':  { method: 'POST' },
       'showAll':    { method: 'GET', isArray: true },
+      'showOne': { method: 'GET', isArray: false },
       'update':  { method: 'PUT' },
       'delete': { method: 'DELETE' }
     }

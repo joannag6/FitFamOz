@@ -23,8 +23,8 @@ var createUser = function(req,res){
     });
     user.save(function(err,newUser){
         if(err){
-          console.log(err);
-          res.send(400, err);
+          console.log(err.errmsg);
+          res.status(400).send(err.errmsg);
         }else{
           res.send(newUser);
         }

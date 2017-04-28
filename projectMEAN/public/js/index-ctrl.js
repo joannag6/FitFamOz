@@ -35,6 +35,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
       // console.log(data);
       window.location.href = '/matches';
     }, function(error) {
+      window.alert("Error signing up.");
       console.log(error);
     });
   };

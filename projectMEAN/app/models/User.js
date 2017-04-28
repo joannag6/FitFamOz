@@ -1,14 +1,10 @@
-/**
- * Created by NamNguyen1 on 15/4/17.
- */
-
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
     // userID : String,
     firstName : String,
     lastName : String,
-    email : String,
+    email: { type: String, index: { unique: true } },
     password : String,
     dob : Date,
     location : String,

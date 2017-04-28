@@ -1,7 +1,7 @@
 var myApp = angular.module("myApp");
 
 myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
-  $scope.users = User.query();
+  $scope.users = User.showAll();
   // .then(
   //   function(data) {
   //     $scope.users = data;

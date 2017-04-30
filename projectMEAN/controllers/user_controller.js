@@ -22,10 +22,11 @@ var createUser = function(req,res){
         "friends":req.body.friends
     });
     user.save(function(err,newUser){
-        if(!err){
-            res.send(newUser);
+        if(err){
+          console.log(err.errmsg);
+          res.status(400).send(err.errmsg);
         }else{
-            res.sendStatus(400);
+          res.send(newUser);
         }
     });
 };

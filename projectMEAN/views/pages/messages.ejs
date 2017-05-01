@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="/css/messages.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <script src="/libs/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="/libs/chat-window/chat-window.html">
+    <style is="custom-style">
+        chat-window.styled {
+            font-size: small;
+            --chat-messages-height: 45em;
+            --chat-messages-scroller: {
+                border: 1px inset #eee;
+            };
+            --paper-input-container-input: {
+                margin: 0 2px;
+            };
+            --chat-message-text: {
+                background-color: #f0f0f0;
+                padding: 6px 8px;
+                margin: 4px 0;
+                border-radius: 6px;
+            };
+        }
+    </style>
+    <script>
+        var now = Date.now();
+        var messages = [
+            { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
+            { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
+            { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
+            { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
+            { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
+            { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
+            { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
+            { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
+            { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
+            { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
+            { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
+            { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
+        ].reverse();
+    </script>
+</head>
+<body>
+<header>
+    <% include ../partials/navbar_login%>
+</header>
+
+<!-- main container -->
+<div class="background main-container chatbox" style="margin-top:0;">
+    <!-- message box -->
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-md-4 bg-white" style="height: 60em;">
+                    <span class="text-center">
+                        <h4>Your Conversations</h4>
+                    </span>
+                <!-- search user bar -->
+                <div class="row">
+                    <div class="col-sm-12" style="position: relative;">
+                        <div style="width: 80%; height: 70%; display: inline-block">
+                            <input type="text" placeholder="Search" />
+                        </div>
+                        <button class="btn btn-default btn-sm" style="display: inline-block; width: 20%; height: 70%; position: absolute" type="submit">
+                            <i class=" glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- =============================================================== -->
+                <!-- member list -->
+                <div>
+                    <ul class="friend-list" style="padding-left: 10%;">
+                        <li class="active bounceInDown">
+                            <a href="#" class="clearfix">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                <div class="friend-name">
+                                    <strong>John Doe</strong>
+                                </div>
+                                <div class="last-message text-muted">Hello, Are you there?</div>
+                                <small class="time text-muted">Just now</small>
+                                <small class="chat-alert label label-danger">1</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="clearfix">
+                                <img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                <div class="friend-name">
+                                    <strong>Jane Doe</strong>
+                                </div>
+                                <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                <small class="time text-muted">5 mins ago</small>
+                                <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--=========================================================-->
+            <!-- selected chat -->
+            <div class="col-md-8 bg-lightblue" style="height: 60em;">
+                <chat-window
+                        class="styled"
+                        id="chat"
+                        author="me"
+                        single-line
+                >
+                </chat-window>
+            </div>
+        </div>
+    </div>
+    <!-- end chat box -->
+</div>
+
+<span>
+    <% include ../partials/footer%>
+    <script>
+        var chat = document.getElementById('chat');
+        var author;
+        chat.messages = messages;
+        chat.addEventListener('send', function(e) {
+            author = author == 'me' ? 'you' : 'me'; // For demo
+            chat.push('messages',{
+                author: author,
+                text: e.detail,
+                created: Date.now()
+            });
+            chat.inputText = '';
+        });
+    </script>
+</span>
+
+</body>
+</html>

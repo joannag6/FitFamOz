@@ -48,6 +48,11 @@ module.exports = function(app) {
         res.render('./pages/friends');
     });
 
+    // messages page
+    app.get('/messages', function(req, res) {
+        res.render('./pages/messages');
+    });
+
     // my-profile page
     app.get('/myprofile', function(req, res) {
         res.render('./pages/my-profile');

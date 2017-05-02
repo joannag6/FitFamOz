@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Messages & Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/theme.css'%}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/custom.css'%}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/messages.css'%}" rel="stylesheet" type="text/css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default bg-faded" style="margin-bottom:0;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand" href="{% url 'index'%}">
+                    <img src="../../static/img/logo-with-name.png" alt="FitFamOz">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="message/">
+                            <i class="material-icons md-36">mail_outline</i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img class="profilepic-icon" src="../../static/img/profilepic.jpg" alt="pp">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile/" class="btn btn-red">Edit Your Profile</a> </li>
+                            <li><a href="settings/" class="btn btn-red">Preferences</a></li>
+                            <li><a href="about/" class="btn btn-red">About Us</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="index/" class="btn btn-blue">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- /.NAVBAR -->
+
+    <!-- main container -->
+    <div class="main-container background chatbox" style="margin-top:0;">
+        <!-- message box -->
+        <div class="container bootstrap snippet">
+            <div class="row">
+                <div class="col-md-4 bg-white" style="height: 60em;">
+                    <span class="text-center">
+                        <h4>Your Conversations</h4>
+                    </span>
+                    <!-- search user bar -->
+                    <div class="row">
+                        <div class="col-sm-12" style="position: relative;">
+                            <div style="width: 80%; height: 70%; display: inline-block">
+                                <input type="text" placeholder="Search" />
+                            </div>
+                            <button class="btn btn-default btn-sm" style="display: inline-block; width: 20%; height: 70%; position: absolute" type="submit">
+                                <i class=" glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- =============================================================== -->
+                    <!-- member list -->
+                    <div>
+                        <ul class="friend-list" style="padding-left: 10%;">
+                            <li class="active bounceInDown">
+                                <a href="#" class="clearfix">
+                                    <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">
+                                        <strong>John Doe</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Hello, Are you there?</div>
+                                    <small class="time text-muted">Just now</small>
+                                    <small class="chat-alert label label-danger">1</small>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">
+                                        <strong>Jane Doe</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">5 mins ago</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--=========================================================-->
+                <!-- selected chat -->
+                <div class="col-md-8 bg-lightblue" style="height: 60em;">
+                    <span class="text-center">
+                        <h4>John Doe</h4>
+                    </span>
+                    <div class="chat-message" style="overflow: auto; height: 49em; padding-bottom: 1em;">
+                        <ul class="chat">
+                            <li class="left clearfix">
+                                <span class="chat-img pull-left">
+                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">John Doe</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Sarah</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="left clearfix">
+                                <span class="chat-img pull-left">
+                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">John Doe</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Sarah</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="left clearfix">
+                                <span class="chat-img pull-left">
+                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">John Doe</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Sarah</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="right clearfix">
+                                <span class="chat-img pull-right">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                            </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                        <strong class="primary-font">Sarah</strong>
+                                        <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="chat-box bg-white" style="height: 5em;">
+                            <div class="input-group">
+                                <input class="form-control border no-shadow no-rounded" style="height: 80%;" placeholder="Type your message here">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-send btn-sm" type="button">Send</button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end chat box -->
+    </div>
+
+</body>
+
+</html>

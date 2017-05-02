@@ -1,7 +1,8 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
-var controller = require('../controllers/controller.js');
+var controller = require('../controllers/controller');
+var chat_ctlr = require('../controllers/chat_controller');
 
 module.exports = function(app) {
 
@@ -14,7 +15,11 @@ module.exports = function(app) {
 
     app.get('/api/:id', controller.findOneUser);
 
+    app.get('/api/chat', chat_ctlr.findAllChats)
+
     app.post('/api', controller.createUser);
+
+    app.post('/api/chat', chat_ctlr.createConversation);
 
     // app.delete('/api/:id', controller.deleleUser());
 

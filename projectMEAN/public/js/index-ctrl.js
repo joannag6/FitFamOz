@@ -64,7 +64,6 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     if ($scope.currPage == "index") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
-
       $scope.currPage = "signup2";
     }
   };

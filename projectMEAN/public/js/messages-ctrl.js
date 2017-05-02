@@ -4,9 +4,29 @@
 
 var myApp = angular.module("myApp");
 
-myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
+myApp.controller("MessagesCtrl", ["$scope", "Conversation", "User", function($scope, User, Conversation) {
 
-    $scope.fetchMessages = function () {
+    var id1 = "5902c90d6b6f414d6e9afb00";
+    var id2 = "5902d085330bf04eadf38562";
 
-    }
+    $scope.curUser = User.showOne({id: id1});
+    $scope.friends = $scope.curUser.friends;
+
+    $scope.lastMessages = [];
+    $scope.curMessages = [];
+
+    $scope.fetchChatList = function () {
+        var messages;
+        $scope.friends.forEach(function (friend) {
+            messages = Conversation.showChat({user1: id1, user2: friend});
+            messages.reverse();
+            $scope.lastMessages.push(messages[0]);
+        });
+        $scope.lastMessages.reverse();
+    };
+
+    $scope.fetchChatWindow = function () {
+        var chat = Conversation.showChat({user1: id1, user2: id2});
+        $scope.curMessages = chat.convo;
+    };
 }]);

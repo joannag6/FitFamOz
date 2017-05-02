@@ -22,6 +22,42 @@ var createConversation = function(req,res){
 };
 
 var findAllChats = function(req,res){
+    Conversation.find({}, function(err,conversations){
+        if(!err){
+            res.send(conversations);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
+
+var updateChat = function(req, res) {
+    var u1 = req.params.user1;
+    var u2 = req.params.user2;
+
+    var query = {
+        user1 : u1,
+        user2 : u2
+    };
+
+    Conversation.findOne(query,function(err,conversation){
+        if(!err){
+            conversation.convo = req.body.convo;
+            conversation.save(function (err) {
+                if (err){
+                    res.send(err);
+                }
+                else{
+                    res.json({message: "Chat Updated!"});
+                }
+            })
+        }else{
+            res.sendStatus(404);
+        }
+    });
+}
+
+var findChat = function(req,res){
     var u1 = req.params.user1;
     var u2 = req.params.user2;
 
@@ -41,3 +77,5 @@ var findAllChats = function(req,res){
 
 module.exports.createConversation = createConversation;
 module.exports.findAllChats = findAllChats;
+module.exports.findChat = findChat;
+module.exports.updateChat = updateChat;

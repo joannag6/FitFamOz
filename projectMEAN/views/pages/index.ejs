@@ -19,17 +19,25 @@
         </div>
     </section>
 
-    <div ng-if="isSignUp1()">
-      <% include ../partials/signup1%>
-    </div>
+    <form name="signupform" autocomplete=""action="" id="signupform">
 
-    <div ng-if="isSignUp2()">
-      <% include ../partials/signup2%>
-    </div>
+      <div ng-if="isSignUp1()">
+        <% include ../partials/signup1%>
+      </div>
 
-    <div ng-if="isLogIn()">
-      <% include ../partials/login%>
-    </div>
+      <div ng-if="isSignUp2()">
+        <% include ../partials/signup2%>
+      </div>
+
+      <div ng-if="isProfilePic()">
+        <% include ../partials/uploadprofilepic%>
+      </div>
+
+      <div ng-if="isLogIn()">
+        <% include ../partials/login%>
+      </div>
+
+    </form>
 
     <div ng-if="isAbout()">
       <% include ../partials/about-content%>

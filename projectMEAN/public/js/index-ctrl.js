@@ -52,6 +52,10 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     return $scope.currPage == "signup2";
   };
 
+  $scope.isProfilePic = function() {
+    return $scope.currPage == "profilepic";
+  };
+
   $scope.isLogIn = function() {
     return $scope.currPage == "login";
   };
@@ -64,8 +68,9 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     if ($scope.currPage == "index") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
-
       $scope.currPage = "signup2";
+    } else if ($scope.currPage == "signup2") {
+      $scope.currPage = "profilepic";
     }
   };
 
@@ -74,6 +79,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
       $scope.currPage = "index";
     } else if ($scope.currPage == "signup2") {
       $scope.currPage = "signup1";
+    } else if ($scope.currPage == "profilepic") {
+      $scope.currPage = "signup2";
     } else {
       $scope.currPage = "index";
     }

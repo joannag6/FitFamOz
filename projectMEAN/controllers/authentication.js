@@ -1,4 +1,4 @@
-var passport = require('passport');
+/*var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -36,4 +36,4 @@ module.exports.register = function(req, res) {
       "token" : token
     });
   });
-};
+};*/

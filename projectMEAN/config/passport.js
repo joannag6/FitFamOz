@@ -1,4 +1,4 @@
-var passport = require('passport');
+/*var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
           message: 'User not found'
         });
       }
-      
+
       // Return if password is wrong
       if (!user.validPassword(password)) {
         return done(null, false, {
@@ -28,4 +28,4 @@ passport.use(new LocalStrategy({
       return done(null, user);
     });
   }
-));
+));*/

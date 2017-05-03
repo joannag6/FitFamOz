@@ -1,11 +1,11 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
-var jwt = require('express-jwt');
+/*var jwt = require('express-jwt');
 var auth = jwt({
   secret: 'MY_SECRET',
   userProperty: 'payload'
-});
+});*/
 
 var user_controller = require('../controllers/user_controller.js');
 
@@ -67,11 +67,11 @@ module.exports = function(app) {
 
 };
 
-router.get('/profile', auth, ctrlProfile.profileRead);
+/*router.get('/profile', auth, ctrlProfile.profileRead);
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
   }
-});
+});*/

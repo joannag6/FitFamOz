@@ -70,7 +70,7 @@ module.exports.findOneUser = findOneUser;
 module.exports.loadIndex = loadIndex;
 // module.exports.deleleUser = deleteUser;
 
-module.exports.profileRead = function(req, res) {
+/*module.exports.profileRead = function(req, res) {
 
   // If no user ID exists in the JWT return a 401
   if (!req.payload._id) {
@@ -86,4 +86,4 @@ module.exports.profileRead = function(req, res) {
       });
   }
 
-};
+};*/

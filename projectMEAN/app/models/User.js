@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     dob : Date,
     location : String,
     activities : [String],
-    friends : [String]
+    friends : [String],
     hash: String,
     salt: String
 });

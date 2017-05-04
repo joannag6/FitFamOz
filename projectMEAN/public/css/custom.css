@@ -498,6 +498,12 @@ a .edit-button {
   -ms-filter:'alpha(opacity=0)';
 }
 
+.thumbnail {
+  height: 100px;
+  margin: 0 auto;
+  width: 100px;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       CHECKBOX                *
  * * * * * * * * * * * * * * * * */

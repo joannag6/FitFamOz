@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-4 col-sm-push-4 create-profile">
+      <div class="section-name">
+        <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
+        <span>Create your Profile</span>
+      </div>
+
+      <div class="signup-form-contents">
+
+        <div class="input-group"> <!-- Email input -->
+          <span class="input-group-addon"><i class="material-icons">email</i></span>
+          <input
+            id="email"
+            type="text"
+            class="form-control"
+            name="email"
+            placeholder="Email address"
+            ng-model="newUser.email"
+            required>
+        </div>
+
+        <div class="input-group"> <!-- Name input -->
+          <span class="input-group-addon"><i class="material-icons">person</i></span>
+          <input
+            id="firstname"
+            type="text"
+            class="form-control"
+            name="firstname"
+            placeholder="First name"
+            ng-model="newUser.firstName"
+            required>
+          <input
+            id="lastname"
+            type="text"
+            class="form-control"
+            name="lastname"
+            placeholder="Last name"
+            ng-model="newUser.lastName"
+            required>
+        </div>
+
+        <div class="input-group"> <!-- Password input -->
+          <span class="input-group-addon"><i class="material-icons">lock</i></span>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Create a password"
+            ng-model="newUser.password"
+            required>
+          <input
+            id="confirmpassword"
+            type="password"
+            class="form-control"
+            name="confirmpassword"
+            placeholder="Confirm password"
+            ng-model="newUser.password"
+            required>
+        </div>
+
+        <div class="input-group"> <!-- Location (suburb) input -->
+          <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+          <input
+            id="location"
+            type="text"
+            class="form-control"
+            name="location"
+            placeholder="Suburb"
+            ng-model="newUser.location"
+            required>
+        </div>
+
+        <div class="input-group"> <!-- Date input -->
+          <span class="input-group-addon"><i class="material-icons">cake</i></span>
+          <input
+            id="birthday"
+            type="date"
+            class="form-control"
+            name="birthday"
+            placeholder="Birthday"
+            ng-model="newUser.dob"
+            required>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+          <a id="continue" class="btn btn-red" ng-click="nextPage()">Continue</a> </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

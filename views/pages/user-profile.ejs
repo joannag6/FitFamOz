@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>John Smith</title>
+    <% include ../partials/head %>
+    <% include ../partials/footer%>
+  </head>
+  <body id="matches">
+      <header>
+          <% include ../partials/navbar_login%>
+      </header>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 profile-summary">
+            <div>
+              <img src="/img/profilepic.jpg" alt="pp">
+            </div>
+            <div class="profile-name">
+              John Smith
+            </div>
+            <div class="location">
+              2km away from you
+            </div>
+            <div class="action-items">
+              <div class="row">
+                <a href="#" class="btn btn-blue">Rate John</a>
+              </div>
+              <div class="row">
+                <a href="#" class="btn btn-blue">Message John</a>
+              </div>
+              <div class="row">
+                <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"
+                  onclick="return confirm('Are you sure you want to report this user?')"/> -->
+                <a class="btn btn-light-blue" ng-click="reportUser()">Report John</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-5 profile-details">
+            <div class="section-name">Profile Details
+            </div>
+          </div>
+
+          <div class="col-sm-3 recent-activities">
+            <div class="section-name">Recent Activity
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

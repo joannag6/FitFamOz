@@ -29,4 +29,9 @@ myApp.controller("MessagesCtrl", ["$scope", "Conversation", "User", function($sc
         var chat = Conversation.showChat({user1: id1, user2: id2});
         $scope.curMessages = chat.convo;
     };
+
+    $scope.updateChat = function (new_msg) {
+        $scope.curMessages.push(new_msg);
+        Conversation.update({user1: id1, user2: id2}, $scope.curMessages);
+    }
 }]);

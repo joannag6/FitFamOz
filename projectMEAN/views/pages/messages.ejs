@@ -25,28 +25,9 @@
             };
         }
     </style>
-    <script>
-        var now = Date.now();
-        var messages = [
-            { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
-            { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
-            { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
-            { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
-            { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
-            { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
-            { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
-            { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
-            { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
-            { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
-            { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
-            { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
-            { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
-            { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
-            { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
-        ].reverse();
-    </script>
+
 </head>
-<body>
+<body ng-app="myApp" ng-controller="MessagesCtrl">
 <header>
     <% include ../partials/navbar_login%>
 </header>
@@ -58,7 +39,7 @@
         <div class="row" style="margin-top: 20px;">
             <div class="col-md-4 bg-white" style="height: 60em;">
                     <span class="text-center">
-                        <h4>Your Conversations</h4>
+                        <h4><strong>Your Conversations</strong></h4>
                     </span>
                 <!-- search user bar -->
                 <div class="row">
@@ -75,7 +56,7 @@
 
                 <!-- =============================================================== -->
                 <!-- member list -->
-                <div>
+                <div ng-init="fetchChatList()">
                     <ul class="friend-list" style="padding-left: 10%;">
                         <li class="active bounceInDown">
                             <a href="#" class="clearfix">
@@ -105,7 +86,7 @@
 
             <!--=========================================================-->
             <!-- selected chat -->
-            <div class="col-md-8 bg-lightblue" style="height: 60em;">
+            <div class="col-md-8 bg-lightblue" style="height: 60em;" ng-init="fetchChatWindow()">
                 <span class="text-center">
                     <a href="/user"><h4>John Doe</h4></a>
                 </span>
@@ -124,6 +105,33 @@
 
 <span>
     <% include ../partials/footer%>
+    <script>
+    var now = Date.now();
+//    var messages = $('[ng-controller="MessagesCtrl"]').scope().curMessages;
+//    var len = messages.length;
+//    var interval = (10*60*1000);
+//    for(var i = 0; i < len; i++){
+//        messages[i]["created"] = now - interval;
+//        interval = interval * 6;
+//    }
+    var messages = [
+    { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
+    { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
+    { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
+    { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
+    { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
+    { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
+    { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
+    { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
+    { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
+    { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
+    { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
+    { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
+    ].reverse();
+    </script>
     <script>
         var chat = document.getElementById('chat');
         var author;

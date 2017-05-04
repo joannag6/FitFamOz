@@ -16,11 +16,6 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     "Soccer"
   ];
 
-  $scope.bindFile = function(elem) {
-    $scope.picFile = elem.files[0];
-    console.log($scope.picFile);
-  };
-
   $scope.chosenActivities = [];
 
   $scope.chooseActivity = function(activity) {

@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');*/
 
-var myApp = angular.module("myApp", ["ngResource"]);
+var myApp = angular.module("myApp", ["ngResource", "ngFileUpload"]);
 
 /*require('../app/models/user');
 require('../config/passport')

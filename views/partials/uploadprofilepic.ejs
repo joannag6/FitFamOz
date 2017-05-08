@@ -4,14 +4,14 @@
     <div class="col-sm-4 col-sm-push-4 create-profile">
       <div class="section-name">
         <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
-        <span>Last Step...</span>
+        <span>This is your profile picture!</span>
       </div>
 
       <div class="signup-form-contents">
 
         <div class="input-group"> <!-- Profile Pic input -->
           <span class="input-group-addon upload-pic">
-            <i ng-if="!gotPic()" class="material-icons">add_a_photo</i>
+            <!-- <i ng-if="!gotPic()" class="material-icons">add_a_photo</i>
             <div ng-if="!gotPic()" class="upload-text">Upload your profile photo</div>
             <input type="file"
                    id="profilepic"
@@ -21,17 +21,17 @@
                    accept="image/*"
                    ngf-max-size="5MB"
                    required
-                   ngf-model-invalid="errorFile">
+                   ngf-model-invalid="errorFile"> -->
 
             <!-- Image Thumbnail -->
-            <div ng-if="newUser.picFile"
+            <!-- <div ng-if="newUser.picFile"
                 ngf-thumbnail="newUser.picFile"
                 ngf-size="{width: 100, height: 100, quality: 1.0}"
                 ngf-as-background="true"
                 class="thumbnail"></div>
-            <img ng-if="!newUser.picFile" ng-src="{{newUser.picUrl}}" alt="profile pic" class="thumbnail">
-            </br>
-            <div ng-click="newUser.picFile = null" ng-if="gotPic()">Click to upload new photo</div>
+            <img ng-if="!newUser.picFile" ng-src="{{newUser.picUrl}}" alt="profile pic" class="thumbnail"> -->
+            <img ng-src="{{newUser.picUrl}}" alt="profile pic" class="thumbnail">
+            <!-- <div ng-click="newUser.picFile = null" ng-if="gotPic()">Click to upload new photo</div> -->
           </span>
 
         </div>

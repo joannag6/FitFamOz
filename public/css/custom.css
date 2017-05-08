@@ -465,7 +465,7 @@ a .edit-button {
   border-radius: 4px;
   border: 1px solid rgb(204, 204, 204);
   overflow: hidden;
-  padding: 40px;
+  padding: 10px;
   position: relative;
 }
 
@@ -486,10 +486,10 @@ a .edit-button {
 }
 
 .thumbnail {
-  height: 100px;
+  height: 200px;
   margin: 0 auto;
   padding: 0px;
-  width: 100px;
+  width: 200px;
 }
 
 /* * * * * * * * * * * * * * * * *

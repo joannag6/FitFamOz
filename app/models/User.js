@@ -20,6 +20,7 @@ var userSchema = mongoose.Schema({
     // password : String,
     dob : Date,
     location : String,
+    picUrl : String,
     activities : [String],
     friends : [String],
     // hash: String,

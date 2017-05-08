@@ -56,19 +56,18 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   $scope.testAPI = function() {
-    $scope.currUser = {};
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', {fields: ['first_name', 'last_name', 'email', 'location', 'birthday', 'picture']},
         function(response) {
       console.log('Successful login for: ' + response.first_name);
       console.log(response);
-      $scope.currUser = response;
+      $scope.newUser = response;
 
-      FB.api("/" + $scope.currUser.id + "/picture?height=320&width=320",
+      FB.api("/" + $scope.newUser.id + "/picture?height=320&width=320",
         function (response) {
           if (response && !response.error) {
             console.log(response);
-            $scope.currUser.profilepic = response;
+            $scope.newUser.profilepic = response;
           }
         }
       );

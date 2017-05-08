@@ -12,11 +12,11 @@ var loadIndex = function (req, res) {
 var createUser = function(req,res){
     var user = new User({
         // "userID":req.body.userID,
-        "firstName":req.body.firstName,
-        "lastName":req.body.lastName,
+        "firstName":req.body.first_name,
+        "lastName":req.body.last_name,
         "email":req.body.email,
         "password":req.body.password,
-        "dob":req.body.dob,
+        "dob":req.body.birthday,
         "location":req.body.location,
         "activities":req.body.activities,
         "friends":req.body.friends

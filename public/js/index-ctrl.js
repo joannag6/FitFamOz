@@ -2,6 +2,8 @@ var myApp = angular.module("myApp");
 
 myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
+  $scope.newUser = {};
+
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {
     console.log('statusChangeCallback');
@@ -63,17 +65,17 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
       console.log(response);
       $scope.newUser = response;
 
-      FB.api("/" + $scope.newUser.id + "/picture?height=320&width=320",
+      FB.api("/" + $scope.newUser.id + "/picture?height=520&width=520",
         function (response) {
           if (response && !response.error) {
             console.log(response);
-            $scope.newUser.profilepic = response;
+            $scope.newUser.picUrl = response.data.url;
+            console.log($scope.newUser.picUrl);
           }
         }
       );
     });
   }
-
 
   $scope.currPage = "index";
 
@@ -101,7 +103,9 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     }
   };
 
-  $scope.newUser = {};
+  $scope.gotPic = function() {
+    return $scope.newUser.picFile || $scope.newUser.picUrl;
+  }
 
   $scope.signUp = function() {
     $scope.newUser.activities = $scope.chosenActivities;

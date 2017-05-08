@@ -425,25 +425,13 @@ a .edit-button {
    text-align: center;
  }
 
- .find-sports {
+ .create-profile, .find-sports {
    background-color: rgba(255, 255, 255, 0.8); /* white */
    border-radius: 10px;
    height: 100%;
    margin: 20px 10px;
    min-height: 300px;
-   min-width: 240px;
-   padding-bottom: 0px;
-   padding-left: 0px;
-   padding-right: 0px;
- }
-
- .create-profile {
-   background-color: rgba(255, 255, 255, 0.8); /* white */
-   border-radius: 10px;
-   height: 100%;
-   margin: 20px 10px;
-   min-height: 300px;
-   min-width: 300px;
+   min-width: 390px;
    margin-top: 100px;
    padding-bottom: 0px;
    padding-left: 0px;
@@ -474,9 +462,8 @@ a .edit-button {
 }
 
 .input-group-addon.upload-pic {
-  border-right: 1px solid rgb(204, 204, 204);
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
   overflow: hidden;
   padding: 40px;
   position: relative;
@@ -501,6 +488,7 @@ a .edit-button {
 .thumbnail {
   height: 100px;
   margin: 0 auto;
+  padding: 0px;
   width: 100px;
 }
 

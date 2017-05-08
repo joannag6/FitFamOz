@@ -14,6 +14,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
+      console.log(response);
+      $scope.newUser.authResp = response.authResponse;
       $scope.testAPI();
     } else {
       // The person is not logged into your app or we are unable to tell.
@@ -59,13 +61,15 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   // successful.  See statusChangeCallback() for when this call is made.
   $scope.testAPI = function() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', {fields: ['first_name', 'last_name', 'email', 'location', 'birthday', 'picture']},
+    FB.api('/me', {fields: ['first_name', 'last_name', 'birthday']},
         function(response) {
       console.log('Successful login for: ' + response.first_name);
       console.log(response);
-      $scope.newUser = response;
+      $scope.newUser.first_name = response.first_name;
+      $scope.newUser.last_name = response.last_name;
+      $scope.newUser.birthday = response.birthday;
 
-      FB.api("/" + $scope.newUser.id + "/picture?height=520&width=520",
+      FB.api("/" + response.id + "/picture?height=520&width=520",
         function (response) {
           if (response && !response.error) {
             console.log(response);
@@ -109,6 +113,10 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.signUp = function() {
     $scope.newUser.activities = $scope.chosenActivities;
+    $scope.newUser.friends = [];
+
+    console.log("SIGNING UP");
+    console.log($scope.newUser);
     User.create($scope.newUser, function(data) {
       // console.log(data);
       window.location.href = '/matches';

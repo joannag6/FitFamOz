@@ -7,7 +7,7 @@
         <span>Create your Profile</span>
       </div>
 
-      <div class="signup-form-contents">
+      <form name="signupform" autocomplete=""action="" id="signupform">
 
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
@@ -95,10 +95,10 @@
 
         <div class="form-group">
           <div class="row">
-          <a id="continue" class="btn btn-red" ng-click="nextPage()">Continue</a> </div>
+          <a id="signup" class="btn btn-red" ng-click="signUp()">Sign Up</a> </div>
         </div>
 
-      </div>
+    </form>
     </div>
 
 

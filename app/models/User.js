@@ -1,4 +1,13 @@
+/**
+ * Created by NamNguyen1 on 15/4/17.
+ */
+
 var mongoose = require('mongoose');
+
+var activitiesSchema = mongoose.Schema({
+    name : String,
+    level : String
+});
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
@@ -21,8 +30,8 @@ var userSchema = mongoose.Schema({
     dob : Date,
     location : String,
     picUrl : String,
-    activities : [String],
-    friends : [String],
+    activities : [activitiesSchema],
+    friends : [String]
     // hash: String,
     // salt: String
 });
@@ -49,6 +58,7 @@ userSchema.methods.generateJwt = function() {
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET");
 }*/
+
 // define our user model
 // module.exports allows us to pass this to other files when it is called
 module.exports = mongoose.model('User', userSchema);

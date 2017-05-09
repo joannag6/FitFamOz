@@ -382,7 +382,7 @@ a .edit-button {
    border-radius: 10px;
  }
 
- #login-form {
+ #signupform, #login-form {
    padding: 20px 40px;
  }
 

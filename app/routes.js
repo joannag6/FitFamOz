@@ -1,13 +1,7 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
-/*var jwt = require('express-jwt');
-var auth = jwt({
-  secret: 'MY_SECRET',
-  userProperty: 'payload'
-});*/
-
-var user_controller = require('../controllers/user_controller.js');
+var controller = require('../controllers/controller.js');
 
 module.exports = function(app) {
 
@@ -16,11 +10,13 @@ module.exports = function(app) {
     // authentication routes
 
     //api routes
-    app.get('/api', user_controller.findAllUsers);
+    app.get('/api', controller.findAllUsers);
 
-    app.get('/api/:id', user_controller.findOneUser);
+    app.get('/api/:id', controller.findOneUser);
 
-    app.post('/api', user_controller.createUser);
+    app.post('/api', controller.createUser);
+
+    // app.delete('/api/:id', controller.deleleUser());
 
     app.delete('/api/:id', function(req,res) {
         var UserInx = req.params.id;
@@ -63,15 +59,6 @@ module.exports = function(app) {
     });
 
     // route to handle all angular requests
-    app.get('/', user_controller.loadIndex);
+    app.get('/', controller.loadIndex);
 
 };
-
-/*router.get('/profile', auth, ctrlProfile.profileRead);
-
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
-  }
-});*/

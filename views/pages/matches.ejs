@@ -57,7 +57,7 @@
         <div ng-repeat="user in users">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div>
-                <img src="/img/profilepic.jpg" alt="pp">
+                <img ng-src="{{user.picUrl}}" alt="pp">
               </div>
               <div class="match-profile-name">
                 John Smith

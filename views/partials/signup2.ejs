@@ -9,7 +9,14 @@
 
       <form name="signupform" autocomplete=""action="" id="signupform">
 
-        <div class="input-group"> <!-- Email input -->
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <div id="status">
+        </div>
+
+        <!-- Email input -->
+        <!-- <div class="input-group">
           <span class="input-group-addon"><i class="material-icons">email</i></span>
           <input
             id="email"
@@ -19,7 +26,7 @@
             placeholder="Email address"
             ng-model="newUser.email"
             required>
-        </div>
+        </div> -->
 
         <div class="input-group"> <!-- Name input -->
           <span class="input-group-addon"><i class="material-icons">person</i></span>
@@ -29,7 +36,7 @@
             class="form-control"
             name="firstname"
             placeholder="First name"
-            ng-model="newUser.firstName"
+            ng-model="newUser.first_name"
             required>
           <input
             id="lastname"
@@ -37,11 +44,12 @@
             class="form-control"
             name="lastname"
             placeholder="Last name"
-            ng-model="newUser.lastName"
+            ng-model="newUser.last_name"
             required>
         </div>
 
-        <div class="input-group"> <!-- Password input -->
+        <!-- Password input -->
+        <!-- <div class="input-group">
           <span class="input-group-addon"><i class="material-icons">lock</i></span>
           <input
             id="password"
@@ -59,7 +67,7 @@
             placeholder="Confirm password"
             ng-model="newUser.password"
             required>
-        </div>
+        </div> -->
 
         <div class="input-group"> <!-- Location (suburb) input -->
           <span class="input-group-addon"><i class="material-icons">location_on</i></span>
@@ -81,7 +89,7 @@
             class="form-control"
             name="birthday"
             placeholder="Birthday"
-            ng-model="newUser.dob"
+            ng-model="newUser.birthday"
             required>
         </div>
 

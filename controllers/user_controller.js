@@ -1,7 +1,3 @@
-/**
- * Created by NamNguyen1 on 15/4/17.
- */
-
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -11,13 +7,14 @@ var loadIndex = function (req, res) {
 
 var createUser = function(req,res){
     var user = new User({
-        // "userID":req.body.userID,
-        "firstName":req.body.firstName,
-        "lastName":req.body.lastName,
-        "email":req.body.email,
-        "password":req.body.password,
-        "dob":req.body.dob,
+        "_id":req.body.authResp.userID,
+        "firstName":req.body.first_name,
+        "lastName":req.body.last_name,
+        // "email":req.body.email,
+        // "password":req.body.password,
+        "dob":req.body.birthday,
         "location":req.body.location,
+        "picUrl":req.body.picUrl,
         "activities":req.body.activities,
         "friends":req.body.friends
     });
@@ -42,9 +39,12 @@ var findAllUsers = function(req,res){
 };
 
 var findOneUser = function(req,res){
+  console.log(req.params);
+  console.log(req.params.id.userID);
     var UserInx = req.params.id;
     User.findById(UserInx,function(err,user){
         if(!err){
+            console.log(user);
             res.send(user);
         }else{
             res.sendStatus(404);

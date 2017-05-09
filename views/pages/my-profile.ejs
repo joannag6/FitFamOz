@@ -14,23 +14,23 @@
         <div class="row">
           <div class="col-sm-3 profile-summary">
             <div class="profilepic">
-              <img src="img/profilepic.jpg" alt="pp">
+              <img ng-src="{{ currUser.picUrl }}" alt="profilepic">
               <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
             </div>
             <div class="profile-name">
-              <span ng-if="!editMode">John Smith</span>
+              <span ng-if="!editMode">{{ currUser.firstName + " " + currUser.lastName }}</span>
               <div class="row profile-edit-text" ng-if="editMode">
                 <input
                   type="text"
                   class="form-control profile-edit-name"
                   placeholder="First Name"
-                  ng-model="thisUser.firstName"
+                  ng-model="currUser.firstName"
                   required>
                 <input
                   type="text"
                   class="form-control profile-edit-name"
                   placeholder="Last Name"
-                  ng-model="thisUser.lastName"
+                  ng-model="currUser.lastName"
                   required>
               </div>
             </div>
@@ -54,21 +54,21 @@
 
               <div class="profile-details-section">
                 <div class="section-title">About Me</div>
-                <div ng-if="!editMode" class="profile-details-text"> {{thisUser.aboutMe}}
+                <div ng-if="!editMode" class="profile-details-text"> {{currUser.aboutMe}}
                 </div>
                 <div class="profile-edit-text" ng-if="editMode">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Write something about yourself!"
-                    ng-model="thisUser.aboutMe">
+                    ng-model="currUser.aboutMe">
                 </div>
               </div>
               <div class="profile-details-section"><div class="section-title">Activities</div>
                 <ul>
-                  <div ng-repeat="activity in myActivities">
+                  <div ng-repeat="activity in currUser.activities">
                     <li>
-                      <span class="activity-name">{{ activity.name }}</span>
+                      <span class="activity-name">{{ activity }}</span>
                       <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
                       <select class="form-control activity-level"
                         ng-disabled="!editMode"

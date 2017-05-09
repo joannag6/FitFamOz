@@ -39,9 +39,12 @@ var findAllUsers = function(req,res){
 };
 
 var findOneUser = function(req,res){
+  console.log(req.params);
+  console.log(req.params.id.userID);
     var UserInx = req.params.id;
     User.findById(UserInx,function(err,user){
         if(!err){
+            console.log(user);
             res.send(user);
         }else{
             res.sendStatus(404);

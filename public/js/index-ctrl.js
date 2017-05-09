@@ -34,17 +34,17 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   }
 
   window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1249707755145859',
-    cookie     : true,  // enable cookies to allow the server to access
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
+    FB.init({
+      appId      : '1249707755145859',
+      cookie     : true,  // enable cookies to allow the server to access
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.8' // use graph api version 2.8
+    });
 
-  FB.getLoginStatus(function(response) {
-    $scope.statusChangeCallback(response);
-  });
+    FB.getLoginStatus(function(response) {
+      $scope.statusChangeCallback(response);
+    });
 
   };
 

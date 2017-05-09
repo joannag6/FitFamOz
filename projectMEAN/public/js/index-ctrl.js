@@ -16,17 +16,35 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     "Soccer"
   ];
 
+  $scope.levels = ["Low", "Medium", "High"];
+
   $scope.chosenActivities = [];
 
-  $scope.chooseActivity = function(activity) {
+// adds or removes activities from chosenActivities array
+/*  $scope.chooseActivity = function(activity) {
     var index = $scope.chosenActivities.indexOf(activity);
-    if (index > -1) {
+    if (index > -1) { //removes activity
       $scope.chosenActivities.splice(index, 1);
-    } else {
+    } else { //adds activity
       $scope.chosenActivities.push(activity);
     }
-  };
+  };  */
 
+  // adds or removes activities from chosenActivities array
+    $scope.chooseActivity = function(activity, skill_level) {
+      console.log("CHANGEDSOMETHING");
+      var index;
+      for (index=0; index < $scope.chosenActivities.length; index++) {
+        // checks if activity object already exists in array
+        if ($scope.chosenActivities[index].name === activity) {
+          $scope.chosenActivities.splice(index, 1);
+          return $scope.chosenActivities;
+        }
+      }
+      $scope.chosenActivities.push({name: activity, level: skill_level});
+    };
+
+  // creates newUser object for new user
   $scope.newUser = {};
 
   $scope.signUp = function() {

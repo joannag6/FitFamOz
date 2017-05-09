@@ -18,8 +18,12 @@
                 name="checkbox"
                 id="{{ 'checkbox-' + $index }}"
                 ng-model="checked"
-                ng-change="chooseActivity(activity)"/> <!-- is id necessary? -->
-              <label for="{{ 'checkbox-' + $index }}">{{ activity }}</label>
+                ng-change="chooseActivity(activity, skill_level)"/> <!-- is id necessary? -->
+              <label for="{{ 'checkbox-' + $index }}">{{ activity }}
+                <span id="skill-dropdown">
+                  <select ng-disabled="!checked" ng-model="skill_level" ng-options="item for item in levels" required></select>
+                </span>
+              </label>
             </div>
           </div>
         </div>

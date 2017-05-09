@@ -4,6 +4,11 @@
 
 var mongoose = require('mongoose');
 
+var activitiesSchema = mongoose.Schema({
+    name : String,
+    level : String
+});
+
 var userSchema = mongoose.Schema({
     // userID : String,
     firstName : String,
@@ -12,7 +17,7 @@ var userSchema = mongoose.Schema({
     password : String,
     dob : Date,
     location : String,
-    activities : [String],
+    activities : [activitiesSchema],
     friends : [String]
 });
 

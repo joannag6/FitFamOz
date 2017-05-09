@@ -469,6 +469,10 @@ a .edit-button {
   margin-bottom: 0px;
 }
 
+#skill-dropdown {
+  width: 20px;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       CHECKBOX                *
  * * * * * * * * * * * * * * * * */

@@ -10,7 +10,7 @@ var loadIndex = function (req, res) {
 }
 
 var createUser = function(req,res){
-    var user = new User({
+    var user = new User({ //uses schema from User.js
         // "userID":req.body.userID,
         "firstName":req.body.firstName,
         "lastName":req.body.lastName,

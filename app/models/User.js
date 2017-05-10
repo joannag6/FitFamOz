@@ -1,7 +1,3 @@
-/**
- * Created by NamNguyen1 on 15/4/17.
- */
-
 var mongoose = require('mongoose');
 
 var activitiesSchema = mongoose.Schema({
@@ -21,13 +17,8 @@ var userSchema = mongoose.Schema({
     },
     firstName : String,
     lastName : String,
-    // email: {
-    //   type: String,
-    //   index: { unique: true,
-    //     required: true }
-    // },
-    // password : String,
     dob : Date,
+    aboutMe : String,
     location : String,
     picUrl : String,
     activities : [activitiesSchema],

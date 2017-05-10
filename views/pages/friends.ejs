@@ -80,7 +80,6 @@
                 <table style="width:100%" ng-repeat="activity in friend.activities">
                   <tr>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.level }}</td>
                   </tr>
                 </table>
               </div>
@@ -135,6 +134,13 @@
                         <div class="col-sm-1 profile-details">
                           <div class="section-name">Details
                           </div>
+                          <br>
+                          <table style="width:100%;" ng-repeat="activity in friend.activities">
+                            <tr>
+                              <td style="float:left;width:50%;">{{ activity.name }}</td>
+                              <td style="float:right;width:50%;">{{ activity.level }}</td>
+                            </tr>
+                          </table>
                         </div>
   <!--
                         <div class="col-sm-4 recent-activities">

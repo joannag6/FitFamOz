@@ -395,8 +395,8 @@ a .edit-button {
  }
 
  #selectboxlabel {
-    color: #5A5C58; /* grey */
-    text-align: center;
+  color: #5A5C58; /* grey */
+  text-align: center;
  }
 
  option {
@@ -490,6 +490,26 @@ a .edit-button {
   margin: 0 auto;
   padding: 0px;
   width: 200px;
+}
+
+.facebook {
+  min-height: 100px;
+}
+
+.facebook-login {
+  background-color: #4267b2;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+ }
+
+.facebook-login:hover {
+  color: #fff;
+ }
+
+.facebook-icon {
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 /* * * * * * * * * * * * * * * * *

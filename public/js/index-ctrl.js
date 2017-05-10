@@ -4,6 +4,13 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.newUser = {};
 
+  (function(d){
+  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  d.getElementsByTagName('head')[0].appendChild(js);
+  }(document));
+
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {
     console.log('statusChangeCallback');
@@ -16,11 +23,10 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
       // Logged into your app and Facebook.
       console.log(response);
       $scope.newUser.authResp = response.authResponse;
-      $scope.testAPI();
+      $scope.getData();
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      console.log("not logged in");
     }
   }
 
@@ -48,18 +54,21 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   };
 
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  $scope.loginUser = function() {
+    FB.login(function(response){
+      // Handle the response object, like in statusChangeCallback() in our demo
+      // code.
+      $scope.checkLoginState();
+    });
+  }
+
+  $scope.needFBLogIn = function() {
+    return angular.equals($scope.newUser, {});
+  }
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  $scope.testAPI = function() {
+  $scope.getData = function() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', {fields: ['first_name', 'last_name', 'birthday']},
         function(response) {
@@ -76,6 +85,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
             $scope.newUser.picUrl = response.data.url;
             console.log($scope.newUser.picUrl);
           }
+          $scope.$apply();
         }
       );
     });

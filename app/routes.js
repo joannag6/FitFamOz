@@ -1,6 +1,7 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
+var chatController = require('../controllers/chat_controller');
 var userController = require('../controllers/user_controller.js');
 
 module.exports = function(app) {
@@ -12,13 +13,30 @@ module.exports = function(app) {
     //api routes
     app.get('/api', userController.findAllUsers);
 
+    app.get('/api/chat', chatController.findAllChats);
+
+    app.get('/api/chat/:user1&:user2', chatController.findChat);
     app.get('/api/:id', userController.findOneUser);
 
     app.post('/api', userController.createUser);
 
-    app.put('/api/:id', userController.updateUser);
+    app.post('/api/chat', chatController.createConversation);
 
-    // app.delete('/api/:id', userController.deleleUser());
+    app.put('/api/chat/:user1&:user2', chatController.updateChat);
+
+    app.delete('/api/chat/:id', function (req, res) {
+        var ChatInx = req.params.id;
+        Conversation.findByIdAndRemove(ChatInx, function (err, chat) {
+            if (!err) {
+                res.json({message: 'Successfully deleted', id: chat._id});
+            } else {
+                res.sendStatus(404);
+            }
+        })
+
+    });
+
+    app.put('/api/:id', userController.updateUser);
 
     app.delete('/api/:id', function(req,res) {
         var UserInx = req.params.id;
@@ -48,6 +66,11 @@ module.exports = function(app) {
     // friends page
     app.get('/friends', function(req, res) {
         res.render('./pages/friends');
+    });
+
+    // messages page
+    app.get('/messages', function(req, res) {
+        res.render('./pages/messages');
     });
 
     // my-profile page

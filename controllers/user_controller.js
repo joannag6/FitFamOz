@@ -31,7 +31,8 @@ var updateUser = function(req,res){
     "firstName":req.body.firstName,
     "lastName":req.body.lastName,
     "activities":req.body.activities,
-    "aboutMe":req.body.aboutMe
+    "aboutMe":req.body.aboutMe,
+    "friends":req.body.friends
   }, function(err, affected, resp) {
     if(err){
       console.log(err.errmsg);

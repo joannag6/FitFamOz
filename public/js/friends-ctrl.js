@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp");
 
-myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
+myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
 
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {

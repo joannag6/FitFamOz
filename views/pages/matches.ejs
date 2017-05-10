@@ -57,7 +57,7 @@
         <div ng-repeat="user in users">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div>
-                <img ng-src="{{ user.picUrl }}" alt="pp">
+                <img ng-src="{{ user.picUrl }}" alt="profile pic">
               </div>
               <div class="match-profile-name">
                 {{ user.firstName + " " + user.lastName }}
@@ -66,17 +66,32 @@
                 <table style="width:100%" ng-repeat="activity in user.activities">
                   <tr>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.level }}</td>
+                  <!--  <td>{{ activity.level }}</td> -->
                   </tr>
                 </table>
               </div>
+              <br>
               <button type="button" class="btn btn-blue" data-toggle="modal" data-target="{{ '#viewprofile' + $index }}" id="view-btn">
                 <i class="material-icons">remove_red_eye</i> View Profile
               </button>
               <div class="space-btn"></div>
-              <button type="button" href="#" class="btn btn-red" id="view-btn">
+              <div id="view-btn"
+                  class="btn btn-red"
+                  ng-if="!isFriend(user)"
+                  ng-click="addFriend(user)">
                 <i class="material-icons">star</i> Add Friend
-              </button>
+              </div>
+              <div id="view-btn"
+                  class="btn btn-red added-friend"
+                  ng-if="isFriend(user)"
+                  ng-click="removeFriend(user)"
+                  ng-mouseover="removeBtn=true"
+                  ng-mouseleave="removeBtn=false"
+                  ng-class="{ 'remove-friend': removeBtn }">
+                <i class="material-icons">star_border</i>
+                <span ng-if="!removeBtn">Added Friend</span>
+                <span ng-if="removeBtn">Remove Friend?</span>
+              </div>
 
               <!-- Modal -->
               <div class="modal fade" id="{{ 'viewprofile' + $index }}" role="dialog">
@@ -93,7 +108,7 @@
                         <div class="row">
                           <div class="col-sm-1 profile-summary">
                             <div>
-                              <img ng-src="{{ user.picUrl }}" alt="pp">
+                              <img ng-src="{{ user.picUrl }}" alt="profile pic">
                             </div>
                             <div class="profile-name">
                               {{ user.firstName + " " + user.lastName }}
@@ -104,8 +119,23 @@
 
                             <div class="action-items">
                               <div class="row">
-                                <a href="#" class="btn btn-red"><i class="material-icons">star</i> Add {{ user.firstName }}</a>
-                              </div>
+                                <div id="view-btn"
+                                    class="btn btn-red"
+                                    ng-if="!isFriend(user)"
+                                    ng-click="addFriend(user)">
+                                  <i class="material-icons">star</i> Add Friend
+                                </div>
+                                <div id="view-btn"
+                                    class="btn btn-red added-friend"
+                                    ng-if="isFriend(user)"
+                                    ng-click="removeFriend(user)"
+                                    ng-mouseover="removeBtn=true"
+                                    ng-mouseleave="removeBtn=false"
+                                    ng-class="{ 'remove-friend': removeBtn }">
+                                  <i class="material-icons">star_border</i>
+                                  <span ng-if="!removeBtn">Added Friend</span>
+                                  <span ng-if="removeBtn">Remove Friend?</span>
+                                </div>                              </div>
                               <div class="row">
                                 <a href="#" class="btn btn-blue"><i class="material-icons">tag_faces</i> Rate {{ user.firstName }} </a>
                               </div>
@@ -122,9 +152,16 @@
                           <div class="col-sm-1 profile-details">
                             <div class="section-name">Details
                             </div>
+                            <br>
+                            <table style="width:100%;" ng-repeat="activity in user.activities">
+                              <tr>
+                                <td style="float:left;width:50%;">{{ activity.name }}</td>
+                                <td style="float:right;width:50%;">{{ activity.level }}</td>
+                              </tr>
+                            </table>
                           </div>
-<!--
-                          <div class="col-sm-4 recent-activities">
+
+                          <!--<div class="col-sm-4 recent-activities">
                             <div class="section-name">Schedule
                             </div>
                           </div> -->

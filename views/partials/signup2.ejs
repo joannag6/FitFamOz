@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-4 col-sm-push-4 create-profile" ng-class="{facebook: needFBLogIn() }">
+    <div class="col-sm-4 col-sm-push-4 create-profile" ng-class="{ facebook: needFBLogIn() }">
       <div class="section-name">
         <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
         <span>Create your Profile</span>
@@ -9,7 +9,7 @@
 
       <div class="signup-form-contents">
 
-        <div class="btn facebook-login" ng-if="needFBLogIn()" ng-click="loginUser()">
+        <div class="btn facebook-login" ng-if="needFBLogIn()" ng-click="FBLoginUser()">
           <i class="fa fa-facebook-square facebook-icon" aria-hidden="true"></i>
           Continue with Facebook
         </div>

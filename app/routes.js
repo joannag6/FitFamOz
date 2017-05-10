@@ -1,7 +1,7 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
-var controller = require('../controllers/controller.js');
+var userController = require('../controllers/user_controller.js');
 
 module.exports = function(app) {
 
@@ -10,13 +10,13 @@ module.exports = function(app) {
     // authentication routes
 
     //api routes
-    app.get('/api', controller.findAllUsers);
+    app.get('/api', userController.findAllUsers);
 
-    app.get('/api/:id', controller.findOneUser);
+    app.get('/api/:id', userController.findOneUser);
 
-    app.post('/api', controller.createUser);
+    app.post('/api', userController.createUser);
 
-    // app.delete('/api/:id', controller.deleleUser());
+    // app.delete('/api/:id', userController.deleleUser());
 
     app.delete('/api/:id', function(req,res) {
         var UserInx = req.params.id;
@@ -59,6 +59,6 @@ module.exports = function(app) {
     });
 
     // route to handle all angular requests
-    app.get('/', controller.loadIndex);
+    app.get('/', userController.loadIndex);
 
 };

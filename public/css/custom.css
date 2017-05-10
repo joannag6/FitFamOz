@@ -61,9 +61,13 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #C05243; /* red */
 }
 
-.dropdown-menu .btn-red:hover, .btn-red:hover {
+.dropdown-menu .btn-red:hover, .btn-red:hover, .added-friend {
   background-color: #994135; /* darker red */
   color: #fff;
+}
+
+.added-friend.remove-friend {
+  background-color: #893a2f; /* darkest red */
 }
 
 .btn-light-blue {
@@ -660,7 +664,6 @@ a .edit-button {
 #matches-btn {
   font-size: 16px;
   margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }

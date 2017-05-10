@@ -184,7 +184,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   };
 
   $scope.nextPage = function() {
-    if ($scope.currPage == "index") {
+    if ($scope.currPage == "index" || $scope.currPage == "login") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
       $scope.currPage = "signup2";

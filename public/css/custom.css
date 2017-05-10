@@ -619,6 +619,7 @@ a .edit-button {
    font-weight: normal;
    padding-bottom: 10px;
    text-align: left;
+   min-height: 40px;
  }
 
 #profile-view {

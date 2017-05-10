@@ -21,12 +21,6 @@ var userSchema = mongoose.Schema({
     },
     firstName : String,
     lastName : String,
-    // email: {
-    //   type: String,
-    //   index: { unique: true,
-    //     required: true }
-    // },
-    // password : String,
     dob : Date,
     location : String,
     picUrl : String,

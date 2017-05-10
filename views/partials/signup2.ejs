@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-4 col-sm-push-4 create-profile">
+    <div class="col-sm-4 col-sm-push-4 create-profile" ng-class="{facebook: !newUser}">
       <div class="section-name">
         <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
         <span>Create your Profile</span>
@@ -9,135 +9,57 @@
 
       <div class="signup-form-contents">
 
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_GB/all.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-login-button"
-            data-max-rows="1"
-            data-size="large"
-            data-button-type="continue_with"
-            data-show-faces="false"
-            data-auto-logout-link="false"
-            data-use-continue-as="true"
-            onlogin="checkLoginState();">
-        </div>
+        <div class="btn facebook-login" ng-if="!newUser" ng-click="loginUser()"><i class="fa fa-facebook-square facebook-icon" aria-hidden="true"></i>Continue with Facebook</div>
 
-        <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-        </fb:login-button> -->
+        <div ng-if="newUser">
+          <div class="input-group"> <!-- Name input -->
+            <span class="input-group-addon"><i class="material-icons">person</i></span>
+            <input
+              id="firstname"
+              type="text"
+              class="form-control"
+              name="firstname"
+              placeholder="First name"
+              ng-model="newUser.first_name"
+              required>
+            <input
+              id="lastname"
+              type="text"
+              class="form-control"
+              name="lastname"
+              placeholder="Last name"
+              ng-model="newUser.last_name"
+              required>
+          </div>
 
-        <!-- <script>
-        var finished_rendering = function() {
-          console.log("finished rendering plugins");
-          var spinner = document.getElementById("spinner");
-          spinner.removeAttribute("style");
-          spinner.removeChild(spinner.childNodes[0]);
-        }
-        FB.Event.subscribe('xfbml.render', finished_rendering);
-        </script>
-        <div id="spinner"
-            style="
-                background: #4267b2;
-                border-radius: 5px;
-                color: white;
-                height: 40px;
-                text-align: center;
-                width: 250px;">
-            Loading
-            <div
-            class="fb-login-button"
-            data-max-rows="1"
-            data-size="large"
-            data-button-type="continue_with"
-            onlogin="checkLoginState();"
-            ></div>
-        </div> -->
+          <div class="input-group"> <!-- Location (suburb) input -->
+            <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+            <input
+              id="location"
+              type="text"
+              class="form-control"
+              name="location"
+              placeholder="Suburb"
+              ng-model="newUser.location"
+              required>
+          </div>
 
-        <!-- Email input -->
-        <!-- <div class="input-group">
-          <span class="input-group-addon"><i class="material-icons">email</i></span>
-          <input
-            id="email"
-            type="text"
-            class="form-control"
-            name="email"
-            placeholder="Email address"
-            ng-model="newUser.email"
-            required>
-        </div> -->
+          <div class="input-group"> <!-- Date input -->
+            <span class="input-group-addon"><i class="material-icons">cake</i></span>
+            <input
+              id="birthday"
+              type="date"
+              class="form-control"
+              name="birthday"
+              placeholder="Birthday"
+              ng-model="newUser.birthday"
+              required>
+          </div>
 
-        <div class="input-group"> <!-- Name input -->
-          <span class="input-group-addon"><i class="material-icons">person</i></span>
-          <input
-            id="firstname"
-            type="text"
-            class="form-control"
-            name="firstname"
-            placeholder="First name"
-            ng-model="newUser.first_name"
-            required>
-          <input
-            id="lastname"
-            type="text"
-            class="form-control"
-            name="lastname"
-            placeholder="Last name"
-            ng-model="newUser.last_name"
-            required>
-        </div>
-
-        <!-- Password input -->
-        <!-- <div class="input-group">
-          <span class="input-group-addon"><i class="material-icons">lock</i></span>
-          <input
-            id="password"
-            type="password"
-            class="form-control"
-            name="password"
-            placeholder="Create a password"
-            ng-model="newUser.password"
-            required>
-          <input
-            id="confirmpassword"
-            type="password"
-            class="form-control"
-            name="confirmpassword"
-            placeholder="Confirm password"
-            ng-model="newUser.password"
-            required>
-        </div> -->
-
-        <div class="input-group"> <!-- Location (suburb) input -->
-          <span class="input-group-addon"><i class="material-icons">location_on</i></span>
-          <input
-            id="location"
-            type="text"
-            class="form-control"
-            name="location"
-            placeholder="Suburb"
-            ng-model="newUser.location"
-            required>
-        </div>
-
-        <div class="input-group"> <!-- Date input -->
-          <span class="input-group-addon"><i class="material-icons">cake</i></span>
-          <input
-            id="birthday"
-            type="date"
-            class="form-control"
-            name="birthday"
-            placeholder="Birthday"
-            ng-model="newUser.birthday"
-            required>
-        </div>
-
-        <div class="form-group">
-          <div class="row">
-          <a id="continue" class="btn btn-red" ng-click="nextPage()">Continue</a> </div>
+          <div class="form-group">
+            <div class="row">
+            <a id="continue" class="btn btn-red" ng-click="nextPage()">Continue</a> </div>
+          </div>
         </div>
 
       </div>

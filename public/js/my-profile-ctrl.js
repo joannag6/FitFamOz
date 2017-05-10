@@ -1,10 +1,9 @@
 var myApp = angular.module("myApp");
 
 myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
+
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -16,8 +15,7 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
       $scope.getCurrUser();
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      console.log('Please log into this app.');
     }
   }
 

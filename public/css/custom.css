@@ -66,6 +66,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
 }
 
+.added-friend.remove-friend {
+  background-color: #893a2f; /* darkest red */
+}
+
 .btn-light-blue {
   background-color: #7ea2ca; /* lightest blue */
 }
@@ -660,7 +664,6 @@ a .edit-button {
 #matches-btn {
   font-size: 16px;
   margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }

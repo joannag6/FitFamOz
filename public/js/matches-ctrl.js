@@ -34,6 +34,9 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
 
     FB.getLoginStatus(function(response) {
       $scope.statusChangeCallback(response);
+      $scope.$apply();
+      console.log("apply scope");
+
     });
   };
 
@@ -42,6 +45,7 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     User.showOne({ id: userID }, function(data) {
       $scope.currUser = data;
       $scope.currUserID = $scope.currUser._id;
+      $scope.friends = $scope.currUser.friends;
     }, function(err) {
       console.log(err);
     });
@@ -54,8 +58,19 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     console.log(err);
   });
 
+  $scope.isFriend = function(user) {
+    if (!$scope.friends)
+      return false;
+    for (var i=0; i<$scope.friends.length; i++) {
+      if ($scope.friends[i]._id == user._id) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   $scope.addFriend = function(user) {
-    var newFriends = $scope.currUser.friends.push(user);
+    var newFriends = $scope.friends.push(user);
     User.update(
       { id: $scope.currUserID },
       $scope.currUser,
@@ -66,5 +81,29 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
         console.log(err);
         window.alert("Error adding friend");
     });
+  };
+
+  $scope.removeFriend = function(user) {
+    var friends = $scope.friends;
+    for (var i=0; i<friends.length; i++) {
+      if (friends[i]._id == user._id) {
+        friends.splice(i, 1);
+        $scope.currUser.friends = friends;
+
+        User.update(
+          { id: $scope.currUserID },
+          $scope.currUser,
+          function(data) {
+            console.log("REMOVED FRIEND // should change button");
+            console.log(data);
+          }, function(err) {
+            console.log(err);
+            window.alert("Error removing friend");
+        });
+        return;
+      }
+    }
+    // Didn't find user in friend list
+    window.alert("User is not your friend");
   };
 }]);

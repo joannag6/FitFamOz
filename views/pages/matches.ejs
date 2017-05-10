@@ -74,9 +74,23 @@
                 <i class="material-icons">remove_red_eye</i> View Profile
               </button>
               <div class="space-btn"></div>
-              <button type="button" href="#" class="btn btn-red" id="view-btn" ng-click="addFriend(user)">
+              <div id="view-btn"
+                  class="btn btn-red"
+                  ng-if="!isFriend(user)"
+                  ng-click="addFriend(user)">
                 <i class="material-icons">star</i> Add Friend
-              </button>
+              </div>
+              <div id="view-btn"
+                  class="btn btn-red added-friend"
+                  ng-if="isFriend(user)"
+                  ng-click="removeFriend(user)"
+                  ng-mouseover="removeBtn=true"
+                  ng-mouseleave="removeBtn=false"
+                  ng-class="{ 'remove-friend': removeBtn }">
+                <i class="material-icons">star_border</i>
+                <span ng-if="!removeBtn">Added Friend</span>
+                <span ng-if="removeBtn">Remove Friend?</span>
+              </div>
 
               <!-- Modal -->
               <div class="modal fade" id="{{ 'viewprofile' + $index }}" role="dialog">
@@ -104,8 +118,23 @@
 
                             <div class="action-items">
                               <div class="row">
-                                <a ng-click="addFriend(user)" class="btn btn-red"><i class="material-icons">star</i> Add {{ user.firstName }}</a>
-                              </div>
+                                <div id="view-btn"
+                                    class="btn btn-red"
+                                    ng-if="!isFriend(user)"
+                                    ng-click="addFriend(user)">
+                                  <i class="material-icons">star</i> Add Friend
+                                </div>
+                                <div id="view-btn"
+                                    class="btn btn-red added-friend"
+                                    ng-if="isFriend(user)"
+                                    ng-click="removeFriend(user)"
+                                    ng-mouseover="removeBtn=true"
+                                    ng-mouseleave="removeBtn=false"
+                                    ng-class="{ 'remove-friend': removeBtn }">
+                                  <i class="material-icons">star_border</i>
+                                  <span ng-if="!removeBtn">Added Friend</span>
+                                  <span ng-if="removeBtn">Remove Friend?</span>
+                                </div>                              </div>
                               <div class="row">
                                 <a href="#" class="btn btn-blue"><i class="material-icons">tag_faces</i> Rate {{ user.firstName }} </a>
                               </div>

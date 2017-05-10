@@ -57,20 +57,16 @@
         <div ng-repeat="user in users">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div>
-                <img ng-src="{{user.picUrl}}" alt="pp">
+                <img ng-src="{{ user.picUrl }}" alt="pp">
               </div>
               <div class="match-profile-name">
-                John Smith
+                {{ user.firstName + " " + user.lastName }}
               </div>
               <div class="match-profile-summary">
-                <table style="width:100%">
+                <table style="width:100%" ng-repeat="activity in user.activities">
                   <tr>
-                    <td>Swimming</td>
-                    <td>Low</td>
-                  </tr>
-                  <tr>
-                    <td>Hockey</td>
-                    <td>High</td>
+                    <td>{{ activity.name }}</td>
+                    <td>{{ activity.level }}</td>
                   </tr>
                 </table>
               </div>

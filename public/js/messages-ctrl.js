@@ -6,10 +6,17 @@ var myApp = angular.module("myApp");
 
 myApp.controller("MessagesCtrl", ["$scope", "Conversation", "User", function($scope, User, Conversation) {
 
-    var id1 = "5902c90d6b6f414d6e9afb00";
-    var id2 = "5902d085330bf04eadf38562";
+    var id1 = "1653969884630637";
+    var id2 = "10154890417537415";
 
-    $scope.curUser = User.showOne({id: id1});
+    $scope.curUser = function() {
+        User.showOne({id: id1}, function(data) {
+            $scope.curUser = data;
+        }, function (err) {
+            console.log(err);
+        });
+    };
+
     $scope.friends = $scope.curUser.friends;
 
     $scope.lastMessages = [];
@@ -17,16 +24,30 @@ myApp.controller("MessagesCtrl", ["$scope", "Conversation", "User", function($sc
 
     $scope.fetchChatList = function () {
         var messages;
-        $scope.friends.forEach(function (friend) {
-            messages = Conversation.showChat({user1: id1, user2: friend});
-            messages.reverse();
-            $scope.lastMessages.push(messages[0]);
-        });
-        $scope.lastMessages.reverse();
+        if ($scope.friends){
+            $scope.friends.forEach(function (friend) {
+                messages = function () {
+                    Conversation.showChat({user1: id1, user2: friend}, function(data) {
+                        messages = data;
+                    }, function (err) {
+                        console.log(err);
+                    });
+                };
+                messages.reverse();
+                $scope.lastMessages.push(messages[0]);
+            });
+            $scope.lastMessages.reverse();
+        }
     };
 
     $scope.fetchChatWindow = function () {
-        var chat = Conversation.showChat({user1: id1, user2: id2});
+        var chat = function () {
+            Conversation.showChat({user1: id1, user2: id2}, function (data) {
+                chat = data;
+            }, function (err) {
+                console.log(err);
+            });
+        };
         $scope.curMessages = chat.convo;
     };
 

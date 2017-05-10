@@ -1,0 +1,206 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../from-now/from-now.html">
+<link rel="import" href="../from-now/moment-import.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+
+<!--
+`chat-window`
+A simple and flexible chat window for listing messages.
+
+Style hooks:
+
+* `--chat-messages-scroller` Applied to the paper-dialog-scrollable.
+
+* `--chat-message`  Applied to the container of each message.
+
+* `--chat-message-time`  Applied to each timestamp shown.
+
+* `--chat-message-text`  Applied to the text of each message.
+
+* `--chat-message-text-me` Applied to the current user's messages.
+
+* `--chat-message-text-not-me` Applied to the other users' messages.
+
+@demo demo/index.html
+-->
+
+<dom-module id="chat-messages">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-dialog-scrollable {
+        height: var(--chat-messages-height, 5em);
+        @apply --chat-messages-scroller;
+      }
+      .message {
+        @apply --layout-vertical;
+        @apply --chat-message;
+      }
+      .time, .text {
+        /*@apply --layout-horizontal;*/
+      }
+      from-now {
+        font-size small;
+        color: gray;
+        @apply --layout-self-center;
+        @apply --chat-message-time;
+      }
+      .text-container {
+        @apply --layout-horizontal;
+      }
+      .text {
+        word-break: break-all;
+        max-width: 90%;
+        @apply --chat-message-text;
+      }
+      .text.me {
+        @apply --layout-self-end;
+        @apply --chat-message-text-me;
+      }
+      .text.not-me {
+        @apply --layout-self-start;
+        @apply --chat-message-text-not-me;
+      }
+    </style>
+
+    <paper-dialog-scrollable id="scroller">
+      <template is="dom-repeat" items="[[messages]]">
+        <div class="message">
+          <!-- <div class="time"> -->
+          <from-now
+            time="[[item.created]]"
+            hidden$="[[!_indexesContains(_indexes, index, showAllTimestamps)]]">
+          </from-now>
+          <!-- </div> -->
+          <!-- <div class="text-container"> -->
+            <div
+              class$="[[_classForAuthor(item.author)]] text"
+              title="[[_formatTimestamp(item.created)]]">[[item.text]]</div>
+          <!-- </div> -->
+        </div>
+      </template>
+    </paper-dialog-scrollable>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'chat-messages',
+
+      properties: {
+        /**
+         * The author is compared to each message's author to determine how that
+         * message should be displayed. If the message's author matches, the
+         * default is to display it using flexbox's self-end alignment.
+         */
+        author: String,
+
+        /**
+         * The messages array. Each element must have three properties:
+         * * `author`: The message's author
+         * * `text`: The actual message
+         * * `created`: The timestamp in millis the message was sent.
+         */
+        messages: {
+          type: Array,
+          value: function() { return []; }
+        },
+
+        /**
+         * Whether to show a timestamp with every message or just some of them.
+         */
+        showAllTimestamps: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * Whether to scroll to the bottom of the message list when a new message arrives.
+         */
+        autoScroll: {
+          type: Boolean,
+          value: true
+        },
+
+        /**
+         * The date format to use when revealing the actual timestamp.
+         * See https://momentjs.com/docs/#/parsing/string-format/
+         * Examples:
+         *   YYYY-MM-DD HH:mm:ss
+         *   MM/DD/YYYY hh:mm a
+         *   Do of MMM, YYYY at hh:mm a
+         */
+        dateFormat: {
+          type: String,
+          value: 'YYYY-MM-DD HH:mm'
+        }
+      },
+
+      observers: [
+        '_messagesChanged(messages.*, showAllTimestamps)'
+      ],
+
+      _classForAuthor: function(author) {
+        return author == this.author ? 'me' : 'not-me';
+      },
+
+      _messagesChanged: function(changeData, showAllTimestamps) {
+        // console.log('msg changed', changeData);
+        this.debounce('messages-changed', function() {
+          if (changeData && changeData.base && changeData.base.length > 0) {
+            if (this.autoScroll) {
+              this.scrollToBottom();
+            }
+            if (!showAllTimestamps) this._updateTimestampedIndexes(changeData.base);
+          }
+        }.bind(this), 250);
+      },
+
+      _indexesContains: function(indexes, index, showAllTimestamps) {
+        return showAllTimestamps || (indexes && indexes.includes(index));
+      },
+
+      _updateTimestampedIndexes: function(messages) {
+        // console.log('updating indexes...', messages)
+        var indexes = [0];
+        var i, age, between, now = Date.now();
+        for (i = 1; i < messages.length; i++) {
+          age = now - messages[i].created;
+          between = messages[i].created - messages[i - 1].created;
+          // console.log('index', i, 'age', age, 'between', between);
+          if (this._shouldBeTimestamped(age, between)) {
+            indexes.push(i);
+          }
+        }
+        this._indexes = indexes;
+        // console.log('indexes', this._indexes);
+      },
+
+      _shouldBeTimestamped: function(age, between) {
+        if (age < 60 * 60 * 1000) {                  // If less than one hour old,
+          return between > 5 * 60 * 1000;            // show every 5 minutes.
+        } else if (age < 24 * 60 * 60 * 1000) {      // If less than one day old,
+          return between > 60 * 60 * 1000;           // show every hour.
+        } else if (age < 7 * 24 * 60 * 60 * 1000) {  // If less than a week old,
+          return between > 4 * 60 * 60 * 1000;       // show every four hours.
+        } else {                                     // If a week or older,
+          return between > 24 * 60 * 60 * 1000;      // show once per day.
+        }
+      },
+
+      _formatTimestamp: function(time) {
+        return moment(time).format(this.dateFormat);
+      },
+
+      scrollToBottom: function() {
+        setTimeout(function() {
+          var target = this.$.scroller.scrollTarget;
+          target.scrollTop = target.scrollHeight;
+        }.bind(this), 100);
+      },
+    });
+  </script>
+</dom-module>

@@ -4,6 +4,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.newUser = {};
 
+  /********************** HANDLE LOGIN VIA FB **********************/
+
   (function(d){
   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
   js = d.createElement('script'); js.id = id; js.async = true;
@@ -37,7 +39,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     FB.getLoginStatus(function(response) {
       $scope.statusChangeCallback(response);
     });
-  }
+  };
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -56,18 +58,15 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.loginUser = function() {
     FB.login(function(response){
-      // Handle the response object, like in statusChangeCallback() in our demo
-      // code.
       $scope.checkLoginState();
     });
-  }
+  };
 
   $scope.needFBLogIn = function() {
     return angular.equals($scope.newUser, {});
-  }
+  };
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
+  // Get user data from FB profile. (Only can get publically available info)
   $scope.getData = function() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', {fields: ['first_name', 'last_name', 'birthday']},
@@ -89,7 +88,9 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
         }
       );
     });
-  }
+  };
+
+  /*****************************************************************/
 
   $scope.currPage = "index";
 
@@ -110,29 +111,34 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.chosenActivities = [];
 
-// adds or removes activities from chosenActivities array
-/*  $scope.chooseActivity = function(activity) {
-    var index = $scope.chosenActivities.indexOf(activity);
-    if (index > -1) { //removes activity
-      $scope.chosenActivities.splice(index, 1);
-    } else { //adds activity
-      $scope.chosenActivities.push(activity);
-    }
-  };  */
-
   // adds or removes activities from chosenActivities array
-    $scope.chooseActivity = function(activity, skill_level) {
-      console.log("CHANGEDSOMETHING");
-      var index;
-      for (index=0; index < $scope.chosenActivities.length; index++) {
-        // checks if activity object already exists in array
-        if ($scope.chosenActivities[index].name === activity) {
-          $scope.chosenActivities.splice(index, 1);
-          return $scope.chosenActivities;
+  $scope.chooseActivity = function(activity) {
+        var index;
+        for (index=0; index < $scope.chosenActivities.length; index++) {
+          // checks if activity object already exists in array
+          if ($scope.chosenActivities[index].name === activity) {
+            $scope.chosenActivities.splice(index, 1);
+            console.log("REMOVED ACTIVITY");
+            return $scope.chosenActivities;
+          }
         }
+        $scope.chosenActivities.push({name: activity});
+        console.log("ADDED ACTIVITY");
+  };
+
+  // assign level to activity in array of objects
+  $scope.assignLevel = function(activity, skill_level) {
+    var i;
+    for (i=0; i < $scope.chosenActivities.length; i++) {
+      if ($scope.chosenActivities[i].name === activity) {
+        $scope.chosenActivities[i].level = skill_level;
+        console.log("ADDED SKILL LEVEL TO ");
+        console.log($scope.chosenActivities[i]);
+        return $scope.chosenActivities;
       }
-      $scope.chosenActivities.push({name: activity, level: skill_level});
-    };
+    }
+  };
+
 
   $scope.gotPic = function() {
     return $scope.newUser.picFile || $scope.newUser.picUrl;
@@ -145,7 +151,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     console.log("SIGNING UP");
     console.log($scope.newUser);
     User.create($scope.newUser, function(data) {
-      // console.log(data);
+      console.log(data);
       window.location.href = '/matches';
     }, function(error) {
       window.alert("Error signing up.");

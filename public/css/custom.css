@@ -61,9 +61,13 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #C05243; /* red */
 }
 
-.dropdown-menu .btn-red:hover, .btn-red:hover {
+.dropdown-menu .btn-red:hover, .btn-red:hover, .added-friend {
   background-color: #994135; /* darker red */
   color: #fff;
+}
+
+.added-friend.remove-friend {
+  background-color: #893a2f; /* darkest red */
 }
 
 .btn-light-blue {
@@ -364,6 +368,11 @@ a .edit-button {
  *       SIGN UP FORM            *
  * * * * * * * * * * * * * * * * */
 
+#skill-dropdown {
+  float: right;
+  padding-right: 10px;
+}
+
 #subheading {
     color: #5A5C58; /* grey */
     font-size: 1em;
@@ -655,7 +664,6 @@ a .edit-button {
 #matches-btn {
   font-size: 16px;
   margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }
@@ -680,6 +688,14 @@ a .edit-button {
 #search-friend-bar {
   padding-left: 250px;
 
+}
+
+#no-friends {
+  color: #5A5C58;
+  display: block;
+  margin-right: 50px;
+  margin-top: 120px;
+  font-size: 1.3em;
 }
 
 #view-btn {

@@ -6,8 +6,11 @@ var mongoose = require('mongoose');
 var Conversation = mongoose.Schema({
     user1 : String,
     user2 : String,
-    convo1 : [String],
-    convo2 : [String]
+    convo : [{
+        author: {type: String, enum:['you', 'me']},
+        text: String,
+        created: Date
+    }]
 });
 
 // define our user model

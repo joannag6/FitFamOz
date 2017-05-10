@@ -47,8 +47,8 @@
               </select>
             </div>
           </div>
-          <a href="#" class="btn btn-blue" id="matches-btn">
-          <i class="material-icons">add_circle_outline</i> Add an activity</a>
+          <button type="button" class="btn btn-blue" id="matches-btn">
+          <i class="material-icons">add_circle_outline</i> Add an activity</button>
         </form>
       </div>
 
@@ -155,4 +155,22 @@
       </div>
     </div>
   </body>
+  <script>
+  $(document).ready(function(){
+      $("#matches-btn").click(function(){
+        addAct = `<div class="form-inline col-xs-7">
+          <input class="form-control" type="activities" placeholder="Find an activity">
+        </div>
+        <div class="form-inline col-xs-3">
+          <select class="form-control" id="skill-level">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+          <br><br>
+        </div>`
+          $("#activity").append(addAct);
+      });
+  });
+  </script>
 </html>

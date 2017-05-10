@@ -68,7 +68,7 @@
                 <ul>
                   <div ng-repeat="activity in currUser.activities">
                     <li>
-                      <span class="activity-name">{{ activity }}</span>
+                      <span class="activity-name">{{ activity.name }}</span>
                       <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
                       <select class="form-control activity-level"
                         ng-disabled="!editMode"

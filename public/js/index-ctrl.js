@@ -111,29 +111,34 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.chosenActivities = [];
 
-// adds or removes activities from chosenActivities array
-/*  $scope.chooseActivity = function(activity) {
-    var index = $scope.chosenActivities.indexOf(activity);
-    if (index > -1) { //removes activity
-      $scope.chosenActivities.splice(index, 1);
-    } else { //adds activity
-      $scope.chosenActivities.push(activity);
-    }
-  };  */
-
   // adds or removes activities from chosenActivities array
-    $scope.chooseActivity = function(activity, skill_level) {
-      console.log("CHANGEDSOMETHING");
-      var index;
-      for (index=0; index < $scope.chosenActivities.length; index++) {
-        // checks if activity object already exists in array
-        if ($scope.chosenActivities[index].name === activity) {
-          $scope.chosenActivities.splice(index, 1);
-          return $scope.chosenActivities;
+  $scope.chooseActivity = function(activity) {
+        var index;
+        for (index=0; index < $scope.chosenActivities.length; index++) {
+          // checks if activity object already exists in array
+          if ($scope.chosenActivities[index].name === activity) {
+            $scope.chosenActivities.splice(index, 1);
+            console.log("REMOVED ACTIVITY");
+            return $scope.chosenActivities;
+          }
         }
+        $scope.chosenActivities.push({name: activity});
+        console.log("ADDED ACTIVITY");
+  };
+
+  // assign level to activity in array of objects
+  $scope.assignLevel = function(activity, skill_level) {
+    var i;
+    for (i=0; i < $scope.chosenActivities.length; i++) {
+      if ($scope.chosenActivities[i].name === activity) {
+        $scope.chosenActivities[i].level = skill_level;
+        console.log("ADDED SKILL LEVEL TO ");
+        console.log($scope.chosenActivities[i]);
+        return $scope.chosenActivities;
       }
-      $scope.chosenActivities.push({name: activity, level: skill_level});
-    };
+    }
+  };
+
 
   $scope.gotPic = function() {
     return $scope.newUser.picFile || $scope.newUser.picUrl;

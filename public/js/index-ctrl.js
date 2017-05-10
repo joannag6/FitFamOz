@@ -56,7 +56,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   };
 
-  $scope.loginUser = function() {
+  $scope.FBLoginUser = function() {
     FB.login(function(response){
       $scope.checkLoginState();
     });

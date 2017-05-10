@@ -5,7 +5,7 @@
     <% include ../partials/head %>
     <% include ../partials/footer%>
   </head>
-  <body id="matches" ng-app="myApp" ng-controller="MatchesCtrl">
+  <body id="matches" ng-app="myApp" ng-controller="FriendsCtrl">
     <header>
         <% include ../partials/navbar_login%>
     </header>
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div ng-if="!friends" id="no-friends">
+        <div ng-if="friends.length==[]" id="no-friends">
           You have no friends :(</br>
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
@@ -70,7 +70,7 @@
         <div ng-repeat="friend in friends">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div>
-                <img src="/img/profilepic.jpg" alt="pp">
+                <img ng-src="{{ friend.picUrl }}" alt="profile pic">
               </div>
               <div class="match-profile-name">
                 {{ friend.firstName + " " + friend.lastName }}
@@ -103,7 +103,7 @@
                         <div class="row">
                           <div class="col-sm-1 profile-summary">
                             <div>
-                              <img ng-src="{{ friend.picUrl }}" alt="pp">
+                              <img ng-src="{{ friend.picUrl }}" alt="profile pic">
                             </div>
                             <div class="profile-name">
                               {{ friend.firstName + " " + friend.lastName }}

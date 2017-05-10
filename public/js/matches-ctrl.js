@@ -40,15 +40,31 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
   /* Function to get current user's ID. */
   $scope.getCurrUser = function(userID) {
     User.showOne({ id: userID }, function(data) {
-      $scope.currUserID = data._id;
+      $scope.currUser = data;
+      $scope.currUserID = $scope.currUser._id;
     }, function(err) {
       console.log(err);
     });
   };
 
+  /* Called on page load to get all users. */
   User.showAll(function(data) {
-      $scope.users = data;
-    }, function(err) {
-      console.log(err);
+    $scope.users = data;
+  }, function(err) {
+    console.log(err);
   });
+
+  $scope.addFriend = function(user) {
+    var newFriends = $scope.currUser.friends.push(user);
+    User.update(
+      { id: $scope.currUserID },
+      $scope.currUser,
+      function(data) {
+        console.log("ADDED FRIEND // should change button");
+        console.log(data);
+      }, function(err) {
+        console.log(err);
+        window.alert("Error adding friend");
+    });
+  };
 }]);

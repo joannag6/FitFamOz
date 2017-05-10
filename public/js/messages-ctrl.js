@@ -1,34 +1,37 @@
 /**
- * Created by Nam Nguyen on 28/04/2017.
+ * Created by Nam Nguyen on 1/05/2017.
  */
+
 var myApp = angular.module("myApp");
 
-myApp.controller("MessageCtrl", ["$scope", "User", function($scope, User) {
-    $scope.editMode = false;
+myApp.controller("MessagesCtrl", ["$scope", "Conversation", "User", function($scope, User, Conversation) {
 
-    $scope.activityLevels = ["High", "Low", "Medium"];
+    var id1 = "5902c90d6b6f414d6e9afb00";
+    var id2 = "5902d085330bf04eadf38562";
 
-    $scope.myActivities = [
-        {"name": "Swimming", "level": "High"},
-        {"name": "Dog Walking", "level": "Low"},
-        {"name": "Jogging", "level": "High"},
-        {"name": "Weight Lifting", "level": "Medium"}
-    ];
+    $scope.curUser = User.showOne({id: id1});
+    $scope.friends = $scope.curUser.friends;
 
-    $scope.thisUser = {"firstName": "John", "lastName": "Smith", "aboutMe": "Hi, I'm looking for a cool gym partner."};
+    $scope.lastMessages = [];
+    $scope.curMessages = [];
 
-    $scope.toggleEditMode = function() {
-        $scope.editMode = !$scope.editMode;
+    $scope.fetchChatList = function () {
+        var messages;
+        $scope.friends.forEach(function (friend) {
+            messages = Conversation.showChat({user1: id1, user2: friend});
+            messages.reverse();
+            $scope.lastMessages.push(messages[0]);
+        });
+        $scope.lastMessages.reverse();
     };
 
-    $scope.saveChanges = function() {
-        $scope.toggleEditMode();
-        // figure out how to put in ID
-        //   User.update($scope.thisUser, function(data) {
-        //     // console.log(data);
-        //     $scope.editMode = !$scope.editMode;
-        //   }, function(error) {
-        //     console.log(error);
-        //   })
+    $scope.fetchChatWindow = function () {
+        var chat = Conversation.showChat({user1: id1, user2: id2});
+        $scope.curMessages = chat.convo;
     };
+
+    $scope.updateChat = function (new_msg) {
+        $scope.curMessages.push(new_msg);
+        Conversation.update({user1: id1, user2: id2}, $scope.curMessages);
+    }
 }]);

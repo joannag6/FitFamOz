@@ -52,6 +52,10 @@ var findOneUser = function(req,res){
     });
 };
 
+var findMatches = function(req, res, activities, location){
+
+}
+
 // var deleteUser = function(req,res){
 //     var UserInx = req.params.id;
 //     User.findByIdAndRemove(UserInx,function(err,user){
@@ -68,6 +72,7 @@ module.exports.createUser = createUser;
 module.exports.findAllUsers = findAllUsers;
 module.exports.findOneUser = findOneUser;
 module.exports.loadIndex = loadIndex;
+module.exports.findMatches = findMatches;
 // module.exports.deleleUser = deleteUser;
 
 /*module.exports.profileRead = function(req, res) {

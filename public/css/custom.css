@@ -401,12 +401,10 @@ a .edit-button {
 
  option {
    text-align: center;
-   font-family: "Helvetica Neue";
-   font-weight: bold;
    font-size: 15px;
    height: 35px;
    padding-top: 7px;
-   color: white;
+   color: #5A5C58;
    border-bottom: solid 1px white;
  }
 
@@ -646,8 +644,6 @@ a .edit-button {
 
 #matches-btn {
   font-size: 16px;
-  margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }

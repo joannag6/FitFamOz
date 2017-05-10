@@ -18,6 +18,8 @@ module.exports = function(app) {
     //api routes
     app.get('/api', user_controller.findAllUsers);
 
+    app.get('/api', user_controller.findMatches);
+
     app.get('/api/:id', user_controller.findOneUser);
 
     app.post('/api', user_controller.createUser);

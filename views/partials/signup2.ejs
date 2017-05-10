@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-4 col-sm-push-4 create-profile" ng-class="{facebook: !newUser}">
+    <div class="col-sm-4 col-sm-push-4 create-profile" ng-class="{facebook: needFBLogIn() }">
       <div class="section-name">
         <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
         <span>Create your Profile</span>
@@ -9,9 +9,12 @@
 
       <div class="signup-form-contents">
 
-        <div class="btn facebook-login" ng-if="!newUser" ng-click="loginUser()"><i class="fa fa-facebook-square facebook-icon" aria-hidden="true"></i>Continue with Facebook</div>
+        <div class="btn facebook-login" ng-if="needFBLogIn()" ng-click="loginUser()">
+          <i class="fa fa-facebook-square facebook-icon" aria-hidden="true"></i>
+          Continue with Facebook
+        </div>
 
-        <div ng-if="newUser">
+        <div ng-if="!needFBLogIn()">
           <div class="input-group"> <!-- Name input -->
             <span class="input-group-addon"><i class="material-icons">person</i></span>
             <input

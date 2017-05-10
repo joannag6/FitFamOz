@@ -682,6 +682,14 @@ a .edit-button {
 
 }
 
+#no-friends {
+  color: #5A5C58;
+  display: block;
+  margin-right: 50px;
+  margin-top: 120px;
+  font-size: 1.3em;
+}
+
 #view-btn {
   color: white;
   width: 100%;

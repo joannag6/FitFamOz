@@ -135,7 +135,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     console.log("SIGNING UP");
     console.log($scope.newUser);
     User.create($scope.newUser, function(data) {
-      // console.log(data);
+      console.log(data);
       window.location.href = '/matches';
     }, function(error) {
       window.alert("Error signing up.");

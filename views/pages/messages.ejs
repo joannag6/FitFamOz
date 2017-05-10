@@ -3,20 +3,43 @@
 <head>
     <title>About Us</title>
     <% include ../partials/head %>
+    <link rel="stylesheet" href="/css/messages.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <script src="/libs/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="/libs/chat-window/chat-window.html">
+    <style is="custom-style">
+        chat-window.styled {
+            font-size: small;
+            --chat-messages-height: 45em;
+            --chat-messages-scroller: {
+                border: 1px inset #eee;
+            };
+            --paper-input-container-input: {
+                margin: 0 2px;
+            };
+            --chat-message-text: {
+                background-color: #f0f0f0;
+                padding: 6px 8px;
+                margin: 4px 0;
+                border-radius: 6px;
+            };
+        }
+    </style>
+
 </head>
-<body id="main-body">
+<body ng-app="myApp" ng-controller="MessagesCtrl">
 <header>
     <% include ../partials/navbar_login%>
 </header>
 
 <!-- main container -->
-<div class="main-container background chatbox" style="margin-top:0;">
+<div class="background main-container chatbox" style="margin-top:0;">
     <!-- message box -->
     <div class="container bootstrap snippet">
-        <div class="row">
+        <div class="row" style="margin-top: 20px;">
             <div class="col-md-4 bg-white" style="height: 60em;">
                     <span class="text-center">
-                        <h4>Your Conversations</h4>
+                        <h4><strong>Your Conversations</strong></h4>
                     </span>
                 <!-- search user bar -->
                 <div class="row">
@@ -33,7 +56,7 @@
 
                 <!-- =============================================================== -->
                 <!-- member list -->
-                <div ng-repeat="user in friends">
+                <div ng-init="fetchChatList()">
                     <ul class="friend-list" style="padding-left: 10%;">
                         <li class="active bounceInDown">
                             <a href="#" class="clearfix">
@@ -63,130 +86,67 @@
 
             <!--=========================================================-->
             <!-- selected chat -->
-            <div class="col-md-8 bg-lightblue" style="height: 60em;">
-                    <span class="text-center">
-                        <h4>John Doe</h4>
-                    </span>
-                <div class="chat-message" style="overflow: auto; height: 49em; padding-bottom: 1em;">
-                    <ul class="chat">
-                        <li class="left clearfix">
-                                <span class="chat-img pull-left">
-                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">John Doe</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Sarah</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix">
-                                <span class="chat-img pull-left">
-                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">John Doe</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Sarah</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix">
-                                <span class="chat-img pull-left">
-                                <img src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">John Doe</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Sarah</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix">
-                                <span class="chat-img pull-right">
-                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                            </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Sarah</strong>
-                                    <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales at.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="chat-box bg-white" style="height: 5em;">
-                        <div class="input-group">
-                            <input class="form-control border no-shadow no-rounded" style="height: 80%;" placeholder="Type your message here">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-send btn-sm" type="button">Send</button>
-                                </span>
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                </div>
+            <div class="col-md-8 bg-lightblue" style="height: 60em;" ng-init="fetchChatWindow()">
+                <span class="text-center">
+                    <a href="/user"><h4>John Doe</h4></a>
+                </span>
+                <chat-window
+                        class="styled"
+                        id="chat"
+                        author="me"
+                        single-line
+                >
+                </chat-window>
             </div>
         </div>
     </div>
     <!-- end chat box -->
 </div>
 
-<footer>
+<span>
     <% include ../partials/footer%>
-</footer>
+    <script>
+    var now = Date.now();
+//    var messages = $('[ng-controller="MessagesCtrl"]').scope().curMessages;
+//    var len = messages.length;
+//    var interval = (10*60*1000);
+//    for(var i = 0; i < len; i++){
+//        messages[i]["created"] = now - interval;
+//        interval = interval * 6;
+//    }
+    var messages = [
+    { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
+    { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
+    { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
+    { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
+    { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
+    { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
+    { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
+    { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
+    { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
+    { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
+    { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
+    { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
+    { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
+    ].reverse();
+    </script>
+    <script>
+        var chat = document.getElementById('chat');
+        var author;
+        chat.messages = messages;
+        chat.addEventListener('send', function(e) {
+            author = author == 'me' ? 'you' : 'me'; // For demo
+            chat.push('messages',{
+                author: author,
+                text: e.detail,
+                created: Date.now()
+            });
+            chat.inputText = '';
+        });
+    </script>
+</span>
 
 </body>
 </html>

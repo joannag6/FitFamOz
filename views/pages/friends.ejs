@@ -62,7 +62,9 @@
           </div>
         </div>
 
-        <div>
+        <div ng-if="!friends" id="no-friends">
+          You have no friends :(</br>
+          Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
         <div ng-repeat="friend in friends">

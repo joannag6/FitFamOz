@@ -4,6 +4,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.newUser = {};
 
+  /********************** HANDLE LOGIN VIA FB **********************/
+
   (function(d){
   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
   js = d.createElement('script'); js.id = id; js.async = true;
@@ -37,7 +39,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     FB.getLoginStatus(function(response) {
       $scope.statusChangeCallback(response);
     });
-  }
+  };
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -56,18 +58,15 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.loginUser = function() {
     FB.login(function(response){
-      // Handle the response object, like in statusChangeCallback() in our demo
-      // code.
       $scope.checkLoginState();
     });
-  }
+  };
 
   $scope.needFBLogIn = function() {
     return angular.equals($scope.newUser, {});
-  }
+  };
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
+  // Get user data from FB profile. (Only can get publically available info)
   $scope.getData = function() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', {fields: ['first_name', 'last_name', 'birthday']},
@@ -89,7 +88,9 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
         }
       );
     });
-  }
+  };
+
+  /*****************************************************************/
 
   $scope.currPage = "index";
 

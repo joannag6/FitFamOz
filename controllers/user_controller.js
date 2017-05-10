@@ -10,8 +10,6 @@ var createUser = function(req,res){
         "_id":req.body.authResp.userID,
         "firstName":req.body.first_name,
         "lastName":req.body.last_name,
-        // "email":req.body.email,
-        // "password":req.body.password,
         "dob":req.body.birthday,
         "location":req.body.location,
         "picUrl":req.body.picUrl,
@@ -28,6 +26,22 @@ var createUser = function(req,res){
     });
 };
 
+var updateUser = function(req,res){
+  User.update({_id: req.params.id}, {
+    "firstName":req.body.firstName,
+    "lastName":req.body.lastName,
+    "activities":req.body.activities,
+    "aboutMe":req.body.aboutMe
+  }, function(err, affected, resp) {
+    if(err){
+      console.log(err.errmsg);
+      res.status(400).send(err.errmsg);
+    }else{
+      res.send(resp);
+    }
+  });
+};
+
 var findAllUsers = function(req,res){
     User.find(function(err,users){
         if(!err){
@@ -39,8 +53,6 @@ var findAllUsers = function(req,res){
 };
 
 var findOneUser = function(req,res){
-  console.log(req.params);
-  console.log(req.params.id.userID);
     var UserInx = req.params.id;
     User.findById(UserInx,function(err,user){
         if(!err){
@@ -65,6 +77,7 @@ var findOneUser = function(req,res){
 // };
 
 module.exports.createUser = createUser;
+module.exports.updateUser = updateUser;
 module.exports.findAllUsers = findAllUsers;
 module.exports.findOneUser = findOneUser;
 module.exports.loadIndex = loadIndex;

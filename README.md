@@ -2,6 +2,9 @@
 ### What is this repository for? ###
 This is an assignment for INFO30005 Web Information Technologies, University of Melbourne.
 
+### DEMO ###
+http://fitfamoz.herokuapp.com
+
 ### We are: ###
 
 * Nelson CHEN (743322)

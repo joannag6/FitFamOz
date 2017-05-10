@@ -17,7 +17,6 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
       $scope.getCurrUser(response.authResponse.userID);
     } else {
       // The person is not logged into your app or we are unable to tell.
-      console.log('User needs to log in.');
       // Redirects user to login page.
       window.location.href = '/';
     }
@@ -35,8 +34,6 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     FB.getLoginStatus(function(response) {
       $scope.statusChangeCallback(response);
       $scope.$apply();
-      console.log("apply scope");
-
     });
   };
 
@@ -75,7 +72,6 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
       { id: $scope.currUserID },
       $scope.currUser,
       function(data) {
-        console.log("ADDED FRIEND // should change button");
         console.log(data);
       }, function(err) {
         console.log(err);
@@ -94,16 +90,12 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
           { id: $scope.currUserID },
           $scope.currUser,
           function(data) {
-            console.log("REMOVED FRIEND // should change button");
             console.log(data);
           }, function(err) {
             console.log(err);
             window.alert("Error removing friend");
         });
-        return;
       }
     }
-    // Didn't find user in friend list
-    window.alert("User is not your friend");
   };
 }]);

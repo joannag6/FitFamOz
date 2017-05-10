@@ -66,10 +66,11 @@
                 <table style="width:100%" ng-repeat="activity in user.activities">
                   <tr>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.level }}</td>
+                  <!--  <td>{{ activity.level }}</td> -->
                   </tr>
                 </table>
               </div>
+              <br>
               <button type="button" class="btn btn-blue" data-toggle="modal" data-target="{{ '#viewprofile' + $index }}" id="view-btn">
                 <i class="material-icons">remove_red_eye</i> View Profile
               </button>
@@ -151,6 +152,13 @@
                           <div class="col-sm-1 profile-details">
                             <div class="section-name">Details
                             </div>
+                            <br>
+                            <table style="width:100%;" ng-repeat="activity in user.activities">
+                              <tr>
+                                <td style="float:left;width:50%;">{{ activity.name }}</td>
+                                <td style="float:right;width:50%;">{{ activity.level }}</td>
+                              </tr>
+                            </table>
                           </div>
 
                           <!--<div class="col-sm-4 recent-activities">

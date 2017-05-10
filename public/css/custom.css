@@ -596,7 +596,6 @@ a .edit-button {
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
-
  .match-profile-name {
    color: #C05243; /* red */
    font-size: 16px;
@@ -631,11 +630,13 @@ a .edit-button {
  }
 
  .match-profile-summary {
-   font-size: 12px;
+   font-size: 13px;
    color: black;
    font-weight: normal;
-   padding-bottom: 10px;
    text-align: left;
+   max-height: 55px;
+   min-height: 55px;
+   overflow: hidden;
  }
 
 #profile-view {

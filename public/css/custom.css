@@ -364,6 +364,11 @@ a .edit-button {
  *       SIGN UP FORM            *
  * * * * * * * * * * * * * * * * */
 
+#skill-dropdown {
+  float: right;
+  padding-right: 10px;
+}
+
 #subheading {
     color: #5A5C58; /* grey */
     font-size: 1em;

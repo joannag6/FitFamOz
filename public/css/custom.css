@@ -61,9 +61,13 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #C05243; /* red */
 }
 
-.dropdown-menu .btn-red:hover, .btn-red:hover {
+.dropdown-menu .btn-red:hover, .btn-red:hover, .added-friend {
   background-color: #994135; /* darker red */
   color: #fff;
+}
+
+.added-friend.remove-friend {
+  background-color: #893a2f; /* darkest red */
 }
 
 .btn-light-blue {
@@ -364,6 +368,11 @@ a .edit-button {
  *       SIGN UP FORM            *
  * * * * * * * * * * * * * * * * */
 
+#skill-dropdown {
+  float: right;
+  padding-right: 10px;
+}
+
 #subheading {
     color: #5A5C58; /* grey */
     font-size: 1em;
@@ -401,12 +410,10 @@ a .edit-button {
 
  option {
    text-align: center;
-   font-family: "Helvetica Neue";
-   font-weight: bold;
-   font-size: 15px;
+   font-size: 14px;
    height: 35px;
    padding-top: 7px;
-   color: white;
+   color: #5A5C58;
    border-bottom: solid 1px white;
  }
 
@@ -589,7 +596,6 @@ a .edit-button {
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
-
  .match-profile-name {
    color: #C05243; /* red */
    font-size: 16px;
@@ -624,11 +630,13 @@ a .edit-button {
  }
 
  .match-profile-summary {
-   font-size: 12px;
+   font-size: 13px;
    color: black;
    font-weight: normal;
-   padding-bottom: 10px;
    text-align: left;
+   max-height: 55px;
+   min-height: 55px;
+   overflow: hidden;
  }
 
 #profile-view {
@@ -655,7 +663,6 @@ a .edit-button {
 #matches-btn {
   font-size: 16px;
   margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }

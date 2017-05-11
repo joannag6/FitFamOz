@@ -22,7 +22,7 @@ var userSchema = mongoose.Schema({
     location : String,
     picUrl : String,
     activities : [activitiesSchema],
-    friends : [String]
+    friends : [this]
     // hash: String,
     // salt: String
 });

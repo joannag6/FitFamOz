@@ -1,14 +1,6 @@
 var myApp = angular.module("myApp");
 
 myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
-  /********************** HANDLE LOGIN VIA FB **********************/
-
-  (function(d){
-  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-  js = d.createElement('script'); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js";
-  d.getElementsByTagName('head')[0].appendChild(js);
-  }(document));
 
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {
@@ -20,7 +12,8 @@ myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       console.log(response);
-      $scope.currAuth = response.authResponse;
+      $scope.newUser = {};
+      $scope.newUser.authResp = response.authResponse;
       $scope.getUser();
     } else {
       // The person is not logged into your app or we are unable to tell.
@@ -37,30 +30,9 @@ myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1249707755145859',
-      cookie     : true,  // enable cookies to allow the server to access
-                          // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.8' // use graph api version 2.8
-    });
-
-    FB.getLoginStatus(function(response) {
-      $scope.statusChangeCallback(response);
-    });
-
-  };
-
-  $scope.loginUser = function() {
-    FB.login(function(response){
-      $scope.checkLoginState();
-    });
-  };
-
   /* Function to get current user as an object. */
   $scope.getUser = function() {
-    User.showOne({ id: $scope.currAuth.userID }, function(data) {
+    User.showOne({ id: $scope.newUser.authResp.userID }, function(data) {
       if (window.location.href.endsWith("3000/") || window.location.href.endsWith(".com/"))
         window.location.href = '/matches';
       $scope.currUser = data;
@@ -68,6 +40,17 @@ myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
       $scope.errorMsg = "No account found, please sign up.";
       // include <a>
     });
+  };
+
+// for clicking on login page
+  $scope.loginUser = function() {
+    if ($scope.newUser.authResp) {
+      $scope.getUser();
+    } else {
+      FB.login(function(response){
+        $scope.checkLoginState();
+      });
+    }
   };
 
   $scope.logOut = function() {

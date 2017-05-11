@@ -43,17 +43,26 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
       $scope.currUser = data;
       $scope.currUserID = $scope.currUser._id;
       $scope.friends = $scope.currUser.friends;
+      $scope.getMatches();
     }, function(err) {
       console.log(err);
     });
   };
 
   /* Called on page load to get all users. */
-  User.showAll(function(data) {
-    $scope.users = data;
-  }, function(err) {
-    console.log(err);
-  });
+  // User.showAll(function(data) {
+  //   $scope.users = data;
+  // }, function(err) {
+  //   console.log(err);
+  // });
+
+  $scope.getMatches = function() {
+    User.showMatches({ id: $scope.currUserID }, { location: $scope.currUser.location }, function(data) {
+        $scope.users = data;
+      }, function(err) {
+        console.log(err);
+    });
+  };
 
   $scope.isFriend = function(user) {
     if (!$scope.friends)

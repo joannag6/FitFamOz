@@ -374,26 +374,32 @@ a .edit-button {
 }
 
 #subheading {
-    color: #5A5C58; /* grey */
-    font-size: 1em;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
+  color: #5A5C58; /* grey */
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
 }
 
- #signup, #continue, #login {
-   font-size: 1.6em;
-   font-weight: bold;
-   color: #fff;
-   width: 100%;
-   margin-top: 20px;
-   height: 50px;
-   border-radius: 10px;
- }
+#signup, #continue, #login {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 10px;
+}
 
- #signupform, #login-form {
-   padding: 20px 40px;
- }
+#signupform, #login-form {
+  padding: 20px 40px;
+}
+
+.error-text {
+  font-size: 1em;
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
 
  .signup-form-contents {
    margin: 20px 40px;

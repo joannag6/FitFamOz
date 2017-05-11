@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>About Us</title>
+    <title>Your Messages</title>
     <% include ../partials/head %>
     <link rel="stylesheet" href="/css/messages.css">
     <link rel="stylesheet" href="/css/theme.css">
@@ -18,7 +18,8 @@
                 margin: 0 2px;
             };
             --chat-message-text: {
-                background-color: #f0f0f0;
+                background-color: #ffffff;
+                color: black;
                 padding: 6px 8px;
                 margin: 4px 0;
                 border-radius: 6px;
@@ -33,7 +34,7 @@
 </header>
 
 <!-- main container -->
-<div class="background main-container chatbox" style="margin-top:0;">
+<div class="background main-container chatbox" style="margin-top:0; padding-top:0;">
     <!-- message box -->
     <div class="container bootstrap snippet">
         <div class="row" style="margin-top: 20px;">
@@ -88,7 +89,7 @@
             <!-- selected chat -->
             <div class="col-md-8 bg-lightblue" style="height: 60em;" ng-init="fetchChatWindow()">
                 <span class="text-center">
-                    <a href="/user"><h4>John Doe</h4></a>
+                    <a href="/user"><h4><strong>John Doe</strong></h4></a>
                 </span>
                 <chat-window
                         class="styled"
@@ -147,6 +148,6 @@
         });
     </script>
 </span>
-
+<% include ../partials/footer%>
 </body>
 </html>

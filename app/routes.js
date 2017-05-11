@@ -19,6 +19,7 @@ module.exports = function(app) {
     app.get('/api/:id', userController.findOneUser);
 
     app.post('/api', userController.createUser);
+    app.post('/api/:id', userController.findMatches);
 
     app.post('/api/chat', chatController.createConversation);
 

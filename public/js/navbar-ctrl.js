@@ -61,7 +61,7 @@ myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
   /* Function to get current user as an object. */
   $scope.getUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
-      if (!window.location.href.endsWith("/matches"))
+      if (window.location.href.endsWith("3000/") || window.location.href.endsWith(".com/"))
         window.location.href = '/matches';
       $scope.currUser = data;
     }, function(err) {

@@ -86,8 +86,19 @@
                 <ul>
                   <div ng-repeat="activity in currUser.activities">
                     <li>
-                      <span class="activity-name">{{ activity.name }}</span>
+                      <span class="activity-name" ng-if="!editMode">{{ activity.name }}</span>
+                      <input
+                        type="text"
+                        class="form-control activity-name-edit"
+                        placeholder="Activity Name"
+                        ng-if="editMode"
+                        ng-model="activity.name"
+                        required>
                       <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span>
+                      <i class="material-icons delete-activity"
+                        ng-if="editMode"
+                        ng-click="deleteActivity($index)">delete
+                      </i>
                       <select class="form-control activity-level"
                         ng-if="editMode"
                         ng-model="activity.level"
@@ -97,6 +108,9 @@
                     </li>
                   </div>
                 </ul>
+                <div class="add-activity" ng-if="editMode">
+                  <i class="material-icons" ng-if="editMode" ng-click="addActivity()">add_circle</i>
+                </div>
               </div>
 
             </form>

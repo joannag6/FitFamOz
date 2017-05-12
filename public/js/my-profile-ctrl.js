@@ -57,6 +57,15 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
     $scope.editMode = !$scope.editMode;
   };
 
+  $scope.addActivity = function() {
+    var newActivity = {name: '', level: 'Low'};
+    $scope.currUser.activities.push(newActivity);
+  };
+
+  $scope.deleteActivity = function(index) {
+    $scope.currUser.activities.splice(index, 1);
+  };
+
   $scope.saveChanges = function() {
     User.update(
       { id: $scope.currAuth.userID },

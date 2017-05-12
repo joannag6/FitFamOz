@@ -340,12 +340,39 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   margin: 10px 20px;
 }
 
+.activity-name-edit {
+  display: inline;
+  margin: 3px;
+  width: inherit;
+}
+
 .activity-level {
   display: inline-block;
   float: right;
   font-size: 1em;
   margin: 10px 15px;
   width: auto;
+}
+
+.add-activity {
+  color: #C05243; /* red */
+  margin-top: -15px;
+  text-align: center;
+}
+
+.add-activity i {
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+.add-activity i:hover {
+  color: #994135; /* darker red */
+}
+
+.delete-activity {
+  cursor: pointer;
+  float: right;
+  margin: 7px 3px 7px 0px;
 }
 
 /* * * * * * * * * * * * * * * * *

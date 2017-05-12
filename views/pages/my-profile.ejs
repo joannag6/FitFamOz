@@ -18,7 +18,7 @@
             </div>
             <div class="profile-name">
               <span ng-if="!editMode">{{ currUser.firstName + " " + currUser.lastName }}</span>
-              <div class="input-group" ng-if="editMode">
+              <div class="input-group profile-edit-text" ng-if="editMode">
                 <span class="input-group-addon"><i class="material-icons">person</i></span>
                 <input
                   id="firstname"
@@ -40,7 +40,7 @@
               <div class="location my-profile" ng-if="!editMode">
                 <i class="material-icons my-profile">location_on</i> {{ currUser.location }}
               </div>
-              <div class="input-group" ng-if="editMode">
+              <div class="input-group profile-edit-text" ng-if="editMode">
                 <span class="input-group-addon"><i class="material-icons">location_on</i></span>
                 <input
                   id="location"

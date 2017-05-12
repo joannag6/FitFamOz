@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-sm-4 col-sm-push-4 find-sports">
+      <div class="section-name">
+        <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
+        <span>What are you interested in?</span>
+      </div>
+
+      <div class="signup-form-contents">
+        <div class="funkyradio">
+          <div ng-repeat="activity in activities">
+            <div class="funkyradio-primary">
+              <input
+                type="checkbox"
+                name="checkbox"
+                id="{{ 'checkbox-' + $index }}"
+                ng-model="checked"
+                ng-change="chooseActivity(activity)"/> <!-- is id necessary? -->
+              <label for="{{ 'checkbox-' + $index }}">{{ activity }}
+                <span id="skill-dropdown">
+                  <select 
+                    ng-if="checked"
+                    ng-change="assignLevel(activity, skill_level)"
+                    ng-model="skill_level"
+                    ng-options="item for item in levels"
+                    required></select>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <a id="continue" class="btn btn-red" ng-click="nextPage()">Continue</a>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>

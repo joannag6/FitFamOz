@@ -43,6 +43,7 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
+      console.log($scope.currUser);
     }, function(err) {
       console.log(err);
     });

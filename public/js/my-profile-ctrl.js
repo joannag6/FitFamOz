@@ -43,6 +43,7 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
+      console.log($scope.currUser);
     }, function(err) {
       console.log(err);
     });
@@ -54,6 +55,15 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.toggleEditMode = function() {
     $scope.editMode = !$scope.editMode;
+  };
+
+  $scope.addActivity = function() {
+    var newActivity = {name: '', level: 'Low'};
+    $scope.currUser.activities.push(newActivity);
+  };
+
+  $scope.deleteActivity = function(index) {
+    $scope.currUser.activities.splice(index, 1);
   };
 
   $scope.saveChanges = function() {

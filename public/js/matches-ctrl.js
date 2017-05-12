@@ -49,13 +49,6 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
-  /* Called on page load to get all users. */
-  // User.showAll(function(data) {
-  //   $scope.users = data;
-  // }, function(err) {
-  //   console.log(err);
-  // });
-
   $scope.getMatches = function() {
     User.showMatches({ id: $scope.currUserID }, { location: $scope.currUser.location }, function(data) {
         $scope.users = data;

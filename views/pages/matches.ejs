@@ -79,7 +79,7 @@
                   class="btn btn-red"
                   ng-if="!isFriend(user)"
                   ng-click="addFriend(user)">
-                <i class="material-icons">star</i> Add Friend
+                <i class="material-icons">star_border</i> Add Friend
               </div>
               <div id="view-btn"
                   class="btn btn-red added-friend"
@@ -88,7 +88,8 @@
                   ng-mouseover="removeBtn=true"
                   ng-mouseleave="removeBtn=false"
                   ng-class="{ 'remove-friend': removeBtn }">
-                <i class="material-icons">star_border</i>
+                <i class="material-icons" ng-if="!removeBtn">star</i>
+                <i class="material-icons" ng-if="removeBtn">block</i>
                 <span ng-if="!removeBtn">Added Friend</span>
                 <span ng-if="removeBtn">Remove Friend?</span>
               </div>

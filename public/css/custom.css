@@ -372,7 +372,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .delete-activity {
   cursor: pointer;
   float: right;
-  margin: 7px 3px 7px 0px;
+  margin-top: 8px;
+  margin-right: 3px;
 }
 
 /* * * * * * * * * * * * * * * * *

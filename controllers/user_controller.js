@@ -30,6 +30,7 @@ var updateUser = function(req,res){
   User.update({_id: req.params.id}, {
     "firstName":req.body.firstName,
     "lastName":req.body.lastName,
+    "location":req.body.location,
     "activities":req.body.activities,
     "aboutMe":req.body.aboutMe,
     "friends":req.body.friends
@@ -68,17 +69,42 @@ var findOneUser = function(req,res){
 var findMatches = function(req,res){
   var userID = req.params.id;
   var userLocation = req.body.location;
-  User.find({location: userLocation})
-      .where("_id").ne(userID)
-      .exec(function(err,users){
-        if(!err){
-          console.log(users);
-          res.send(users);
-        }else{
-          console.log(err);
-          res.sendStatus(404);
-        }
-      });
+
+  if (userLocation) {
+    // Find location regardless of case
+    User.find({location: {'$regex': userLocation,$options:'i'}})
+        .where("_id").ne(userID)
+        .exec(function(err,users){
+          if(!err){
+            res.send(users);
+          }else{
+            console.log(err);
+            res.sendStatus(400);
+          }
+        });
+  } else {
+    var userActivities = [];
+    req.body.activities.forEach(act => userActivities.push(act.name));
+
+    // Find any user that has at least one activity match with you
+    User.find()
+        .where('activities.name')
+        .in(userActivities)
+        .where("_id").ne(userID)
+        .exec(function(err,users){
+          if(!err){
+            if (users.length > 0) {
+              res.send(users);
+            } else {
+              console.log("No matches found");
+              res.sendStatus(404);
+            }
+          }else{
+            console.log(err);
+            res.sendStatus(400);
+          }
+        });
+  }
 };
 
 // var deleteUser = function(req,res){

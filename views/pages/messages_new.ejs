@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Adapted from template @https://www.bypeople.com/sliding-css-chat-bubbles/ -->
+<head>
+    <title>Your Messages</title>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="/css/messages_new.css">
+    <link rel="stylesheet" href="/css/reset.css">
+</head>
+
+<body ng-app="myApp" ng-controller="MessagesCtrl">
+    <header>
+        <% include ../partials/navbar_login%>
+    </header>
+
+    <!-- main container -->
+    <div class="background main-container" style="margin-top:0; padding-top:0;">
+        <div class="container bootstrap snippet">
+            <div class="row" style="padding-top:2em; height:45em; padding-bottom:2em;">
+            <div class="left col-md-3" ng-init="fetchChatList()">
+                <div class="top">
+                    <input type="text" placeholder="search chat history"/>
+                    <a href="javascript:;" class="search"></a>
+                </div>
+                <!-- <ul class="people">
+                    <li class="person" data-chat="person1">
+                        <img src="http://s13.postimg.org/ih41k9tqr/img1.jpg" alt="" />
+                        <span class="name">Thomas Bangalter</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">I was wondering...</span>
+                    </li>
+                    <li class="person" data-chat="person2">
+                        <img src="http://s3.postimg.org/yf86x7z1r/img2.jpg" alt="" />
+                        <span class="name">Dog Woofson</span>
+                        <span class="time">1:44 PM</span>
+                        <span class="preview">I've forgotten how it felt before</span>
+                    </li>
+                    <li class="person" data-chat="person3">
+                        <img src="http://s3.postimg.org/h9q4sm433/img3.jpg" alt="" />
+                        <span class="name">Louis CK</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">But we’re probably gonna need a new carpet.</span>
+                    </li>
+                    <li class="person" data-chat="person4">
+                        <img src="http://s3.postimg.org/quect8isv/img4.jpg" alt="" />
+                        <span class="name">Bo Jackson</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">It’s not that bad...</span>
+                    </li>
+                    <li class="person" data-chat="person5">
+                        <img src="http://s16.postimg.org/ete1l89z5/img5.jpg" alt="" />
+                        <span class="name">Michael Jordan</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">Wasup for the third time like is you bling bitch</span>
+                    </li>
+                    <li class="person" data-chat="person6">
+                        <img src="http://s30.postimg.org/kwi7e42rh/img6.jpg" alt="" />
+                        <span class="name">Drake</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">howdoyoudoaspace</span>
+                    </li>
+                </ul> -->
+                <ul class="people" ng-repeat="friend in friends">
+                    <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
+                        <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
+                        <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
+                        <span class="time">{{lastMessages[$index].created}}</span>
+                        <span class="preview">{{lastMessages[$index].text}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right col-md-5 bg-lightblue" ng-init="fetchChatWindow()">
+                <div class="top"><span>To: <span class="name">
+                    {{friends[openChat].firstName + " " + friends[openChat].lastName}}
+                </span></span>
+                </div>
+                <div class="chat">
+                    <div class="conversation-start">
+                        <span>Today, 6:48 PM</span>
+                        <span>{{message.created}}</span>
+                    </div>
+                    <span ng-repeat="message in curMessages">
+                        <span ng-if="message.author.indexOf(me)>-1">
+                            <div class="bubble me">
+                                {{message.text}}
+                            </div>
+                        </span>
+                        <span ng-if="message.author.indexOf(you)>-1">
+                            <div class="bubble you">
+                                {{message.text}}
+                            </div>
+                        </span>
+                    </span>
+                </div>
+
+                <div class="write">
+                    <a href="javascript:;" class="write-link attach"></a>
+                    <input type="text" placeholder="what's on your mind..."/>
+                    <!-- <a href="javascript:;" class="write-link smiley"></a> -->
+                    <a href="javascript:;" class="write-link send"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span>
+    <% include ../partials/footer%>
+    <!-- <script src="js/chat-box.js"></script> -->
+    </span>
+</body>
+
+</html>

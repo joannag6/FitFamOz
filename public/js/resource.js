@@ -13,7 +13,7 @@ myApp.factory("User", ["$resource", "$http", function($resource, $http) {
   );
 }]);
 
-myApp.factory("Conversation", ["$resource", "$http", function($resource, $http) {
+myApp.factory("Chat", ["$resource", "$http", function($resource, $http) {
     return $resource("/api/chat/:user1&:user2", { user1: "@user1", user2: "@user2" },
         {
             'create': { method: 'POST' },

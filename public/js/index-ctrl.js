@@ -187,9 +187,17 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     if ($scope.currPage == "index" || $scope.currPage == "login") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
-      $scope.currPage = "signup2";
+      if ($scope.chosenActivities.length < 1) {
+        window.alert("Have to select at least one activity.");
+      } else {
+        $scope.currPage = "signup2";
+      }
     } else if ($scope.currPage == "signup2") {
-      $scope.currPage = "profilepic";
+      if (!signupform.checkValidity()) {
+        window.alert("Have to fill up every field with valid inputs.");
+      } else {
+        $scope.currPage = "profilepic";
+      }
     }
   };
 

@@ -49,12 +49,25 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
+  $scope.matchLocation = true;
+
   $scope.getMatches = function() {
-    User.showMatches({ id: $scope.currUserID }, { location: $scope.currUser.location }, function(data) {
+    var query = {};
+    if ($scope.matchLocation) {
+      query = {location: $scope.currUser.location};
+    } else {
+      query = {activities: $scope.currUser.activities};
+    }
+    User.showMatches({ id: $scope.currUserID }, query, function(data) {
         $scope.users = data;
-        console.log(data);
       }, function(err) {
         console.log(err);
+        if (err.status == 404) {
+          // No matches found
+          var otherQuery = $scope.matchLocation ? "activities" : "location";
+          $scope.errMessage = "No matches found, try matching based on "+ otherQuery +"?";
+          console.log($scope.errMessage);
+        }
     });
   };
 

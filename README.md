@@ -1,6 +1,10 @@
 # README #
 ### What is this repository for? ###
-This is an assignment for INFO30005 Web Information Technologies, University of Melbourne.
+This is an assignment for INFO30005 Web Information Technologies, University of Melbourne. 
+We created a web application that match users up based on their preferred physical activities as well as their location.
+
+### Check us out here ###
+http://fitfamoz.herokuapp.com
 
 ### We are: ###
 

@@ -530,7 +530,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #4267b2;
   color: #fff;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
  }
 
 .facebook-login:hover {
@@ -540,6 +540,22 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .facebook-icon {
   vertical-align: middle;
   margin-right: 10px;
+}
+
+.google-login {
+  background-color: #db4437;
+  color: #fff;
+  display: block;
+  margin: 5px auto;
+}
+
+.google-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.google-login:hover {
+  color: #fff;
 }
 
 /* * * * * * * * * * * * * * * * *

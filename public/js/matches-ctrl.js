@@ -55,10 +55,14 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
 
   $scope.otherQuery = "";
 
-  $scope.toggleMatch = function() {
-    $scope.$storage.matchType = !$scope.$storage.matchType;
+  $scope.toggleMatchButton = function() {
     $scope.getMatches();
     $scope.otherQuery = "";
+  }
+
+  $scope.toggleMatch = function() {
+    $scope.$storage.matchType = !$scope.$storage.matchType;
+    $scope.toggleMatchButton();
   }
 
   $scope.getMatches = function() {

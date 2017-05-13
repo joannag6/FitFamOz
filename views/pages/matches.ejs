@@ -15,7 +15,17 @@
 
       <!-- Sidebar filter -->
       <div class="container col-lg-4" id="sidebar-filter">
-        <h4>FILTERS</h4>
+        <div class="match-toggle-container">
+          <div id="match-toggle-text">MY MATCHES</div>
+          <toggle ng-model="$storage.matchType"
+                  ng-change="toggleMatchButton()"
+                  on="Location"
+                  off="Activities"
+                  onstyle="btn-primary"
+                  offstyle="btn-primary">
+          </toggle>
+        </div>
+        <h4>Filters</h4>
         <form class="form-horizontal">
           <div class="form-group row">
             <div class="form-inline col-xs-7">

@@ -1,13 +1,8 @@
 var User = require('./models/User');
 var Conversation = require('./models/Conversation');
 
-/*var jwt = require('express-jwt');
-var auth = jwt({
-  secret: 'MY_SECRET',
-  userProperty: 'payload'
-});*/
-
-var user_controller = require('../controllers/user_controller.js');
+var chatController = require('../controllers/chat_controller');
+var userController = require('../controllers/user_controller.js');
 
 module.exports = function(app) {
 
@@ -16,11 +11,33 @@ module.exports = function(app) {
     // authentication routes
 
     //api routes
-    app.get('/api', user_controller.findAllUsers);
+    app.get('/api', userController.findAllUsers);
 
-    app.get('/api/:id', user_controller.findOneUser);
+    app.get('/api/chat', chatController.findAllChats);
 
-    app.post('/api', user_controller.createUser);
+    app.get('/api/chat/:user1&:user2', chatController.findChat);
+    app.get('/api/:id', userController.findOneUser);
+
+    app.post('/api', userController.createUser);
+    app.post('/api/:id', userController.findMatches);
+
+    app.post('/api/chat', chatController.createConversation);
+
+    app.put('/api/chat/:user1&:user2', chatController.updateChat);
+
+    app.delete('/api/chat/:id', function (req, res) {
+        var ChatInx = req.params.id;
+        Conversation.findByIdAndRemove(ChatInx, function (err, chat) {
+            if (!err) {
+                res.json({message: 'Successfully deleted', id: chat._id});
+            } else {
+                res.sendStatus(404);
+            }
+        })
+
+    });
+
+    app.put('/api/:id', userController.updateUser);
 
     app.delete('/api/:id', function(req,res) {
         var UserInx = req.params.id;
@@ -52,6 +69,11 @@ module.exports = function(app) {
         res.render('./pages/friends');
     });
 
+    // messages page
+    app.get('/messages', function(req, res) {
+        res.render('./pages/messages_new');
+    });
+
     // my-profile page
     app.get('/myprofile', function(req, res) {
         res.render('./pages/my-profile');
@@ -63,15 +85,6 @@ module.exports = function(app) {
     });
 
     // route to handle all angular requests
-    app.get('/', user_controller.loadIndex);
+    app.get('/', userController.loadIndex);
 
 };
-
-/*router.get('/profile', auth, ctrlProfile.profileRead);
-
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
-  }
-});*/

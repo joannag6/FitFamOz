@@ -5,7 +5,7 @@
     <% include ../partials/head %>
 </head>
 <body>
-  <% include ../partials/footer%>
+  <% include ../partials/footer %>
   <div id="main-body" ng-app="myApp" ng-controller="IndexCtrl">
     <header>
       <% include ../partials/navbar_nologin%>
@@ -29,12 +29,12 @@
         <% include ../partials/signup2%>
       </div>
 
-      <div ng-if="isProfilePic()">
-        <% include ../partials/uploadprofilepic%>
-      </div>
-
       <div ng-if="isLogIn()">
         <% include ../partials/login%>
+      </div>
+
+      <div ng-if="isProfilePic()">
+        <% include ../partials/uploadprofilepic%>
       </div>
 
     </form>

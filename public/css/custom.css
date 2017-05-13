@@ -61,9 +61,13 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #C05243; /* red */
 }
 
-.dropdown-menu .btn-red:hover, .btn-red:hover {
+.dropdown-menu .btn-red:hover, .btn-red:hover, .added-friend {
   background-color: #994135; /* darker red */
   color: #fff;
+}
+
+.added-friend.remove-friend {
+  background-color: #893a2f; /* darkest red */
 }
 
 .btn-light-blue {
@@ -75,17 +79,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
 }
 
-a .edit-button {
-  color: #5A5C58; /* grey */
-  cursor: pointer;
-  /*float: right;*/
-  position:absolute;
-  right:10px;
-  top: 8px;
-}
-
-.edit-button:hover {
-  color: #484946; /* dark grey */
+.input-group-addon i {
+  font-size: 1.3em;
 }
 
 /* * * * * * * * * * * *
@@ -162,6 +157,15 @@ a .edit-button {
   height: 50px;
   margin: 6px 20px;
   width: 50px;
+}
+
+.profilepic-icon-sm {
+  border: 1px solid rgba(202,220,241, 1); /* light blue */
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 12px;
+  width: 40px;
+  margin-left: 12px;
 }
 
 .profilepic-icon:hover {
@@ -253,9 +257,13 @@ a .edit-button {
 
 .profile-summary .location {
   color: #acadab; /* light ish grey */
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 300;
   text-align: center;
+}
+
+.profile-summary .location.my-profile, .my-profile {
+  font-size: 0.8em;
 }
 
 .profile-summary .action-items {
@@ -267,6 +275,7 @@ a .edit-button {
 
 .profile-summary .row {
   margin: 5px 15px;
+  padding-bottom: 0px;
 }
 
 .profile-details {
@@ -285,18 +294,6 @@ a .edit-button {
 
 .recent-activities .section-name {
   color: #C05243; /* red */
-}
-
-.profilepic a .edit-button {
-  position: absolute;
-  top: -42%;
-  right: 42%;
-  font-size: 3em;
-}
-
-.profile-edit-name {
-  text-align: center;
-  margin: 5px 0px;
 }
 
 #profile-details {
@@ -321,7 +318,7 @@ a .edit-button {
 }
 
 .profile-edit-text {
-  padding: 0px 20px 10px 20px;
+  padding: 0px 15px 10px 15px;
 }
 
 .profile-details ul, .profile-details li {
@@ -352,39 +349,78 @@ a .edit-button {
   margin: 10px 20px;
 }
 
+.activity-name-edit {
+  display: inline;
+  margin: 3px;
+  width: inherit;
+}
+
 .activity-level {
   display: inline-block;
   float: right;
   font-size: 1em;
-  margin: 3px;
+  margin: 10px 15px;
   width: auto;
+}
+
+.add-activity {
+  color: #C05243; /* red */
+  margin-top: -15px;
+  text-align: center;
+}
+
+.add-activity i {
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+.add-activity i:hover {
+  color: #994135; /* darker red */
+}
+
+.delete-activity {
+  cursor: pointer;
+  float: right;
+  margin-top: 8px;
+  margin-right: 3px;
 }
 
 /* * * * * * * * * * * * * * * * *
  *       SIGN UP FORM            *
  * * * * * * * * * * * * * * * * */
 
-#subheading {
-    color: #5A5C58; /* grey */
-    font-size: 1em;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
+#skill-dropdown {
+  float: right;
+  padding-right: 10px;
 }
 
- #signup, #continue, #login {
-   font-size: 1.6em;
-   font-weight: bold;
-   color: #fff;
-   width: 100%;
-   margin-top: 20px;
-   height: 50px;
-   border-radius: 10px;
- }
+#subheading {
+  color: #5A5C58; /* grey */
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
 
- #login-form {
-   padding: 20px 40px;
- }
+#signup, #continue, #login {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+#signupform, #login-form {
+  padding: 20px 40px;
+}
+
+.error-text {
+  font-size: 1em;
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
 
  .signup-form-contents {
    margin: 20px 40px;
@@ -395,18 +431,16 @@ a .edit-button {
  }
 
  #selectboxlabel {
-    color: #5A5C58; /* grey */
-    text-align: center;
+  color: #5A5C58; /* grey */
+  text-align: center;
  }
 
  option {
    text-align: center;
-   font-family: "Helvetica Neue";
-   font-weight: bold;
-   font-size: 15px;
+   font-size: 14px;
    height: 35px;
    padding-top: 7px;
-   color: white;
+   color: #5A5C58;
    border-bottom: solid 1px white;
  }
 
@@ -425,25 +459,13 @@ a .edit-button {
    text-align: center;
  }
 
- .find-sports {
+ .create-profile, .find-sports {
    background-color: rgba(255, 255, 255, 0.8); /* white */
    border-radius: 10px;
    height: 100%;
    margin: 20px 10px;
    min-height: 300px;
-   min-width: 240px;
-   padding-bottom: 0px;
-   padding-left: 0px;
-   padding-right: 0px;
- }
-
- .create-profile {
-   background-color: rgba(255, 255, 255, 0.8); /* white */
-   border-radius: 10px;
-   height: 100%;
-   margin: 20px 10px;
-   min-height: 300px;
-   min-width: 240px;
+   min-width: 390px;
    margin-top: 100px;
    padding-bottom: 0px;
    padding-left: 0px;
@@ -459,10 +481,6 @@ a .edit-button {
   height: 200px;
 }
 
-#signupform i, #login-form i {
-  font-size: 1.3em;
-}
-
 .log-in {
   min-height: 100%;
   margin-top: 200px;
@@ -474,10 +492,10 @@ a .edit-button {
 }
 
 .input-group-addon.upload-pic {
-  border: 1px solid rgb(204,204,204);
   border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
   overflow: hidden;
-  padding: 40px;
+  padding: 10px;
   position: relative;
 }
 
@@ -498,9 +516,46 @@ a .edit-button {
 }
 
 .thumbnail {
-  height: 100px;
+  height: 200px;
   margin: 0 auto;
-  width: 100px;
+  padding: 0px;
+  width: 200px;
+}
+
+.facebook {
+  min-height: 100px;
+}
+
+.facebook-login {
+  background-color: #4267b2;
+  color: #fff;
+  display: block;
+  margin: 5px auto;
+ }
+
+.facebook-login:hover {
+  color: #fff;
+ }
+
+.facebook-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.google-login {
+  background-color: #db4437;
+  color: #fff;
+  display: block;
+  margin: 5px auto;
+}
+
+.google-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.google-login:hover {
+  color: #fff;
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -580,15 +635,44 @@ a .edit-button {
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
+.match-toggle-container {
+  margin: 10px 0px;
+}
 
- .match-profile-name {
-   color: #C05243; /* red */
-   font-size: 16px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 10px;
- }
+.match-toggle-container toggle {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+#match-toggle-text {
+  display: inline-block;
+  font-size: 2.1em;
+  margin: 6px 0px;
+  vertical-align: middle;
+}
+
+.toggle-on.btn, .toggle-off.btn {
+  background-color: #126BAB; /* blue */
+}
+
+.toggle-on.btn:hover, .toggle-off.btn:hover {
+  background-color: #0e5385; /* darker blue */
+}
+
+.no-matches-message {
+  font-size: 1.5em;
+  margin: 100px;
+}
+
+.match-profile-name {
+  color: #C05243; /* red */
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
 
 .profile-view img {
    border: 5px solid #C05243; /* red */
@@ -599,28 +683,30 @@ a .edit-button {
    margin-top: 30px;
  }
 
- .profile-view {
-   color: #C05243; /* red */
-   font-size: 14px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 20px;
- }
+.profile-view {
+  color: #C05243; /* red */
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+}
 
- .profile-view .action-items {
-   bottom: 0;
-   position: absolute;
-   width: 100%;
- }
+.profile-view .action-items {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
 
- .match-profile-summary {
-   font-size: 12px;
-   color: black;
-   font-weight: normal;
-   padding-bottom: 10px;
-   text-align: left;
- }
+.match-profile-summary {
+  font-size: 13px;
+  color: black;
+  font-weight: normal;
+  text-align: left;
+  max-height: 55px;
+  min-height: 55px;
+  overflow: hidden;
+}
 
 #profile-view {
   background-color: rgba(255, 255, 255, 0.8); /* white */
@@ -646,7 +732,6 @@ a .edit-button {
 #matches-btn {
   font-size: 16px;
   margin-top: 15px;
-  padding-bottom: 20px;
   color: white;
   width: 100%;
 }
@@ -671,6 +756,14 @@ a .edit-button {
 #search-friend-bar {
   padding-left: 250px;
 
+}
+
+#no-friends {
+  color: #5A5C58;
+  display: block;
+  margin-right: 50px;
+  margin-top: 120px;
+  font-size: 1.3em;
 }
 
 #view-btn {

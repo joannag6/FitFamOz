@@ -1,23 +1,30 @@
 var mongoose = require('mongoose');
+
+var activitiesSchema = mongoose.Schema({
+    name : String,
+    level : String
+});
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var userSchema = mongoose.Schema({
-    // userID : String,
+    _id : {
+      type: String,
+      index: {
+        unique: true,
+        required: true
+      }
+    },
     firstName : String,
     lastName : String,
-    email: {
-      type: String,
-      index: { unique: true,
-        required: true }
-    },
-    password : String,
     dob : Date,
+    aboutMe : String,
     location : String,
-    activities : [String],
-    friends : [String],
-    hash: String,
-    salt: String
+    picUrl : String,
+    activities : [activitiesSchema],
+    friends : [this]
+    // hash: String,
+    // salt: String
 });
 
 
@@ -42,6 +49,7 @@ userSchema.methods.generateJwt = function() {
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET");
 }*/
+
 // define our user model
 // module.exports allows us to pass this to other files when it is called
 module.exports = mongoose.model('User', userSchema);

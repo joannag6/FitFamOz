@@ -5,32 +5,50 @@
     <% include ../partials/head %>
     <% include ../partials/footer%>
   </head>
-  <body id="matches">
+  <body id="matches" ng-app="myApp" ng-controller="MyProfileCtrl">
       <header>
           <% include ../partials/navbar_login%>
       </header>
 
-      <div class="container" ng-app="myApp" ng-controller="MyProfileCtrl">
+      <div class="container">
         <div class="row">
           <div class="col-sm-3 profile-summary">
             <div class="profilepic">
-              <img src="img/profilepic.jpg" alt="pp">
-              <a><i ng-if="editMode" class="material-icons big edit-button">mode_edit</i></a>
+              <img ng-src="{{ currUser.picUrl }}" alt="profilepic">
             </div>
             <div class="profile-name">
-              <span ng-if="!editMode">John Smith</span>
-              <div class="row profile-edit-text" ng-if="editMode">
+              <span ng-if="!editMode">{{ currUser.firstName + " " + currUser.lastName }}</span>
+              <div class="input-group profile-edit-text" ng-if="editMode">
+                <span class="input-group-addon"><i class="material-icons">person</i></span>
                 <input
+                  id="firstname"
                   type="text"
-                  class="form-control profile-edit-name"
-                  placeholder="First Name"
-                  ng-model="thisUser.firstName"
+                  class="form-control"
+                  name="firstname"
+                  placeholder="First name"
+                  ng-model="currUser.firstName"
                   required>
                 <input
+                  id="lastname"
                   type="text"
-                  class="form-control profile-edit-name"
-                  placeholder="Last Name"
-                  ng-model="thisUser.lastName"
+                  class="form-control"
+                  name="lastname"
+                  placeholder="Last name"
+                  ng-model="currUser.lastName"
+                  required>
+              </div>
+              <div class="location my-profile" ng-if="!editMode">
+                <i class="material-icons my-profile">location_on</i> {{ currUser.location }}
+              </div>
+              <div class="input-group profile-edit-text" ng-if="editMode">
+                <span class="input-group-addon"><i class="material-icons">location_on</i></span>
+                <input
+                  id="location"
+                  type="text"
+                  class="form-control"
+                  name="location"
+                  placeholder="Suburb"
+                  ng-model="currUser.location"
                   required>
               </div>
             </div>
@@ -54,30 +72,45 @@
 
               <div class="profile-details-section">
                 <div class="section-title">About Me</div>
-                <div ng-if="!editMode" class="profile-details-text"> {{thisUser.aboutMe}}
+                <div ng-if="!editMode" class="profile-details-text"> {{ currUser.aboutMe }}
                 </div>
                 <div class="profile-edit-text" ng-if="editMode">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Write something about yourself!"
-                    ng-model="thisUser.aboutMe">
+                    ng-model="currUser.aboutMe">
                 </div>
               </div>
               <div class="profile-details-section"><div class="section-title">Activities</div>
                 <ul>
-                  <div ng-repeat="activity in myActivities">
+                  <div ng-repeat="activity in currUser.activities">
                     <li>
-                      <span class="activity-name">{{ activity.name }}</span>
-                      <!-- <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span> -->
+                      <span class="activity-name" ng-if="!editMode">{{ activity.name }}</span>
+                      <input
+                        type="text"
+                        class="form-control activity-name-edit"
+                        placeholder="Activity Name"
+                        ng-if="editMode"
+                        ng-model="activity.name"
+                        required>
+                      <span class="activity-level" ng-if="!editMode">{{ activity.level }}</span>
+                      <i class="material-icons delete-activity"
+                        ng-if="editMode"
+                        ng-click="deleteActivity($index)">clear
+                      </i>
                       <select class="form-control activity-level"
-                        ng-disabled="!editMode"
+                        ng-if="editMode"
                         ng-model="activity.level"
-                        ng-options="level for level in activityLevels">
+                        ng-options="level for level in activityLevels"
+                        ng-style="{ margin: '3px' }">
                       </select>
                     </li>
                   </div>
                 </ul>
+                <div class="add-activity" ng-if="editMode">
+                  <i class="material-icons" ng-if="editMode" ng-click="addActivity()">add_circle</i>
+                </div>
               </div>
 
             </form>
@@ -86,10 +119,10 @@
           <div class="col-sm-3 recent-activities">
             <div class="section-name">Available Times
             </div>
-            <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
+            <!-- <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
              disable-prev-days
              show-days-in-month=42>
-            </mp-calendar>
+            </mp-calendar> -->
           </div>
         </div>
       </div>

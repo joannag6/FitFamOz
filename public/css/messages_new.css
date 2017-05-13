@@ -197,7 +197,7 @@ body {
 .container .right {
   position: relative;
   float: left;
-  width: 62.4%;
+  width: 50%;
   height: 100%;
 }
 .container .right .top {
@@ -344,7 +344,7 @@ body {
 }
 .container .right .write .write-link.send:before {
   display: inline-block;
-  float: left;
+  float: right;
   width: 20px;
   height: 42px;
   margin-left: 11px;

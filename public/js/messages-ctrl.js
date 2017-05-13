@@ -84,6 +84,31 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         }
     };
 
+    $scope.lastMessages= [
+        {
+            created: "02/04/2017",
+            text: "Hello there. My name is ..."
+        },
+        {
+            created: "02/04/2017",
+            text: "Hello there2. My name is ..."
+        },
+        {
+            created: "02/04/2017",
+            text: "Hello there3. My name is ..."
+        },
+        {
+            created: "02/04/2017",
+            text: "Hello there4. My name is ..."
+        }
+    ]
+
+    $scope.openChat = 0;
+
+    $scope.toggleOpenChat = function (index) {
+        $scope.openChat = index;
+    }
+
     $scope.fetchChatWindow = function () {
         var chat = function () {
             Conversation.showChat({user1: id1, user2: id2}, function (data) {
@@ -93,7 +118,30 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
             });
         };
         $scope.curMessages = chat.convo;
+        $scope.curMessages = [
+            {
+                author: "you",
+                created: "02/04/2017",
+                text: "Hello there. My name is ..."
+            },
+            {
+                author: "me",
+                created: "02/04/2017",
+                text: "Hello there2. My name is ..."
+            },
+            {
+                author: "you",
+                created: "02/04/2017",
+                text: "Hello there3. My name is ..."
+            },
+            {
+                author: "me",
+                created: "02/04/2017",
+                text: "Hello there4. My name is ..."
+            }
+        ];
     };
+
 
     $scope.updateChat = function (new_msg) {
         $scope.curMessages.push(new_msg);

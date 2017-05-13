@@ -76,12 +76,7 @@ var findMatches = function(req,res){
         .where("_id").ne(userID)
         .exec(function(err,users){
           if(!err){
-            if (users.length > 0) {
-              res.send(users);
-            } else {
-              console.log("No matches found");
-              res.sendStatus(404);
-            }
+            res.send(users);
           }else{
             console.log(err);
             res.sendStatus(400);

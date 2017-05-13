@@ -50,6 +50,13 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
   };
 
   $scope.matchLocation = true;
+  $scope.otherQuery = "";
+
+  $scope.toggleMatch = function() {
+    $scope.matchLocation = !$scope.matchLocation;
+    $scope.getMatches();
+    $scope.otherQuery = "";
+  }
 
   $scope.getMatches = function() {
     var query = {};
@@ -60,14 +67,12 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     }
     User.showMatches({ id: $scope.currUserID }, query, function(data) {
         $scope.users = data;
+        if ($scope.users.length == 0) {
+          // No matches found
+          $scope.otherQuery = $scope.matchLocation ? "activities" : "location";
+        }
       }, function(err) {
         console.log(err);
-        if (err.status == 404) {
-          // No matches found
-          var otherQuery = $scope.matchLocation ? "activities" : "location";
-          $scope.errMessage = "No matches found, try matching based on "+ otherQuery +"?";
-          console.log($scope.errMessage);
-        }
     });
   };
 

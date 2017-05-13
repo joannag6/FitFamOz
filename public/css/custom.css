@@ -619,6 +619,11 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
+.no-matches-message {
+  font-size: 1.5em;
+  margin: 100px;
+}
+
  .match-profile-name {
    color: #C05243; /* red */
    font-size: 16px;

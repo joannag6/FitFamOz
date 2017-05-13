@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "bootstrap": "latest",
-    "font-awsome": "latest",
+    "font-awesome": "latest",
     "angular": "latest",
     "angular-route": "latest",
-    "chat-window": "^0.4.10"
+    "mp-calendar": "latest"
   }
 }

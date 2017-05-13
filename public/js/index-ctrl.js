@@ -122,7 +122,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
             return $scope.chosenActivities;
           }
         }
-        $scope.chosenActivities.push({name: activity});
+        $scope.chosenActivities.push({name: activity, skill_level: 'Low'});
         console.log("ADDED ACTIVITY");
   };
 

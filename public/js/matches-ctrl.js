@@ -1,6 +1,6 @@
 var myApp = angular.module("myApp");
 
-myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
+myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
 
   // Load the FB SDK asynchronously
   (function(d, s, id) {
@@ -49,10 +49,35 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
+  $scope.$storage = $localStorage.$default({
+    matchType: true // default to location
+  });
+
+  $scope.otherQuery = "";
+
+  $scope.toggleMatchButton = function() {
+    $scope.getMatches();
+    $scope.otherQuery = "";
+  }
+
+  $scope.toggleMatch = function() {
+    $scope.$storage.matchType = !$scope.$storage.matchType;
+    $scope.toggleMatchButton();
+  }
+
   $scope.getMatches = function() {
-    User.showMatches({ id: $scope.currUserID }, { location: $scope.currUser.location }, function(data) {
+    var query = {};
+    if ($scope.$storage.matchType) {
+      query = {location: $scope.currUser.location};
+    } else {
+      query = {activities: $scope.currUser.activities};
+    }
+    User.showMatches({ id: $scope.currUserID }, query, function(data) {
         $scope.users = data;
-        console.log(data);
+        if ($scope.users.length == 0) {
+          // No matches found
+          $scope.otherQuery = $scope.$storage.matchType ? "activities" : "location";
+        }
       }, function(err) {
         console.log(err);
     });
@@ -101,4 +126,4 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
       }
     }
   };
-}]);
+});

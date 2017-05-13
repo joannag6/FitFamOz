@@ -635,14 +635,44 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
- .match-profile-name {
-   color: #C05243; /* red */
-   font-size: 16px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 10px;
- }
+.match-toggle-container {
+  margin: 10px 0px;
+}
+
+.match-toggle-container toggle {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+#match-toggle-text {
+  display: inline-block;
+  font-size: 2.1em;
+  margin: 6px 0px;
+  vertical-align: middle;
+}
+
+.toggle-on.btn, .toggle-off.btn {
+  background-color: #126BAB; /* blue */
+}
+
+.toggle-on.btn:hover, .toggle-off.btn:hover {
+  background-color: #0e5385; /* darker blue */
+}
+
+.no-matches-message {
+  font-size: 1.5em;
+  margin: 100px;
+}
+
+.match-profile-name {
+  color: #C05243; /* red */
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
 
 .profile-view img {
    border: 5px solid #C05243; /* red */
@@ -653,30 +683,30 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
    margin-top: 30px;
  }
 
- .profile-view {
-   color: #C05243; /* red */
-   font-size: 14px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 20px;
- }
+.profile-view {
+  color: #C05243; /* red */
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+}
 
- .profile-view .action-items {
-   bottom: 0;
-   position: absolute;
-   width: 100%;
- }
+.profile-view .action-items {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
 
- .match-profile-summary {
-   font-size: 13px;
-   color: black;
-   font-weight: normal;
-   text-align: left;
-   max-height: 55px;
-   min-height: 55px;
-   overflow: hidden;
- }
+.match-profile-summary {
+  font-size: 13px;
+  color: black;
+  font-weight: normal;
+  text-align: left;
+  max-height: 55px;
+  min-height: 55px;
+  overflow: hidden;
+}
 
 #profile-view {
   background-color: rgba(255, 255, 255, 0.8); /* white */

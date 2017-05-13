@@ -1,1 +1,1 @@
-var myApp = angular.module("myApp", ["ngResource"]);
+var myApp = angular.module("myApp", ["ngResource", "ngStorage"]);

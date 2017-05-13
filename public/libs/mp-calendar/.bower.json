@@ -1,7 +1,7 @@
 {
   "name": "mp-calendar",
   "description": "A simple calendar web components",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "homepage": "http://minas.pachnis.com",
   "authors": [
     "Minas Pachnis <minas@bugeffect.com>"
@@ -28,14 +28,13 @@
     "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
-  "_release": "0.1.2",
+  "_release": "0.1.4",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.2",
-    "commit": "68787ac95eff06f1d136f10fa1a84dd06d5b72fa"
+    "tag": "v0.1.4",
+    "commit": "d5d983590e4e612fd3ef261527687fa74126385d"
   },
   "_source": "https://github.com/mpachnis/mp-calendar.git",
-  "_target": "^0.1.2",
-  "_originalSource": "mp-calendar",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "mp-calendar"
 }

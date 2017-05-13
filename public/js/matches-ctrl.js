@@ -59,6 +59,7 @@ myApp.controller("MatchesCtrl", ["$scope", "User", function($scope, User) {
   $scope.getMatches = function() {
     User.showMatches({ id: $scope.currUserID }, { location: $scope.currUser.location }, function(data) {
         $scope.users = data;
+        console.log(data);
       }, function(err) {
         console.log(err);
     });

@@ -168,6 +168,15 @@ a .edit-button {
   width: 50px;
 }
 
+.profilepic-icon-sm {
+  border: 1px solid rgba(202,220,241, 1); /* light blue */
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 12px;
+  width: 40px;
+  margin-left: 12px;
+}
+
 .profilepic-icon:hover {
   border-color: #994135; /* darker red */
 }

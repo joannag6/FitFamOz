@@ -79,17 +79,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
 }
 
-a .edit-button {
-  color: #5A5C58; /* grey */
-  cursor: pointer;
-  /*float: right;*/
-  position:absolute;
-  right:10px;
-  top: 8px;
-}
-
-.edit-button:hover {
-  color: #484946; /* dark grey */
+.input-group-addon i {
+  font-size: 1.3em;
 }
 
 /* * * * * * * * * * * *
@@ -266,9 +257,13 @@ a .edit-button {
 
 .profile-summary .location {
   color: #acadab; /* light ish grey */
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 300;
   text-align: center;
+}
+
+.profile-summary .location.my-profile, .my-profile {
+  font-size: 0.8em;
 }
 
 .profile-summary .action-items {
@@ -280,6 +275,7 @@ a .edit-button {
 
 .profile-summary .row {
   margin: 5px 15px;
+  padding-bottom: 0px;
 }
 
 .profile-details {
@@ -298,18 +294,6 @@ a .edit-button {
 
 .recent-activities .section-name {
   color: #C05243; /* red */
-}
-
-.profilepic a .edit-button {
-  position: absolute;
-  top: -42%;
-  right: 42%;
-  font-size: 3em;
-}
-
-.profile-edit-name {
-  text-align: center;
-  margin: 5px 0px;
 }
 
 #profile-details {
@@ -334,7 +318,7 @@ a .edit-button {
 }
 
 .profile-edit-text {
-  padding: 0px 20px 10px 20px;
+  padding: 0px 15px 10px 15px;
 }
 
 .profile-details ul, .profile-details li {
@@ -365,12 +349,40 @@ a .edit-button {
   margin: 10px 20px;
 }
 
+.activity-name-edit {
+  display: inline;
+  margin: 3px;
+  width: inherit;
+}
+
 .activity-level {
   display: inline-block;
   float: right;
   font-size: 1em;
-  margin: 3px;
+  margin: 10px 15px;
   width: auto;
+}
+
+.add-activity {
+  color: #C05243; /* red */
+  margin-top: -15px;
+  text-align: center;
+}
+
+.add-activity i {
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+.add-activity i:hover {
+  color: #994135; /* darker red */
+}
+
+.delete-activity {
+  cursor: pointer;
+  float: right;
+  margin-top: 8px;
+  margin-right: 3px;
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -467,10 +479,6 @@ a .edit-button {
   background-color: #126BAB; /* blue */
   border-radius: 15px;
   height: 200px;
-}
-
-#signupform i, #login-form i {
-  font-size: 1.3em;
 }
 
 .log-in {

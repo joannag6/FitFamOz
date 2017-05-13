@@ -30,6 +30,7 @@ var updateUser = function(req,res){
   User.update({_id: req.params.id}, {
     "firstName":req.body.firstName,
     "lastName":req.body.lastName,
+    "location":req.body.location,
     "activities":req.body.activities,
     "aboutMe":req.body.aboutMe,
     "friends":req.body.friends

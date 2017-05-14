@@ -11,19 +11,19 @@ module.exports = function(app) {
     //api routes
 
     //routes for User model
-    app.post('/api', userController.createUser);
-    app.get('/api', userController.findAllUsers);
-    app.get('/api/:id', userController.findOneUser);
-    app.post('/api/:id', userController.findMatches);
-    app.put('/api/:id', userController.updateUser);
-    app.delete('/api/:id', userController.deleteUser);
+    app.post('/user', userController.createUser);
+    app.get('/user', userController.findAllUsers);
+    app.get('/user/:id', userController.findOneUser);
+    app.post('/user/:id', userController.findMatches);
+    app.put('/user/:id', userController.updateUser);
+    app.delete('/user/:id', userController.deleteUser);
 
     //routes for Conversation model
-    app.get('/api/chat', chatController.findAllChats);
-    app.get('/api/chat/:user1&:user2', chatController.findChat);
-    app.post('/api/chat', chatController.createConversation);
-    app.put('/api/chat/:user1&:user2', chatController.updateChat);
-    app.delete('/api/chat/:id', function (req, res) {
+    app.get('/chat', chatController.findAllChats);
+    app.get('/chat/:user1&:user2', chatController.findChat);
+    app.post('/chat', chatController.createConversation);
+    app.put('/chat/:user1&:user2', chatController.updateChat);
+    app.delete('/chat/:id', function (req, res) {
         var ChatInx = req.params.id;
         Conversation.findByIdAndRemove(ChatInx, function (err, chat) {
             if (!err) {

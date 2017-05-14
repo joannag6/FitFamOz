@@ -11,20 +11,19 @@ module.exports = function(app) {
     // authentication routes
 
     //api routes
-    app.get('/api', userController.findAllUsers);
 
-    app.get('/api/chat', chatController.findAllChats);
-
-    app.get('/api/chat/:user1&:user2', chatController.findChat);
-    app.get('/api/:id', userController.findOneUser);
-
+    // For User CRUD
     app.post('/api', userController.createUser);
+    app.get('/api', userController.findAllUsers);
+    app.get('/api/:id', userController.findOneUser);
     app.post('/api/:id', userController.findMatches);
+    app.put('/api/:id', userController.updateUser);
+    app.delete('/api/:id', userController.deleleUser);
 
     app.post('/api/chat', chatController.createConversation);
-
+    app.get('/api/chat', chatController.findAllChats);
+    app.get('/api/chat/:user1&:user2', chatController.findChat);
     app.put('/api/chat/:user1&:user2', chatController.updateChat);
-
     app.delete('/api/chat/:id', function (req, res) {
         var ChatInx = req.params.id;
         Conversation.findByIdAndRemove(ChatInx, function (err, chat) {
@@ -35,19 +34,6 @@ module.exports = function(app) {
             }
         })
 
-    });
-
-    app.put('/api/:id', userController.updateUser);
-
-    app.delete('/api/:id', function(req,res) {
-        var UserInx = req.params.id;
-        User.findByIdAndRemove(UserInx, function (err, user) {
-            if (!err) {
-                res.json({message: 'Successfully deleted', id: user.userID});
-            } else {
-                res.sendStatus(404);
-            }
-        })
     });
 
     // frontend routes =========================================================

@@ -57,7 +57,7 @@ var findAllUsers = function(req,res){
 var findOneUser = function(req,res){
   var UserInx = req.params.id;
   User.findById(UserInx,function(err,user){
-    if(!err){
+    if(!err && user){
       console.log(user);
       res.send(user);
     }else{
@@ -93,12 +93,7 @@ var findMatches = function(req,res){
         .where("_id").ne(userID)
         .exec(function(err,users){
           if(!err){
-            if (users.length > 0) {
-              res.send(users);
-            } else {
-              console.log("No matches found");
-              res.sendStatus(404);
-            }
+            res.send(users);
           }else{
             console.log(err);
             res.sendStatus(400);
@@ -107,17 +102,37 @@ var findMatches = function(req,res){
   }
 };
 
-// var deleteUser = function(req,res){
-//     var UserInx = req.params.id;
-//     User.findByIdAndRemove(UserInx,function(err,user){
-//         if(!err){
-//             res.json({ message: 'Successfully deleted', id: user.userID});
-//         }else{
-//             res.sendStatus(404);
-//         }
-//     });
-//
-// };
+var deleteUser = function(req,res){
+    var userID = req.params.id;
+    // Remove from friend lists of every user.
+    User.find()
+        .where('friends._id').equals(userID)
+        .exec(function(err, users) {
+          if (!err) {
+            console.log(users.length);
+            users.forEach(function(user) {
+              for (var i=0; i<user.friends.length; i++) {
+                if (user.friends[i]._id == userID) {
+                  user.friends.splice(i, 1);
+                  break;
+                }
+              }
+              user.save();
+            });
+          } else {
+            console.log(err);
+          }
+        });
+
+    User.findByIdAndRemove(userID,function(err,user){
+      if (!err) {
+        res.json({ message: 'Successfully deleted', id: user.userID });
+      } else {
+        res.sendStatus(404);
+      }
+    });
+
+};
 
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
@@ -125,7 +140,7 @@ module.exports.findAllUsers = findAllUsers;
 module.exports.findOneUser = findOneUser;
 module.exports.findMatches = findMatches;
 module.exports.loadIndex = loadIndex;
-// module.exports.deleleUser = deleteUser;
+module.exports.deleleUser = deleteUser;
 
 /*module.exports.profileRead = function(req, res) {
 

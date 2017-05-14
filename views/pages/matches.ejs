@@ -15,7 +15,17 @@
 
       <!-- Sidebar filter -->
       <div class="container col-lg-4" id="sidebar-filter">
-        <h4>FILTERS</h4>
+        <div class="match-toggle-container">
+          <div id="match-toggle-text">MY MATCHES</div>
+          <toggle ng-model="$storage.matchType"
+                  ng-change="toggleMatchButton()"
+                  on="Location"
+                  off="Activities"
+                  onstyle="btn-primary"
+                  offstyle="btn-primary">
+          </toggle>
+        </div>
+        <h4>Filters</h4>
         <form class="form-horizontal">
           <div class="form-group row">
             <div class="form-inline col-xs-7">
@@ -54,6 +64,11 @@
 
       <!-- Matches -->
       <div class="container col-lg-8" id="profile-view-content">
+        <div class="no-matches-message" ng-if="otherQuery">
+          {{ "No matches found, try matching based on " }}
+           <a ng-click="toggleMatch()">{{ otherQuery }}</a>
+          {{ "?" }}
+        </div>
         <div ng-repeat="user in users">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div>

@@ -6,6 +6,7 @@
     "font-awesome": "latest",
     "angular": "latest",
     "angular-route": "latest",
-    "mp-calendar": "latest"
+    "mp-calendar": "^0.1.4",
+    "angular-bootstrap-toggle": "^0.1.2"
   }
 }

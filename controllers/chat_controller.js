@@ -43,6 +43,7 @@ var updateChat = function(req, res) {
 
     Conversation.findOne(query,function(err,conversation){
         if(!err){
+            console.log("updating chat");
             conversation.convo = req.body.convo;
             conversation.save(function (err) {
                 if (err){

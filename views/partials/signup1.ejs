@@ -22,10 +22,10 @@
                 <span id="skill-dropdown">
                   <select
                     ng-if="checked"
-                    ng-init="skill_level='Low'"
-                    ng-change="assignLevel(activity, skill_level)"
-                    ng-model="skill_level"
-                    ng-options="item for item in levels"
+                    ng-init="level='Low'"
+                    ng-change="assignLevel(activity, level)"
+                    ng-model="level"
+                    ng-options="level for level in levels"
                     required></select>
                 </span>
               </label>

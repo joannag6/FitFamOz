@@ -62,6 +62,11 @@
                   <span>Save Changes</span>
                 </a>
               </div>
+              <div class="row">
+                <a class="btn btn-red" ng-if="!editMode" ng-click="deleteAccount()">
+                  <span>Delete Account</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -119,10 +124,10 @@
           <div class="col-sm-3 recent-activities">
             <div class="section-name">Available Times
             </div>
-            <!-- <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
+            <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
              disable-prev-days
              show-days-in-month=42>
-            </mp-calendar> -->
+            </mp-calendar>
           </div>
         </div>
       </div>

@@ -45,7 +45,8 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
       $scope.currUser = data;
       console.log($scope.currUser);
     }, function(err) {
-      console.log(err);
+      console.log("User not logged in to app");
+      window.location.href = '/';
     });
   };
 
@@ -77,5 +78,22 @@ myApp.controller("MyProfileCtrl", ["$scope", "User", function($scope, User) {
         console.log(err);
         window.alert("Error updating profile!");
     });
+  };
+
+  $scope.deleteAccount = function() {
+    if (window.confirm("Are you sure you want to delete your account? (Cannot be undone)")) {
+      User.delete(
+        { id: $scope.currAuth.userID },
+        function(data) {
+          console.log(data);
+          FB.logout(function(response) {
+            console.log(response);
+            window.location.href = '/';
+          });
+        }, function(err) {
+          console.log(err);
+          window.alert("Error deleting account.");
+      });
+    }
   };
 }]);

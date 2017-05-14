@@ -11,22 +11,12 @@ module.exports = function(app) {
     //api routes
 
     //routes for User model
+    app.post('/api', userController.createUser);
     app.get('/api', userController.findAllUsers);
     app.get('/api/:id', userController.findOneUser);
-    app.post('/api', userController.createUser);
     app.post('/api/:id', userController.findMatches);
     app.put('/api/:id', userController.updateUser);
-
-    app.delete('/api/:id', function(req,res) {
-        var UserInx = req.params.id;
-        User.findByIdAndRemove(UserInx, function (err, user) {
-            if (!err) {
-                res.json({message: 'Successfully deleted', id: user.userID});
-            } else {
-                res.sendStatus(404);
-            }
-        })
-    });
+    app.delete('/api/:id', userController.deleteUser);
 
     //routes for Conversation model
     app.get('/api/chat', chatController.findAllChats);

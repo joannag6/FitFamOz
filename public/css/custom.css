@@ -632,6 +632,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #337ab7;
 }
 
+.funkyradio label:hover {
+  color: #126BAB;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */

@@ -169,6 +169,13 @@
                             <div class="section-name">Details
                             </div>
                             <br>
+                            <div class="section-details">
+                              {{ user.aboutMe }}
+                            </div>
+                            <table style="width:100%;">
+                              <th style="float:left;width:50%;">Activites</th>
+                              <th style="float:right;width:50%;">Skill Level</th>
+                            </table>
                             <table style="width:100%;" ng-repeat="activity in user.activities">
                               <tr>
                                 <td style="float:left;width:50%;">{{ activity.name }}</td>

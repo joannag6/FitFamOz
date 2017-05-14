@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<nav class="navbar navbar-default bg-faded">
+<nav class="navbar navbar-default bg-faded" ng-controller="NavbarCtrl" style="margin-bottom: 0;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -42,14 +42,14 @@
                      role="button"
                      aria-haspopup="true"
                      aria-expanded="false">
-                      <img class="profilepic-icon" src="./img/profilepic.jpg" alt="pp">
+                      <img class="profilepic-icon" ng-src="{{ currUser.picUrl }}" alt="profile pic">
                   </a>
                   <ul class="dropdown-menu">
                       <li><a href="/myprofile" class="btn btn-red">Edit Your Profile</a> </li>
                       <li><a href="/myprofile" class="btn btn-red">Preferences</a></li>
                       <li><a href="/about" class="btn btn-red">About Us</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="/" class="btn btn-blue">Sign Out</a></li>
+                      <li><a class="btn btn-blue" ng-click="logOut()">Sign Out</a></li>
                   </ul>
               </li>
             </ul>

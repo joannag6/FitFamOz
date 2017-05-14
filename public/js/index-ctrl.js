@@ -56,7 +56,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
 
   };
 
-  $scope.loginUser = function() {
+  $scope.FBLoginUser = function() {
     FB.login(function(response){
       $scope.checkLoginState();
     });
@@ -122,7 +122,7 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
             return $scope.chosenActivities;
           }
         }
-        $scope.chosenActivities.push({name: activity});
+        $scope.chosenActivities.push({name: activity, skill_level: 'Low'});
         console.log("ADDED ACTIVITY");
   };
 
@@ -184,12 +184,20 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
   };
 
   $scope.nextPage = function() {
-    if ($scope.currPage == "index") {
+    if ($scope.currPage == "index" || $scope.currPage == "login") {
       $scope.currPage = "signup1";
     } else if ($scope.currPage == "signup1") {
-      $scope.currPage = "signup2";
+      if ($scope.chosenActivities.length < 1) {
+        window.alert("Have to select at least one activity.");
+      } else {
+        $scope.currPage = "signup2";
+      }
     } else if ($scope.currPage == "signup2") {
-      $scope.currPage = "profilepic";
+      if (!signupform.checkValidity()) {
+        window.alert("Have to fill up every field with valid inputs.");
+      } else {
+        $scope.currPage = "profilepic";
+      }
     }
   };
 

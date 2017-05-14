@@ -79,17 +79,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
 }
 
-a .edit-button {
-  color: #5A5C58; /* grey */
-  cursor: pointer;
-  /*float: right;*/
-  position:absolute;
-  right:10px;
-  top: 8px;
-}
-
-.edit-button:hover {
-  color: #484946; /* dark grey */
+.input-group-addon i {
+  font-size: 1.3em;
 }
 
 /* * * * * * * * * * * *
@@ -166,6 +157,15 @@ a .edit-button {
   height: 50px;
   margin: 6px 20px;
   width: 50px;
+}
+
+.profilepic-icon-sm {
+  border: 1px solid rgba(202,220,241, 1); /* light blue */
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 12px;
+  width: 40px;
+  margin-left: 12px;
 }
 
 .profilepic-icon:hover {
@@ -257,9 +257,13 @@ a .edit-button {
 
 .profile-summary .location {
   color: #acadab; /* light ish grey */
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 300;
   text-align: center;
+}
+
+.profile-summary .location.my-profile, .my-profile {
+  font-size: 0.8em;
 }
 
 .profile-summary .action-items {
@@ -271,6 +275,7 @@ a .edit-button {
 
 .profile-summary .row {
   margin: 5px 15px;
+  padding-bottom: 0px;
 }
 
 .profile-details {
@@ -289,18 +294,6 @@ a .edit-button {
 
 .recent-activities .section-name {
   color: #C05243; /* red */
-}
-
-.profilepic a .edit-button {
-  position: absolute;
-  top: -42%;
-  right: 42%;
-  font-size: 3em;
-}
-
-.profile-edit-name {
-  text-align: center;
-  margin: 5px 0px;
 }
 
 #profile-details {
@@ -325,7 +318,7 @@ a .edit-button {
 }
 
 .profile-edit-text {
-  padding: 0px 20px 10px 20px;
+  padding: 0px 15px 10px 15px;
 }
 
 .profile-details ul, .profile-details li {
@@ -356,12 +349,40 @@ a .edit-button {
   margin: 10px 20px;
 }
 
+.activity-name-edit {
+  display: inline;
+  margin: 3px;
+  width: inherit;
+}
+
 .activity-level {
   display: inline-block;
   float: right;
   font-size: 1em;
-  margin: 3px;
+  margin: 10px 15px;
   width: auto;
+}
+
+.add-activity {
+  color: #C05243; /* red */
+  margin-top: -15px;
+  text-align: center;
+}
+
+.add-activity i {
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+.add-activity i:hover {
+  color: #994135; /* darker red */
+}
+
+.delete-activity {
+  cursor: pointer;
+  float: right;
+  margin-top: 8px;
+  margin-right: 3px;
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -374,26 +395,32 @@ a .edit-button {
 }
 
 #subheading {
-    color: #5A5C58; /* grey */
-    font-size: 1em;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
+  color: #5A5C58; /* grey */
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
 }
 
- #signup, #continue, #login {
-   font-size: 1.6em;
-   font-weight: bold;
-   color: #fff;
-   width: 100%;
-   margin-top: 20px;
-   height: 50px;
-   border-radius: 10px;
- }
+#signup, #continue, #login {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fff;
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 10px;
+}
 
- #signupform, #login-form {
-   padding: 20px 40px;
- }
+#signupform, #login-form {
+  padding: 20px 40px;
+}
+
+.error-text {
+  font-size: 1em;
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
 
  .signup-form-contents {
    margin: 20px 40px;
@@ -410,12 +437,10 @@ a .edit-button {
 
  option {
    text-align: center;
-   font-family: "Helvetica Neue";
-   font-weight: bold;
-   font-size: 15px;
+   font-size: 14px;
    height: 35px;
    padding-top: 7px;
-   color: white;
+   color: #5A5C58;
    border-bottom: solid 1px white;
  }
 
@@ -454,10 +479,6 @@ a .edit-button {
   background-color: #126BAB; /* blue */
   border-radius: 15px;
   height: 200px;
-}
-
-#signupform i, #login-form i {
-  font-size: 1.3em;
 }
 
 .log-in {
@@ -509,7 +530,7 @@ a .edit-button {
   background-color: #4267b2;
   color: #fff;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
  }
 
 .facebook-login:hover {
@@ -519,6 +540,22 @@ a .edit-button {
 .facebook-icon {
   vertical-align: middle;
   margin-right: 10px;
+}
+
+.google-login {
+  background-color: #db4437;
+  color: #fff;
+  display: block;
+  margin: 5px auto;
+}
+
+.google-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.google-login:hover {
+  color: #fff;
 }
 
 /* * * * * * * * * * * * * * * * *
@@ -595,50 +632,86 @@ a .edit-button {
   background-color: #337ab7;
 }
 
+.funkyradio label:hover {
+  color: #126BAB;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
+.match-toggle-container {
+  margin: 10px 0px;
+}
 
- .match-profile-name {
-   color: #C05243; /* red */
-   font-size: 16px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 10px;
- }
+.match-toggle-container toggle {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+}
+
+#match-toggle-text {
+  display: inline-block;
+  font-size: 2.1em;
+  margin: 6px 0px;
+  vertical-align: middle;
+}
+
+.toggle-on.btn, .toggle-off.btn {
+  background-color: #126BAB; /* blue */
+}
+
+.toggle-on.btn:hover, .toggle-off.btn:hover {
+  background-color: #0e5385; /* darker blue */
+}
+
+.no-matches-message {
+  font-size: 1.5em;
+  margin: 100px;
+}
+
+.match-profile-name {
+  color: #C05243; /* red */
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
 
 .profile-view img {
    border: 5px solid #C05243; /* red */
    border-radius: 100px;
+   cursor: pointer;
    display: block;
    height: 100px;
    margin: 0 auto;
    margin-top: 30px;
  }
 
- .profile-view {
-   color: #C05243; /* red */
-   font-size: 14px;
-   font-weight: bold;
-   margin: 10px;
-   text-align: center;
-   padding-bottom: 20px;
- }
+.profile-view {
+  color: #C05243; /* red */
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+}
 
- .profile-view .action-items {
-   bottom: 0;
-   position: absolute;
-   width: 100%;
- }
+.profile-view .action-items {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
 
- .match-profile-summary {
-   font-size: 12px;
-   color: black;
-   font-weight: normal;
-   padding-bottom: 10px;
-   text-align: left;
- }
+.match-profile-summary {
+  font-size: 13px;
+  color: black;
+  font-weight: normal;
+  text-align: left;
+  max-height: 55px;
+  min-height: 55px;
+  overflow: hidden;
+}
 
 #profile-view {
   background-color: rgba(255, 255, 255, 0.8); /* white */

@@ -1,10 +1,12 @@
 {
-	"name": "angular",
-	"version": "1.0.0",
-	"dependencies": {
-		"bootstrap": "latest",
-		"font-awsome": "latest",
-		"angular": "latest",
-		"angular-route": "latest"	
-	}
+  "name": "angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "mp-calendar": "^0.1.4",
+    "angular-bootstrap-toggle": "^0.1.2"
+  }
 }

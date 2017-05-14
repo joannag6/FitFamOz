@@ -11,6 +11,7 @@ var createConversation = function(req,res){
         "user2" : req.body.user2,
         "convo" : req.body.convo
     });
+    console.log(conversation);
     conversation.save(function(err,newConvo){
         if(err){
             console.log(err.errmsg);
@@ -42,6 +43,7 @@ var updateChat = function(req, res) {
 
     Conversation.findOne(query,function(err,conversation){
         if(!err){
+            console.log("updating chat");
             conversation.convo = req.body.convo;
             conversation.save(function (err) {
                 if (err){

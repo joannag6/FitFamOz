@@ -20,8 +20,9 @@
                 ng-change="chooseActivity(activity)"/> <!-- is id necessary? -->
               <label for="{{ 'checkbox-' + $index }}">{{ activity }}
                 <span id="skill-dropdown">
-                  <select 
+                  <select
                     ng-if="checked"
+                    ng-init="skill_level='Low'"
                     ng-change="assignLevel(activity, skill_level)"
                     ng-model="skill_level"
                     ng-options="item for item in levels"

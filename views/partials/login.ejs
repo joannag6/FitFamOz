@@ -1,32 +1,69 @@
-<div class="container">
+<head>
+  <meta name="google-signin-client_id" content="1003741852857-k6metff6h6978bmjked4od77cdc577bc.apps.googleusercontent.com">
+</head>
+<div class="container" ng-controller="NavbarCtrl">
   <div class="row">
 
     <div class="col-sm-4 col-sm-push-4 log-in">
       <div class="section-name">
         <i class="material-icons back-button" ng-click="prevPage()">chevron_left</i>
-        <span>FitFamOz</span>
+        <span>Already signed up?</span>
       </div>
 
-      <form action="" method="" id="login-form">
+      <div class="signup-form-contents">
 
-        <div class="input-group">
-          <span class="input-group-addon"><i class="material-icons">email</i></span>
-          <input id="email" type="text" class="form-control" name="email" placeholder="Email address">
+        <div class="btn facebook-login" ng-click="loginUser()">
+          <i class="fa fa-facebook-square facebook-icon" aria-hidden="true"></i>
+          Log In with Facebook
         </div>
 
-        <div class="input-group">
-          <span class="input-group-addon"><i class="material-icons">lock</i></span>
-          <input id="password" type="password" class="form-control" name="password" placeholder="Enter password">
+        <div class="btn google-login" data-onsuccess="onSignIn">
+          <i class="fa fa-google-plus google-icon" aria-hidden="true"></i>
+          Log In with Google
+        </div>
+      </br>
+        <div ng-if="errorMsg">
+          <div class="error-text">
+            {{ $scope.errorMsg }}
+          </div>
+          <a ng-click="nextPage()" class="btn btn-red">Sign Up</a>
         </div>
 
-        <div class="form-group">
-          <a href="/matches" id="login" class="btn btn-red">Log In</a>
-        </div>
-
-    </form>
+    </div>
     </div>
 
 
 
   </div>
 </div>
+
+<script>
+  function renderButton() {
+    gapi.signin2.render('g-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+  }
+
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
+
+  function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
+
+  function onFailure(error) {
+    console.log(error);
+  }
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>

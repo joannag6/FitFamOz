@@ -632,6 +632,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: #337ab7;
 }
 
+.funkyradio label:hover {
+  color: #126BAB;
+}
+
 /* * * * * * * * * * * * * * * * *
  *       MATCHES                *
  * * * * * * * * * * * * * * * * */
@@ -677,6 +681,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .profile-view img {
    border: 5px solid #C05243; /* red */
    border-radius: 100px;
+   cursor: pointer;
    display: block;
    height: 100px;
    margin: 0 auto;

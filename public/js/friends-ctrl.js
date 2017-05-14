@@ -1,7 +1,6 @@
 var myApp = angular.module("myApp");
 
 myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
-
   // This is called with the results from from FB.getLoginStatus().
   $scope.statusChangeCallback = function(response) {
     // The response object is returned with a status field that lets the
@@ -55,11 +54,43 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
-      $scope.friends = $scope.currUser.friends;
-      console.log($scope.friends);
+      if ($scope.currUser.friends.length > 0) {
+        User.showMatches({id: $scope.currUser._id }, { idList: $scope.currUser.friends }, function(data) {
+          $scope.friends = data;
+          console.log($scope.friends);
+        }, function(err) {
+          console.log(err);
+        });
+      } else {
+        $scope.friends = [];
+      }
     }, function(err) {
       console.log(err);
     });
-  }
+  };
+
+  $scope.removeFriend = function(user) {
+    if (!window.confirm("Are you sure you want to remove "+ user.firstName + " as a friend?")) {
+      return;
+    }
+    var friends = $scope.friends;
+    for (var i=0; i<friends.length; i++) {
+      if (friends[i]._id == user._id) {
+        friends.splice(i, 1);
+        friends.filter(a => a._id);
+        $scope.currUser.friends = friends;
+
+        User.update(
+          { id: $scope.currUser._id },
+          $scope.currUser,
+          function(data) {
+            console.log(data);
+          }, function(err) {
+            console.log(err);
+            window.alert("Error removing friend");
+        });
+      }
+    }
+  };
 
 }]);

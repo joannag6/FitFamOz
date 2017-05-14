@@ -95,14 +95,4 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
       }
     }
   };
-
-  // $scope.searchQuery = "";
-
-  // $scope.keyPressed = function(e) {
-  //   if (e.keyCode <= 90 && e.keyCode >= 65) {
-  //     $scope.searchQuery += e.key;
-  //     $scope.friends.filter()
-  //     console.log($scope.searchQuery);
-  //   }
-  // };
 }]);

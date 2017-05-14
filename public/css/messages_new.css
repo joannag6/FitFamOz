@@ -217,16 +217,15 @@ body {
 }
 .container .right .chat {
   position: relative;
-  display: none;
-  overflow: hidden;
   padding: 0 35px 92px;
   border-width: 1px 1px 1px 0;
   border-style: solid;
   border-color: #e6e6e6;
-  height: -moz-calc(100% - 48px);
+  /*height: -moz-calc(100% - 48px);
   height: -webkit-calc(100% - 48px);
   height: -o-calc(100% - 48px);
-  height: calc(100% - 48px);
+  height: calc(100% - 48px);*/
+  height: 80%;
   -webkit-justify-content: flex-end;
   justify-content: flex-end;
   -webkit-flex-direction: column;
@@ -234,8 +233,7 @@ body {
 }
 .container .right .chat.active-chat {
   display: block;
-  display: -webkit-flex;
-  display: flex;
+  overflow-y: auto;
 }
 .container .right .chat.active-chat .bubble {
   -moz-transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);

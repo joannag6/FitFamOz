@@ -71,7 +71,7 @@ module.exports = function(app) {
 
     // messages page
     app.get('/messages', function(req, res) {
-        res.render('./pages/messages_new');
+        res.render('./pages/messages');
     });
 
     // my-profile page

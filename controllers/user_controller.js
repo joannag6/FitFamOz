@@ -107,17 +107,6 @@ var findMatches = function(req,res){
   }
 };
 
-// var deleteUser = function(req,res){
-//     var UserInx = req.params.id;
-//     User.findByIdAndRemove(UserInx,function(err,user){
-//         if(!err){
-//             res.json({ message: 'Successfully deleted', id: user.userID});
-//         }else{
-//             res.sendStatus(404);
-//         }
-//     });
-//
-// };
 
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;

@@ -69,14 +69,21 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         if ($scope.friends){
             $scope.friends.forEach(function (friend) {
                 messages = function () {
-                    Conversation.showChat({user1: "10212775626446865", user2: friend._id}, function(data) {
-                        messages = data.convo;
+                    Chat.showChat({user1: "10212775626446865", user2: friend._id}, function(data) {
+                        if(data){
+                            messages = data.convo;
+                        }
+                        else{
+                            $scope.firstTimeChat = true;
+                        }
                     }, function (err) {
                         console.log(err);
                     });
                 };
-                messages.reverse();
-                $scope.lastMessages.push(messages[0]);
+                if(!$scope.firstTimeChat){
+                    messages.reverse();
+                    $scope.lastMessages.push(messages[0]);
+                }
             });
         }
     };
@@ -101,74 +108,29 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
     ]
 
     $scope.openChat = 0;
+    $scope.firstTimeChat = false;
 
     $scope.fetchChatWindow = function (friendID) {
         var chat = function () {
-            Conversation.showChat({user1: id1, user2: friendID}, function (data) {
+            Chat.showChat({user1: id1, user2: friendID}, function (data) {
                 chat = data;
             }, function (err) {
                 console.log(err);
             });
         };
-        // $scope.curMessages = chat.convo;
-        // $scope.curMessages = [
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there. My name is ..."
-        //     },
-        //     {
-        //         author: "me",
-        //         created: "02/04/2017",
-        //         text: "Hello there2. My name is ..."
-        //     },
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there3. My name is ..."
-        //     },
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there. My name is ..."
-        //     },
-        //     {
-        //         author: "me",
-        //         created: "02/04/2017",
-        //         text: "Hello there2. My name is ..."
-        //     },
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there3. My name is ..."
-        //     },
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there. My name is ..."
-        //     },
-        //     {
-        //         author: "me",
-        //         created: "02/04/2017",
-        //         text: "Hello there2. My name is ..."
-        //     },
-        //     {
-        //         author: "you",
-        //         created: "02/04/2017",
-        //         text: "Hello there3. My name is ..."
-        //     },
-        //     {
-        //         author: "me",
-        //         created: "02/04/2017",
-        //         text: "Hello there4. My name is ..."
-        //     }
-        // ];
+        if (chat){
+            $scope.curMessages = chat.convo;
+        }
+        else{
+            $scope.firstTimeChat = true;
+        }
     };
 
     $scope.toggleOpenChat = function (index) {
         $scope.openChat = index;
         $scope.friendID = $scope.friends[$scope.openChat]._id;
-        $scope.fetchChatWindow(friendID);
+        console.log("fetching chat history!");
+        $scope.fetchChatWindow($scope.friendID);
         $scope.updateChat();
     }
 
@@ -201,13 +163,20 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
     }
 
     $scope.updateChat = function () {
-        console.log("updating chat");
         var updated_convo = {
             user1: $scope.currUserID,
             user2: $scope.friendID,
             convo: $scope.curMessages
         }
-        Conversation.update({user1: $scope.currUserID, user2: $scope.friendID}, updated_convo);
+        if (!$scope.firstTimeChat){
+            console.log("updating chat");
+            Chat.update({user1: $scope.currUserID, user2: $scope.friendID}, updated_convo);
+        }
+        else{
+            console.log("creating chat");
+            Chat.create(updated_convo);
+        }
+
         $scope.curMessages = [];
     }
 }]);

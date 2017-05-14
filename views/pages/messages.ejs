@@ -5,7 +5,7 @@
 <head>
     <title>Your Messages</title>
     <% include ../partials/head %>
-    <link rel="stylesheet" href="/css/messages_new.css">
+    <link rel="stylesheet" href="/css/messages.css">
     <link rel="stylesheet" href="/css/reset.css">
 </head>
 
@@ -23,7 +23,7 @@
                     <input type="text" placeholder="search chat history"/>
                     <a href="javascript:;" class="search"></a>
                 </div>
-                
+
                 <ul class="people" ng-repeat="friend in friends">
                     <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
                         <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />

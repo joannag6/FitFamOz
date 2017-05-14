@@ -59,7 +59,13 @@
         <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
           <div class="form-inline">
             <i class="material-icons search-icon">search</i>&nbsp
-            <input class="form-control" type="text" placeholder="Search a friend" id="search-friend">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Search a friend"
+              id="search-friend"
+              ng-model="searchText.fullName">
+              <!-- ng-keydown="keyPressed($event)"> -->
           </div>
         </div>
 
@@ -68,7 +74,7 @@
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
-        <div ng-repeat="friend in friends">
+        <div ng-repeat="friend in friends | filter:searchText">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div data-toggle="modal" data-target="{{ '#friendprofile' + $index }}">
                 <img ng-src="{{ friend.picUrl }}" alt="profile pic">

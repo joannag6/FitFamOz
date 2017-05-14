@@ -57,6 +57,9 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
       if ($scope.currUser.friends.length > 0) {
         User.showMatches({id: $scope.currUser._id }, { idList: $scope.currUser.friends }, function(data) {
           $scope.friends = data;
+          $scope.friends.forEach(function(f) {
+            f.fullName = f.firstName + f.lastName;
+          })
           console.log($scope.friends);
         }, function(err) {
           console.log(err);
@@ -93,4 +96,13 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     }
   };
 
+  // $scope.searchQuery = "";
+
+  // $scope.keyPressed = function(e) {
+  //   if (e.keyCode <= 90 && e.keyCode >= 65) {
+  //     $scope.searchQuery += e.key;
+  //     $scope.friends.filter()
+  //     console.log($scope.searchQuery);
+  //   }
+  // };
 }]);

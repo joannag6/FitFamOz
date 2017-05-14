@@ -54,9 +54,16 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
-      $scope.currUserID = data._id;
-      $scope.friends = $scope.currUser.friends;
-      console.log($scope.friends);
+      if ($scope.currUser.friends.length > 0) {
+        User.showMatches({id: $scope.currUser._id }, { idList: $scope.currUser.friends }, function(data) {
+          $scope.friends = data;
+          console.log($scope.friends);
+        }, function(err) {
+          console.log(err);
+        });
+      } else {
+        $scope.friends = [];
+      }
     }, function(err) {
       console.log(err);
     });
@@ -70,10 +77,11 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     for (var i=0; i<friends.length; i++) {
       if (friends[i]._id == user._id) {
         friends.splice(i, 1);
+        friends.filter(a => a._id);
         $scope.currUser.friends = friends;
 
         User.update(
-          { id: $scope.currUserID },
+          { id: $scope.currUser._id },
           $scope.currUser,
           function(data) {
             console.log(data);

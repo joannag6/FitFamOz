@@ -87,7 +87,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     if (!$scope.friends)
       return false;
     for (var i=0; i<$scope.friends.length; i++) {
-      if ($scope.friends[i]._id == user._id) {
+      if ($scope.friends[i] == user._id) {
         return true;
       }
     }
@@ -95,7 +95,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
   };
 
   $scope.addFriend = function(user) {
-    var newFriends = $scope.friends.push(user);
+    var newFriends = $scope.friends.push(user._id);
     User.update(
       { id: $scope.currUserID },
       $scope.currUser,
@@ -110,7 +110,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
   $scope.removeFriend = function(user) {
     var friends = $scope.friends;
     for (var i=0; i<friends.length; i++) {
-      if (friends[i]._id == user._id) {
+      if (friends[i] == user._id) {
         friends.splice(i, 1);
         $scope.currUser.friends = friends;
 
@@ -123,6 +123,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
             console.log(err);
             window.alert("Error removing friend");
         });
+        break;
       }
     }
   };

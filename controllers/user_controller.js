@@ -61,6 +61,8 @@ var findOneUser = function(req,res){
       console.log(user);
       res.send(user);
     }else{
+      console.log("fk");
+      console.log(err);
       res.sendStatus(404);
     }
   });
@@ -69,11 +71,24 @@ var findOneUser = function(req,res){
 var findMatches = function(req,res){
   var userID = req.params.id;
   var userLocation = req.body.location;
+  var idList = req.body.idList;
 
   if (userLocation) {
     // Find location regardless of case
     User.find({location: {'$regex': userLocation,$options:'i'}})
         .where("_id").ne(userID)
+        .exec(function(err,users){
+          if(!err){
+            res.send(users);
+          }else{
+            console.log(err);
+            res.sendStatus(400);
+          }
+        });
+  } else if (idList) {
+    User.find()
+        .where('_id')
+        .in(idList)
         .exec(function(err,users){
           if(!err){
             res.send(users);
@@ -93,12 +108,7 @@ var findMatches = function(req,res){
         .where("_id").ne(userID)
         .exec(function(err,users){
           if(!err){
-            if (users.length > 0) {
-              res.send(users);
-            } else {
-              console.log("No matches found");
-              res.sendStatus(404);
-            }
+            res.send(users);
           }else{
             console.log(err);
             res.sendStatus(400);

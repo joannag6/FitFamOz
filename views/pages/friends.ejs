@@ -121,7 +121,7 @@
                               <a href="#" class="btn btn-blue"><i class="material-icons">message</i> Message {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
-                              <a href="#" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
+                              <a ng-click="removeFriend(friend)" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
                               <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"

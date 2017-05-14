@@ -54,11 +54,35 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
+      $scope.currUserID = data._id;
       $scope.friends = $scope.currUser.friends;
       console.log($scope.friends);
     }, function(err) {
       console.log(err);
     });
-  }
+  };
+
+  $scope.removeFriend = function(user) {
+    if (!window.confirm("Are you sure you want to remove "+ user.firstName + " as a friend?")) {
+      return;
+    }
+    var friends = $scope.friends;
+    for (var i=0; i<friends.length; i++) {
+      if (friends[i]._id == user._id) {
+        friends.splice(i, 1);
+        $scope.currUser.friends = friends;
+
+        User.update(
+          { id: $scope.currUserID },
+          $scope.currUser,
+          function(data) {
+            console.log(data);
+          }, function(err) {
+            console.log(err);
+            window.alert("Error removing friend");
+        });
+      }
+    }
+  };
 
 }]);

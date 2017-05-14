@@ -95,4 +95,30 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
       }
     }
   };
+/*
+  //Client-side pagination example
+  $scope.currentPage = 0;
+  $scope.pageSize = 10;
+  $scope.totalPages = 0;
+  $scope.pagedData = [];
+
+  $scope.pageButtonDisabled = function(dir) {
+    if (dir == -1) {
+    return $scope.currentPage == 0;
+    }
+  return $scope.currentPage >= $scope.friends.length/$scope.pageSize - 1;
+  }
+
+  $scope.paginate = function(nextPrevMultiplier) {
+    $scope.currentPage += (nextPrevMultiplier * 1);
+    $scope.pagedData = $scope.friends.slice($scope.currentPage*$scope.pageSize);
+  }
+
+  function init() {
+    $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
+    $scope.pagedData = $scope.friends;
+  }
+
+  init();
+*/
 }]);

@@ -63,14 +63,14 @@
           </div>
         </div>
 
-        <div ng-if="friends.length==[]" id="no-friends">
+        <div ng-if="friends.length==0" id="no-friends">
           You have no friends :(</br>
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
         <div ng-repeat="friend in friends">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-              <div>
+              <div data-toggle="modal" data-target="{{ '#friendprofile' + $index }}">
                 <img ng-src="{{ friend.picUrl }}" alt="profile pic">
               </div>
               <div class="match-profile-name">
@@ -121,7 +121,7 @@
                               <a href="#" class="btn btn-blue"><i class="material-icons">message</i> Message {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
-                              <a href="#" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
+                              <a ng-click="removeFriend(friend)" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
                               <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"

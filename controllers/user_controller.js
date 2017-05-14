@@ -57,10 +57,12 @@ var findAllUsers = function(req,res){
 var findOneUser = function(req,res){
   var UserInx = req.params.id;
   User.findById(UserInx,function(err,user){
-    if(!err){
+    if(!err && user){
       console.log(user);
       res.send(user);
     }else{
+      console.log("fk");
+      console.log(err);
       res.sendStatus(404);
     }
   });
@@ -69,11 +71,13 @@ var findOneUser = function(req,res){
 var findMatches = function(req,res){
   var userID = req.params.id;
   var userLocation = req.body.location;
+  var idList = req.body.idList;
 
-  if (userLocation) {
-    // Find location regardless of case
-    User.find({location: {'$regex': userLocation,$options:'i'}})
-        .where("_id").ne(userID)
+  if (idList) {
+    // Finding friends' info
+    User.find()
+        .where('_id')
+        .in(idList)
         .exec(function(err,users){
           if(!err){
             res.send(users);
@@ -82,6 +86,18 @@ var findMatches = function(req,res){
             res.sendStatus(400);
           }
         });
+  } else if (userLocation) {
+    // Find location regardless of case
+    User.find({location: {'$regex': userLocation,$options:'i'}})
+      .where("_id").ne(userID)
+      .exec(function(err,users){
+        if(!err){
+          res.send(users);
+        }else{
+          console.log(err);
+          res.sendStatus(400);
+        }
+      });
   } else {
     var userActivities = [];
     req.body.activities.forEach(act => userActivities.push(act.name));
@@ -93,12 +109,7 @@ var findMatches = function(req,res){
         .where("_id").ne(userID)
         .exec(function(err,users){
           if(!err){
-            if (users.length > 0) {
-              res.send(users);
-            } else {
-              console.log("No matches found");
-              res.sendStatus(404);
-            }
+            res.send(users);
           }else{
             console.log(err);
             res.sendStatus(400);
@@ -107,17 +118,36 @@ var findMatches = function(req,res){
   }
 };
 
-// var deleteUser = function(req,res){
-//     var UserInx = req.params.id;
-//     User.findByIdAndRemove(UserInx,function(err,user){
-//         if(!err){
-//             res.json({ message: 'Successfully deleted', id: user.userID});
-//         }else{
-//             res.sendStatus(404);
-//         }
-//     });
-//
-// };
+var deleteUser = function(req,res){
+    var userID = req.params.id;
+
+    // Remove from friend lists of every user.
+    User.find({ friends: userID })
+        .exec(function(err, users) {
+          if (!err && users) {
+            users.forEach(function(user) {
+              for (var i=0; i<user.friends.length; i++) {
+                if (user.friends[i] == userID) {
+                  user.friends.splice(i, 1);
+                  break;
+                }
+              }
+              user.save();
+            });
+          } else {
+            console.log(err);
+          }
+        });
+
+    User.findByIdAndRemove(userID,function(err,user){
+      if (!err) {
+        res.send({ message: 'Successfully deleted', id: user.userID });
+      } else {
+        res.sendStatus(404);
+      }
+    });
+
+};
 
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
@@ -125,7 +155,7 @@ module.exports.findAllUsers = findAllUsers;
 module.exports.findOneUser = findOneUser;
 module.exports.findMatches = findMatches;
 module.exports.loadIndex = loadIndex;
-// module.exports.deleleUser = deleteUser;
+module.exports.deleteUser = deleteUser;
 
 /*module.exports.profileRead = function(req, res) {
 

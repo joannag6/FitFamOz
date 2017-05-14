@@ -55,8 +55,9 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   $scope.getCurrUser = function() {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
-      $scope.friends = $scope.currUser.friends;
-      console.log($scope.friends);
+      // call User.getFriends({ ids: $scope.currUser.friends })
+      // $scope.friends = $scope.currUser.friends;
+      // console.log($scope.friends);
     }, function(err) {
       console.log(err);
     });

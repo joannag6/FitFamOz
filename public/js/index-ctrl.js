@@ -122,16 +122,16 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
             return $scope.chosenActivities;
           }
         }
-        $scope.chosenActivities.push({name: activity, skill_level: 'Low'});
+        $scope.chosenActivities.push({name: activity, level: 'Low'});
         console.log("ADDED ACTIVITY");
   };
 
   // assign level to activity in array of objects
-  $scope.assignLevel = function(activity, skill_level) {
+  $scope.assignLevel = function(activity, level) {
     var i;
     for (i=0; i < $scope.chosenActivities.length; i++) {
       if ($scope.chosenActivities[i].name === activity) {
-        $scope.chosenActivities[i].level = skill_level;
+        $scope.chosenActivities[i].level = level;
         console.log("ADDED SKILL LEVEL TO ");
         console.log($scope.chosenActivities[i]);
         return $scope.chosenActivities;

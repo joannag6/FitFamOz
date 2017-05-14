@@ -71,7 +71,7 @@
         </div>
         <div ng-repeat="user in users">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-              <div>
+              <div data-toggle="modal" data-target="{{ '#viewprofile' + $index }}">
                 <img ng-src="{{ user.picUrl }}" alt="profile pic">
               </div>
               <div class="match-profile-name">

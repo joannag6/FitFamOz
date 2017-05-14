@@ -43,7 +43,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
 
     /* Function to get current user's ID. */
     $scope.getCurrUser = function(userID) {
-      User.showOne({ id: "10212775626446865" }, function(data) {
+      User.showOne({ id: userID }, function(data) {
         $scope.currUser = data;
         $scope.currUserID = $scope.currUser._id;
         $scope.friends = $scope.currUser.friends;
@@ -51,15 +51,6 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         console.log(err);
       });
     };
-
-    // $scope.curUser = function() {
-    //     User.showOne({id: id1}, function(data) {
-    //         $scope.curUser = data;
-    //         $scope.friends = $scope.curUser.friends;
-    //     }, function (err) {
-    //         console.log(err);
-    //     });
-    // };
 
     $scope.lastMessages = [];
     $scope.curMessages = [];
@@ -69,7 +60,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         if ($scope.friends){
             $scope.friends.forEach(function (friend) {
                 messages = function () {
-                    Chat.showChat({user1: "10212775626446865", user2: friend._id}, function(data) {
+                    Chat.showChat({user1: $scope.currUserID, user2: friend._id}, function(data) {
                         if(data){
                             messages = data.convo;
                         }
@@ -112,7 +103,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
 
     $scope.fetchChatWindow = function (friendID) {
         var chat = function () {
-            Chat.showChat({user1: id1, user2: friendID}, function (data) {
+            Chat.showChat({user1: $scope.currUserID, user2: friendID}, function (data) {
                 chat = data;
             }, function (err) {
                 console.log(err);

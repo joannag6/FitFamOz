@@ -34,12 +34,6 @@ html, body {
   position:relative;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 0ba5cadda24e4c8f78b0003f4fca18245a95d6d4
 .row-center {
   text-align:center;
 }
@@ -49,24 +43,12 @@ html, body {
   float:none;
 }
 
-=======
-<<<<<<< HEAD
->>>>>>> Friends
-=======
->>>>>>> 0ba5cadda24e4c8f78b0003f4fca18245a95d6d4
 th {
   color:#5A5C58; /* grey */
   text-align: center;
   font-size: 16px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8a95bf74c1ed93ef3ac16692f608bd9fc3525d41
->>>>>>> Friends
-=======
->>>>>>> 8a95bf74c1ed93ef3ac16692f608bd9fc3525d41
->>>>>>> 0ba5cadda24e4c8f78b0003f4fca18245a95d6d4
+
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */

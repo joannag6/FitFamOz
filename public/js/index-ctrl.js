@@ -90,8 +90,11 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
-  /*****************************************************************/
+  /***********************HANDLE GOOGLE LOGIN***********************/
 
+  // Functions moved to navbar-ctrl.js
+
+  /*****************************************************************/
   $scope.currPage = "index";
 
   $scope.activities = [

@@ -88,17 +88,13 @@
            <a ng-click="toggleMatch()">{{ otherQuery }}</a>
           {{ "?" }}
         </div>
-<<<<<<< HEAD
         <div class="no-matches-message" ng-if="filteredUsers.length == 0">
           No matches found matching these filters. Try another filter?
         </div>
-        <div ng-repeat="user in filteredUsers | filter:searchText">
-          <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-=======
+
         <div class="row row-centered">
-          <br>
+        <br>
         <div ng-repeat="user in pagedData | filter:searchText | limitTo:pageSize" class="col-sm-3 col-center profile-view" id="profile-view">
->>>>>>> Friends
               <div data-toggle="modal" data-target="{{ '#viewprofile' + $index }}">
                 <img ng-src="{{ user.picUrl }}" alt="profile pic">
               </div>

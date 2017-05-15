@@ -134,7 +134,6 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     }
   };
 
-<<<<<<< HEAD
   $scope.activityFilters = [ {name: '', level: ''} ];
 
   $scope.addActivityFilterName = function(i, name) {
@@ -194,7 +193,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     });
     console.log($scope.filteredUsers);
   };
-=======
+
   //Client-side pagination example
   $scope.currentPage = 0;
   $scope.pageSize = 6;
@@ -216,5 +215,4 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
              $scope.currentPage*$scope.pageSize + $scope.pageSize);
   };
 
->>>>>>> Friends
 });

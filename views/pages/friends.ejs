@@ -94,8 +94,7 @@
         </div>
 
         <div ng-if="filteredFriends.length==0" id="no-friends">
-          No friends found matching this filter</br>
-          Try another filter!
+          No friends found matching these filters. Try another filter?
         </div>
 
         <div ng-repeat="friend in pagedData | filter:searchText | limitTo:pageSize">

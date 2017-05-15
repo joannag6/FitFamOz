@@ -117,13 +117,16 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     console.log($scope.pagedData);
   };
 
-  // $scope.filters = { activities : [] };
-
   $scope.activityFilters = [ {name: '', level: ''} ];
-  // on click add activity button, push empty activity filter to list.
 
-  $scope.addActivityNameFilter = function(name) {
-    // $scope.filters.activities.push({name: name, level: "Low"});
+  $scope.addActivityNameFilter = function(i, name) {
+    $scope.activityFilters[i].name = name;
+    console.log($scope.activityFilters);
+  };
+
+  $scope.addActivityLevelFilter = function(i, level) {
+    $scope.activityFilters[i].level = level;
+    console.log($scope.activityFilters);
   };
 
   $scope.addActivityFilter = function() {

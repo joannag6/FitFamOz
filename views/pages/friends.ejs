@@ -49,14 +49,14 @@
                 <input class="form-control"
                     type="activities"
                     placeholder="Find an activity"
-                    ng-model="activityFilter.name"
-                    ng-change="addActivityNameFilter(name)">
+                    ng-model="name"
+                    ng-change="addActivityNameFilter($index, name)">
               </div>
               <div class="form-inline col-xs-5">
                 <select class="form-control"
                     id="skill-level"
-                    ng-model="activityFilter.level"
-                    ng-change="addActivityLevelFilter(level)">
+                    ng-model="level"
+                    ng-change="addActivityLevelFilter($index, level)">
                   <option>Low</option>
                   <option>Medium</option>
                   <option>High</option>

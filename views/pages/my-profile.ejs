@@ -11,7 +11,11 @@
       </header>
 
       <div class="container">
-        <div class="row">
+        <div class="loader-container" ng-if="!currUser">
+          <div class="loader profile-page">
+          </div>
+        </div>
+        <div class="row" ng-if="currUser">
           <div class="col-sm-3 profile-summary">
             <div class="profilepic">
               <img ng-src="{{ currUser.picUrl }}" alt="profilepic">

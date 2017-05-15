@@ -60,8 +60,8 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
           $scope.friends.forEach(function(f) {
             f.fullName = f.firstName + f.lastName;
           })
-          console.log($scope.friends);
-
+          $scope.filteredFriends = angular.copy($scope.friends);
+          console.log($scope.filteredFriends);
 
           $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
           $scope.pagedData = $scope.friends;
@@ -108,25 +108,24 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     if (dir == -1) {
       return $scope.currentPage == 0;
     }
-    return $scope.currentPage >= $scope.friends.length/$scope.pageSize - 1;
+    return $scope.currentPage >= $scope.filteredFriends.length/$scope.pageSize - 1;
   };
 
   $scope.paginate = function(nextPrevMultiplier) {
     $scope.currentPage += (nextPrevMultiplier * 1);
-    $scope.pagedData = $scope.friends.slice($scope.currentPage*$scope.pageSize, $scope.currentPage*$scope.pageSize + $scope.pageSize);
-    console.log($scope.pagedData);
+    $scope.pagedData = $scope.filteredFriends.slice($scope.currentPage*$scope.pageSize, $scope.currentPage*$scope.pageSize + $scope.pageSize);
   };
 
   $scope.activityFilters = [ {name: '', level: ''} ];
 
-  $scope.addActivityNameFilter = function(i, name) {
+  $scope.addActivityFilterName = function(i, name) {
     $scope.activityFilters[i].name = name;
-    console.log($scope.activityFilters);
+    $scope.filterActivities();
   };
 
-  $scope.addActivityLevelFilter = function(i, level) {
+  $scope.addActivityFilterLevel = function(i, level) {
     $scope.activityFilters[i].level = level;
-    console.log($scope.activityFilters);
+    $scope.filterActivities();
   };
 
   $scope.addActivityFilter = function() {
@@ -135,22 +134,42 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.delActivityFilter = function(i) {
     $scope.activityFilters.splice(i, 1);
-  }
+  };
 
-  // filter('byactivity', function () {
-  //   return function ($scope.friends, $scope.filters) {
-  //       var users = {
-  //           filters: $scope.filters,
-  //           out: []
-  //       };
-  //       angular.forEach($scope.friends, function (value, key) {
-  //           // if fit in filter -
-  //           if (this.filters[value.filter] === true) {
-  //               this.out.push(value);
-  //           }
-  //       }, users);
-  //       return users.out;
-  //     };
-  //   });
-
+  $scope.filterActivities = function() {
+    console.log("CALLED");
+    var index = 0;
+    $scope.filteredFriends = angular.copy($scope.friends);
+    console.log($scope.filteredFriends);
+    $scope.friends.forEach(function (friend) {
+        // for each activity filter, if not in there, remove from out
+        var found = false;
+        $scope.activityFilters.forEach(function(filter) {
+          found = false;
+          if (!filter.name) {
+            // ignore this filter
+            return;
+          }
+          friend.activities.forEach(function(activity) {
+            if (activity.name.toLowerCase().includes(filter.name.toLowerCase())) {
+              if (!filter.level || activity.level === filter.level) {
+                found = true;
+                return;
+              }
+            }
+          });
+          // at least one filter was not found.
+          if (!found) {
+            $scope.filteredFriends.splice(index, 1);
+            return;
+          }
+        });
+        if (found) {
+          index += 1; // increase index
+        }
+    });
+    console.log($scope.filteredFriends);
+    // Refresh pagination
+    $scope.paginate(0);
+  };
 }]);

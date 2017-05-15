@@ -84,8 +84,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .loader-container {
-  display: block;
-  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 
 .loader {
@@ -99,6 +100,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   margin-top: 70px;
   width: 80px;
   -webkit-animation: spin 2s linear infinite;
+}
+
+.loader.profile-page {
+  margin-right: 0px;
 }
 
 @-webkit-keyframes spin {

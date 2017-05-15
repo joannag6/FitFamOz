@@ -7,25 +7,23 @@ var userController = require('../controllers/user_controller.js');
 module.exports = function(app) {
 
     // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
 
     //api routes
-    app.get('/api', userController.findAllUsers);
 
-    app.get('/api/chat', chatController.findAllChats);
+    //routes for User model
+    app.post('/user', userController.createUser);
+    app.get('/user', userController.findAllUsers);
+    app.get('/user/:id', userController.findOneUser);
+    app.post('/user/:id', userController.findMatches);
+    app.put('/user/:id', userController.updateUser);
+    app.delete('/user/:id', userController.deleteUser);
 
-    app.get('/api/chat/:user1&:user2', chatController.findChat);
-    app.get('/api/:id', userController.findOneUser);
-
-    app.post('/api', userController.createUser);
-    app.post('/api/:id', userController.findMatches);
-
-    app.post('/api/chat', chatController.createConversation);
-
-    app.put('/api/chat/:user1&:user2', chatController.updateChat);
-
-    app.delete('/api/chat/:id', function (req, res) {
+    //routes for Conversation model
+    app.get('/chat', chatController.findAllChats);
+    app.get('/chat/:user1&:user2', chatController.findChat);
+    app.post('/chat', chatController.createConversation);
+    app.put('/chat/:user1&:user2', chatController.updateChat);
+    app.delete('/chat/:id', function (req, res) {
         var ChatInx = req.params.id;
         Conversation.findByIdAndRemove(ChatInx, function (err, chat) {
             if (!err) {
@@ -35,19 +33,6 @@ module.exports = function(app) {
             }
         })
 
-    });
-
-    app.put('/api/:id', userController.updateUser);
-
-    app.delete('/api/:id', function(req,res) {
-        var UserInx = req.params.id;
-        User.findByIdAndRemove(UserInx, function (err, user) {
-            if (!err) {
-                res.json({message: 'Successfully deleted', id: user.userID});
-            } else {
-                res.sendStatus(404);
-            }
-        })
     });
 
     // frontend routes =========================================================
@@ -71,7 +56,7 @@ module.exports = function(app) {
 
     // messages page
     app.get('/messages', function(req, res) {
-        res.render('./pages/messages_new');
+        res.render('./pages/messages');
     });
 
     // my-profile page

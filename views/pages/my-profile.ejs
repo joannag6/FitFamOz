@@ -11,7 +11,11 @@
       </header>
 
       <div class="container">
-        <div class="row">
+        <div class="loader-container" ng-if="!currUser">
+          <div class="loader profile-page">
+          </div>
+        </div>
+        <div class="row" ng-if="currUser">
           <div class="col-sm-3 profile-summary">
             <div class="profilepic">
               <img ng-src="{{ currUser.picUrl }}" alt="profilepic">
@@ -60,6 +64,11 @@
                 </a>
                 <a class="btn btn-red" ng-if="editMode" ng-click="saveChanges()">
                   <span>Save Changes</span>
+                </a>
+              </div>
+              <div class="row">
+                <a class="btn btn-red" ng-if="!editMode" ng-click="deleteAccount()">
+                  <span>Delete Account</span>
                 </a>
               </div>
             </div>
@@ -119,10 +128,10 @@
           <div class="col-sm-3 recent-activities">
             <div class="section-name">Available Times
             </div>
-            <!-- <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
+            <mp-calendar day-labels='["Su","Mo","Tu","We","Th","Fr","Sa"]'
              disable-prev-days
              show-days-in-month=42>
-            </mp-calendar> -->
+            </mp-calendar>
           </div>
         </div>
       </div>

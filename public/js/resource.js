@@ -1,7 +1,7 @@
 var myApp = angular.module("myApp");
 
 myApp.factory("User", ["$resource", "$http", function($resource, $http) {
-  return $resource("/api/:id", { id: "@_id" },
+  return $resource("/user/:id", { id: "@_id" },
     {
       'create': { method: 'POST' },
       'showAll': { method: 'GET', isArray: true, cache: true },
@@ -14,7 +14,7 @@ myApp.factory("User", ["$resource", "$http", function($resource, $http) {
 }]);
 
 myApp.factory("Chat", ["$resource", "$http", function($resource, $http) {
-    return $resource("/api/chat/:user1&:user2", { user1: "@user1", user2: "@user2" },
+    return $resource("/chat/:user1&:user2", { user1: "@user1", user2: "@user2" },
         {
             'create': { method: 'POST' },
             'showChat': { method: 'GET', isArray: false },

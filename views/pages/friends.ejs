@@ -19,37 +19,52 @@
         <h4>Filters</h4>
         <form class="form-horizontal">
           <div class="form-group row">
-            <div class="form-inline col-xs-7">
+            <div class="form-inline col-xs-12">
               <h5>Location</h5>
-              <input class="form-control" type="text" placeholder="Suburb or Postcode">
-            </div>
-            <div class="form-inline col-xs-3">
-              <h5>Radius</h5>
-              <select class="form-control" id="radius">
-                <option>5 km</option>
-                <option>10 km</option>
-                <option>15 km</option>
-                <option>30 km</option>
-              </select>
+              <input class="form-control"
+                  type="text"
+                  placeholder="Find in Suburb"
+                  ng-model="searchText.location">
+              <i class="material-icons delete-activity-filter"
+                ng-click="searchText.location = '';">clear
+              </i>
             </div>
           </div>
-          <div class="form-group row" id="activity">
-            <div class="form-inline col-xs-7">
-              <h5>Activites</h5>
-              <input class="form-control" type="activities" placeholder="Find an activity">
+            <div class="form-inline col-xs-7 filter-headings">
+              <h5>Activities</h5>
             </div>
-            <div class="form-inline col-xs-3">
+            <div class="form-inline col-xs-5">
               <h5>Skill Level</h5>
-              <select class="form-control" id="skill-level">
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-              </select>
-              <br><br>
             </div>
-          </div>
-          <button type="button" class="btn btn-blue" id="matches-btn">
+            <div class="form-group row"
+                id="activity"
+                ng-repeat="activityFilter in activityFilters">
+              <div class="form-inline col-xs-7">
+                <input class="form-control"
+                    type="activities"
+                    placeholder="Find an activity"
+                    ng-model="name"
+                    ng-change="addActivityFilterName($index, name)">
+              </div>
+              <div class="form-inline col-xs-5">
+                <select class="form-control"
+                    id="skill-level"
+                    ng-model="level"
+                    ng-change="addActivityFilterLevel($index, level)">
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+                <i class="material-icons delete-activity-filter"
+                  ng-click="delActivityFilter($index)">clear
+                </i>
+                <br><br>
+              </div>
+            </div>
+
+          <button type="button" class="btn btn-blue" id="matches-btn" ng-click="addActivityFilter()">
           <i class="material-icons">add_circle_outline</i> Add an activity</button>
+
         </form>
       </div>
 
@@ -59,18 +74,32 @@
         <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
           <div class="form-inline">
             <i class="material-icons search-icon">search</i>&nbsp
-            <input class="form-control" type="text" placeholder="Search a friend" id="search-friend">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Search a friend"
+              id="search-friend"
+              ng-model="searchText.fullName">
           </div>
         </div>
 
-        <div ng-if="friends.length==[]" id="no-friends">
+        <div ng-if="!friends" class="loader-container">
+          <div class="loader">
+          </div>
+        </div>
+
+        <div ng-if="friends.length==0" id="no-friends">
           You have no friends :(</br>
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
-        <div ng-repeat="friend in friends">
+        <div ng-if="filteredFriends.length==0" id="no-friends">
+          No friends found matching these filters. Try another filter?
+        </div>
+
+        <div ng-repeat="friend in pagedData | filter:searchText | limitTo:pageSize">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
-              <div>
+              <div data-toggle="modal" data-target="{{ '#friendprofile' + $index }}">
                 <img ng-src="{{ friend.picUrl }}" alt="profile pic">
               </div>
               <div class="match-profile-name">
@@ -121,7 +150,7 @@
                               <a href="#" class="btn btn-blue"><i class="material-icons">message</i> Message {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
-                              <a href="#" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
+                              <a ng-click="removeFriend(friend)" class="btn btn-red"><i class="material-icons">delete</i> Delete {{ friend.firstName }}</a>
                             </div>
                             <div class="row">
                               <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"
@@ -136,6 +165,13 @@
                           <div class="section-name">Details
                           </div>
                           <br>
+                          <div class="section-details">
+                            {{ friend.aboutMe }}
+                          </div>
+                          <table style="width:100%;">
+                            <th style="float:left;width:50%;">Activites</th>
+                            <th style="float:right;width:50%;">Skill Level</th>
+                          </table>
                           <table style="width:100%;" ng-repeat="activity in friend.activities">
                             <tr>
                               <td style="float:left;width:50%;">{{ activity.name }}</td>
@@ -159,26 +195,10 @@
               </div>
           </div>
         </div>
-
+        <!-- Pagination -->
+        <button ng-if="filteredFriends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
+        <button ng-if="filteredFriends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
       </div>
     </div>
   </body>
-  <script>
-  $(document).ready(function(){
-      $("#matches-btn").click(function(){
-        addAct = `<div class="form-inline col-xs-7">
-          <input class="form-control" type="activities" placeholder="Find an activity">
-        </div>
-        <div class="form-inline col-xs-3">
-          <select class="form-control" id="skill-level">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-          <br><br>
-        </div>`
-          $("#activity").append(addAct);
-      });
-  });
-  </script>
 </html>

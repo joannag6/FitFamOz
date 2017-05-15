@@ -138,7 +138,12 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   };
 
   $scope.delActivityFilter = function(i) {
-    $scope.activityFilters.splice(i, 1);
+    if ($scope.activityFilters.length == 1) {
+      $scope.activityFilters[0] = {name: '', level: '' };
+    } else {
+      $scope.activityFilters.splice(i, 1);
+    }
+    $scope.filterActivities();
   };
 
   $scope.filterActivities = function() {

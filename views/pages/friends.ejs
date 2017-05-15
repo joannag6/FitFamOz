@@ -68,6 +68,11 @@
           </div>
         </div>
 
+        <div ng-if="!friends" class="loader-container">
+          <div class="loader">
+          </div>
+        </div>
+
         <div ng-if="friends.length==0" id="no-friends">
           You have no friends :(</br>
           Try adding friends in the <a href="/matches">Matches</a> page!

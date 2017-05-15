@@ -34,11 +34,29 @@ html, body {
   position:relative;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.row-center {
+  text-align:center;
+}
+
+.col-center {
+  display:inline-block;
+  float:none;
+}
+
+=======
+>>>>>>> Friends
 th {
   color:#5A5C58; /* grey */
   text-align: center;
   font-size: 16px;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> 8a95bf74c1ed93ef3ac16692f608bd9fc3525d41
+>>>>>>> Friends
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
@@ -82,6 +100,15 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 .btn-light-blue:hover {
   background-color: #7191b5; /* lighter blue */
   color: #fff;
+}
+
+.btn-pagination {
+  background-color: #C05243; /* red */
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: 12px solid rgba(255, 255, 255, 0.8); /* white */;
+  border-radius: 10px;
 }
 
 .input-group-addon i {

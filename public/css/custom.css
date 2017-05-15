@@ -853,9 +853,11 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   width: 100%;
 }
 
-#custom-modal-body {
-  max-width: 1024px;
-  min-width: 730px;
+@media screen and (min-width: 730px) {
+  #custom-modal-body {
+    max-width: 1024px;
+    min-width: 730px;
+  }
 }
 
 .space-btn {

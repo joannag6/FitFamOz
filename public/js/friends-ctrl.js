@@ -74,8 +74,6 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     });
   };
 
-  $scope.friends = [];
-
   $scope.removeFriend = function(user) {
     if (!window.confirm("Are you sure you want to remove "+ user.firstName + " as a friend?")) {
       return;

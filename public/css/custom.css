@@ -83,6 +83,34 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   font-size: 1.3em;
 }
 
+.loader-container {
+  display: block;
+  margin: 0 auto;
+}
+
+.loader {
+  animation: spin 2s linear infinite;
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #3498db;
+  display: inline-block;
+  height: 80px;
+  margin-right: 120px;
+  margin-top: 70px;
+  width: 80px;
+  -webkit-animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* * * * * * * * * * * *
  *       NAVBAR        *
  * * * * * * * * * * * */

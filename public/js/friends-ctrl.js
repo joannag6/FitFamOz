@@ -102,7 +102,7 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
 
   //Client-side pagination example
   $scope.currentPage = 0;
-  $scope.pageSize = 2;
+  $scope.pageSize = 3;
   $scope.totalPages = 0;
   $scope.pagedData = [];
 
@@ -115,7 +115,8 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
 
   $scope.paginate = function(nextPrevMultiplier) {
     $scope.currentPage += (nextPrevMultiplier * 1);
-    $scope.pagedData = $scope.friends.slice($scope.currentPage*$scope.pageSize);
+    $scope.pagedData = $scope.friends.slice($scope.currentPage*$scope.pageSize, $scope.currentPage*$scope.pageSize + $scope.pageSize);
+    console.log($scope.pagedData);
   };
 
 }]);

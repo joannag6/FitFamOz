@@ -117,4 +117,40 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     console.log($scope.pagedData);
   };
 
+  $scope.activityFilters = [ {name: '', level: ''} ];
+
+  $scope.addActivityNameFilter = function(i, name) {
+    $scope.activityFilters[i].name = name;
+    console.log($scope.activityFilters);
+  };
+
+  $scope.addActivityLevelFilter = function(i, level) {
+    $scope.activityFilters[i].level = level;
+    console.log($scope.activityFilters);
+  };
+
+  $scope.addActivityFilter = function() {
+    $scope.activityFilters.push({name: '', level: '' });
+  };
+
+  $scope.delActivityFilter = function(i) {
+    $scope.activityFilters.splice(i, 1);
+  }
+
+  // filter('byactivity', function () {
+  //   return function ($scope.friends, $scope.filters) {
+  //       var users = {
+  //           filters: $scope.filters,
+  //           out: []
+  //       };
+  //       angular.forEach($scope.friends, function (value, key) {
+  //           // if fit in filter -
+  //           if (this.filters[value.filter] === true) {
+  //               this.out.push(value);
+  //           }
+  //       }, users);
+  //       return users.out;
+  //     };
+  //   });
+
 }]);

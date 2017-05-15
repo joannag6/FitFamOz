@@ -165,8 +165,8 @@
           </div>
         </div>
         <!-- Pagination -->
-        <button ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
-        <button ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
       </div>
     </div>
   </body>

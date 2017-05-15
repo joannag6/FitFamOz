@@ -757,6 +757,16 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   display: inline-block;
 }
 
+.filter-headings {
+  padding: 0px;
+}
+
+.delete-activity-filter {
+  cursor: pointer;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 #profile-view {
   text-align: center;
 }

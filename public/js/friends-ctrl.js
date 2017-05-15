@@ -55,19 +55,21 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
       if ($scope.currUser.friends.length > 0) {
-        User.showMatches({id: $scope.currUser._id }, { idList: $scope.currUser.friends }, function(data) {
-          $scope.friends = data;
-          $scope.friends.forEach(function(f) {
-            f.fullName = f.firstName + f.lastName;
-          })
-          $scope.filteredFriends = angular.copy($scope.friends);
-          console.log($scope.filteredFriends);
+        User.showMatches(
+          { id: $scope.currUser._id },
+          { idList: $scope.currUser.friends },
+          function(data) {
+            $scope.friends = data;
+            $scope.friends.forEach(function(f) {
+              f.fullName = f.firstName + f.lastName;
+            })
+            $scope.filteredFriends = angular.copy($scope.friends); // deep copy
 
-          $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
-          $scope.pagedData = $scope.friends;
-        }, function(err) {
-          console.log(err);
-        });
+            $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
+            $scope.pagedData = $scope.friends;
+          }, function(err) {
+            console.log(err);
+          });
       }
     }, function(err) {
       console.log(err);
@@ -108,12 +110,15 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     if (dir == -1) {
       return $scope.currentPage == 0;
     }
-    return $scope.currentPage >= $scope.filteredFriends.length/$scope.pageSize - 1;
+    return $scope.currentPage >=
+           $scope.filteredFriends.length/$scope.pageSize - 1;
   };
 
   $scope.paginate = function(nextPrevMultiplier) {
     $scope.currentPage += (nextPrevMultiplier * 1);
-    $scope.pagedData = $scope.filteredFriends.slice($scope.currentPage*$scope.pageSize, $scope.currentPage*$scope.pageSize + $scope.pageSize);
+    $scope.pagedData = $scope.filteredFriends
+      .slice($scope.currentPage*$scope.pageSize,
+             $scope.currentPage*$scope.pageSize + $scope.pageSize);
   };
 
   $scope.activityFilters = [ {name: '', level: ''} ];
@@ -137,10 +142,8 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
   };
 
   $scope.filterActivities = function() {
-    console.log("CALLED");
     var index = 0;
-    $scope.filteredFriends = angular.copy($scope.friends);
-    console.log($scope.filteredFriends);
+    $scope.filteredFriends = angular.copy($scope.friends); // deep copy
     $scope.friends.forEach(function (friend) {
         // for each activity filter, if not in there, remove from out
         var found = false;
@@ -151,7 +154,8 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
             return;
           }
           friend.activities.forEach(function(activity) {
-            if (activity.name.toLowerCase().includes(filter.name.toLowerCase())) {
+            if (activity.name.toLowerCase()
+                .includes(filter.name.toLowerCase())) {
               if (!filter.level || activity.level === filter.level) {
                 found = true;
                 return;
@@ -168,7 +172,6 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
           index += 1; // increase index
         }
     });
-    console.log($scope.filteredFriends);
     // Refresh pagination
     $scope.paginate(0);
   };

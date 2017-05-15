@@ -88,6 +88,15 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
 }
 
+.btn-pagination {
+  background-color: #C05243; /* red */
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: 12px solid rgba(255, 255, 255, 0.8); /* white */;
+  border-radius: 10px;
+}
+
 .input-group-addon i {
   font-size: 1.3em;
 }

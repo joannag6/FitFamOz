@@ -78,6 +78,8 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
           // No matches found
           $scope.otherQuery = $scope.$storage.matchType ? "activities" : "location";
         }
+
+        $scope.filteredUsers = angular.copy($scope.users); // deep copy
       }, function(err) {
         console.log(err);
     });
@@ -126,5 +128,65 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
         break;
       }
     }
+  };
+
+  $scope.activityFilters = [ {name: '', level: ''} ];
+
+  $scope.addActivityFilterName = function(i, name) {
+    $scope.activityFilters[i].name = name;
+    $scope.filterActivities();
+  };
+
+  $scope.addActivityFilterLevel = function(i, level) {
+    $scope.activityFilters[i].level = level;
+    $scope.filterActivities();
+  };
+
+  $scope.addActivityFilter = function() {
+    $scope.activityFilters.push({name: '', level: '' });
+  };
+
+  $scope.delActivityFilter = function(i) {
+    if ($scope.activityFilters.length == 1) {
+      $scope.activityFilters[0] = {name: '', level: '' };
+    } else {
+      $scope.activityFilters.splice(i, 1);
+    }
+    $scope.filterActivities();
+  };
+
+  $scope.filterActivities = function() {
+    var index = 0;
+    $scope.filteredUsers = angular.copy($scope.users); // deep copy
+    console.log($scope.filteredUsers);
+    $scope.users.forEach(function (user) {
+        // for each activity filter, if not in there, remove from out
+        var found = false;
+        $scope.activityFilters.forEach(function(filter) {
+          found = false;
+          if (!filter.name) {
+            // ignore this filter
+            return;
+          }
+          user.activities.forEach(function(activity) {
+            if (activity.name.toLowerCase()
+                .includes(filter.name.toLowerCase())) {
+              if (!filter.level || activity.level === filter.level) {
+                found = true;
+                return;
+              }
+            }
+          });
+          // at least one filter was not found.
+          if (!found) {
+            $scope.filteredUsers.splice(index, 1);
+            return;
+          }
+        });
+        if (found) {
+          index += 1; // increase index
+        }
+    });
+    console.log($scope.filteredUsers);
   };
 });

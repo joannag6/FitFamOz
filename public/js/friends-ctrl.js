@@ -55,19 +55,21 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     User.showOne({ id: $scope.currAuth.userID }, function(data) {
       $scope.currUser = data;
       if ($scope.currUser.friends.length > 0) {
-        User.showMatches({id: $scope.currUser._id }, { idList: $scope.currUser.friends }, function(data) {
-          $scope.friends = data;
-          $scope.friends.forEach(function(f) {
-            f.fullName = f.firstName + f.lastName;
-          })
-          console.log($scope.friends);
+        User.showMatches(
+          { id: $scope.currUser._id },
+          { idList: $scope.currUser.friends },
+          function(data) {
+            $scope.friends = data;
+            $scope.friends.forEach(function(f) {
+              f.fullName = f.firstName + f.lastName;
+            })
+            $scope.filteredFriends = angular.copy($scope.friends); // deep copy
 
-
-          $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
-          $scope.pagedData = $scope.friends;
-        }, function(err) {
-          console.log(err);
-        });
+            $scope.totalPages = Math.ceil($scope.friends.length/$scope.pageSize);
+            $scope.pagedData = $scope.friends;
+          }, function(err) {
+            console.log(err);
+          });
       }
     }, function(err) {
       console.log(err);
@@ -108,13 +110,74 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
     if (dir == -1) {
       return $scope.currentPage == 0;
     }
-    return $scope.currentPage >= $scope.friends.length/$scope.pageSize - 1;
+    return $scope.currentPage >=
+           $scope.filteredFriends.length/$scope.pageSize - 1;
   };
 
   $scope.paginate = function(nextPrevMultiplier) {
     $scope.currentPage += (nextPrevMultiplier * 1);
-    $scope.pagedData = $scope.friends.slice($scope.currentPage*$scope.pageSize, $scope.currentPage*$scope.pageSize + $scope.pageSize);
-    console.log($scope.pagedData);
+    $scope.pagedData = $scope.filteredFriends
+      .slice($scope.currentPage*$scope.pageSize,
+             $scope.currentPage*$scope.pageSize + $scope.pageSize);
   };
 
+  $scope.activityFilters = [ {name: '', level: ''} ];
+
+  $scope.addActivityFilterName = function(i, name) {
+    $scope.activityFilters[i].name = name;
+    $scope.filterActivities();
+  };
+
+  $scope.addActivityFilterLevel = function(i, level) {
+    $scope.activityFilters[i].level = level;
+    $scope.filterActivities();
+  };
+
+  $scope.addActivityFilter = function() {
+    $scope.activityFilters.push({name: '', level: '' });
+  };
+
+  $scope.delActivityFilter = function(i) {
+    if ($scope.activityFilters.length == 1) {
+      $scope.activityFilters[0] = {name: '', level: '' };
+    } else {
+      $scope.activityFilters.splice(i, 1);
+    }
+    $scope.filterActivities();
+  };
+
+  $scope.filterActivities = function() {
+    var index = 0;
+    $scope.filteredFriends = angular.copy($scope.friends); // deep copy
+    $scope.friends.forEach(function (friend) {
+        // for each activity filter, if not in there, remove from out
+        var found = false;
+        $scope.activityFilters.forEach(function(filter) {
+          found = false;
+          if (!filter.name) {
+            // ignore this filter
+            return;
+          }
+          friend.activities.forEach(function(activity) {
+            if (activity.name.toLowerCase()
+                .includes(filter.name.toLowerCase())) {
+              if (!filter.level || activity.level === filter.level) {
+                found = true;
+                return;
+              }
+            }
+          });
+          // at least one filter was not found.
+          if (!found) {
+            $scope.filteredFriends.splice(index, 1);
+            return;
+          }
+        });
+        if (found) {
+          index += 1; // increase index
+        }
+    });
+    // Refresh pagination
+    $scope.paginate(0);
+  };
 }]);

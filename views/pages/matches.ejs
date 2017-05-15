@@ -64,6 +64,10 @@
 
       <!-- Matches -->
       <div class="container col-lg-8" id="profile-view-content">
+        <div ng-if="!users" class="loader-container">
+          <div class="loader">
+          </div>
+        </div>
         <div class="no-matches-message" ng-if="otherQuery">
           {{ "No matches found, try matching based on " }}
            <a ng-click="toggleMatch()">{{ otherQuery }}</a>

@@ -55,6 +55,11 @@
 
       <!-- Friends -->
       <div class="container col-lg-8" id="profile-view-content">
+        <div class="container" style="width: 100%; text-align:center;">
+        <!-- Pagination -->
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
+        </div>
 
         <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
           <div class="form-inline">
@@ -78,8 +83,8 @@
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
-        <div ng-repeat="friend in pagedData | filter:searchText | limitTo:pageSize">
-          <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
+        <div class="row row-centered">
+        <div ng-repeat="friend in pagedData | filter:searchText | limitTo:pageSize" class="col-sm-3 col-center profile-view" id="profile-view">
               <div data-toggle="modal" data-target="{{ '#friendprofile' + $index }}">
                 <img ng-src="{{ friend.picUrl }}" alt="profile pic">
               </div>
@@ -167,11 +172,8 @@
 
                 </div>
               </div>
-          </div>
         </div>
-        <!-- Pagination -->
-        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
-        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
+      </div>
       </div>
     </div>
   </body>

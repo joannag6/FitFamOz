@@ -34,6 +34,11 @@ html, body {
   position:relative;
 }
 
+th {
+  color:#5A5C58; /* grey */
+  text-align: center;
+  font-size: 16px;
+}
 /* * * * * * * * * * * * * *
  *       COMPONENTS        *
  * * * * * * * * * * * * * */
@@ -346,8 +351,18 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .section-title {
-  font-size: 1.2em;
+  font-size: 16px;
   margin: 10px 20px;
+  color: #5A5C58; /* grey */
+}
+
+.section-details {
+  font-size: 14px;
+  color: #126BAB; /* blue */
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  max-height: 100px;
 }
 
 .profile-edit-text {

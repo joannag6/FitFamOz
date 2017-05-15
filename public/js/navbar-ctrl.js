@@ -24,16 +24,25 @@ myApp.controller("NavbarCtrl", ["$scope", "User", function($scope, User) {
               $scope.gmail.username = resp.displayName;
               $scope.gmail.email = resp.emails[0].value;
               //$sceop.g_image = resp.image.url;
+              User.showOne({ id: $scope.newUser.authResp.userID }, function(data) {
+                if (window.location.href.endsWith("3000/") || window.location.href.endsWith(".com/"))
+                  window.location.href = '/matches';
+                $scope.currUser = data;
+              }, function(err) {
+                $scope.errorMsg = "No account found, please sign up.";
+                // include <a>
+              });
             })
           })
         }
       },
       'approvalprompt': 'force',
-      'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+      'scope': 'https://www.googleapis.com/auth/plus.login'
     };
 
     gapi.auth.signIn(params);
   }
+
 
   /**********************************************************************/
   // This is called with the results from from FB.getLoginStatus().

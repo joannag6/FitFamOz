@@ -68,12 +68,17 @@
           </div>
         </div>
 
+        <div ng-if="!friends" class="loader-container">
+          <div class="loader">
+          </div>
+        </div>
+
         <div ng-if="friends.length==0" id="no-friends">
           You have no friends :(</br>
           Try adding friends in the <a href="/matches">Matches</a> page!
         </div>
 
-        <div ng-repeat="friend in friends | filter:searchText | limitTo:pageSize">
+        <div ng-repeat="friend in pagedData | filter:searchText | limitTo:pageSize">
           <div class="col-xs-10 col-sm-3 profile-view" id="profile-view">
               <div data-toggle="modal" data-target="{{ '#friendprofile' + $index }}">
                 <img ng-src="{{ friend.picUrl }}" alt="profile pic">
@@ -171,10 +176,9 @@
               </div>
           </div>
         </div>
-        <!-- Pagination
-        <button ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
-        <button ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
-        -->
+        <!-- Pagination -->
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)">Previous</button>&nbsp;&nbsp;
+        <button ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">Next</button>
       </div>
     </div>
   </body>

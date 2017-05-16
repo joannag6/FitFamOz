@@ -1,7 +1,6 @@
 /****** PLACE YOUR CUSTOM STYLES HERE ******/
 html, body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  height: 100%;
   margin: 0;
 }
 
@@ -24,10 +23,10 @@ html, body {
 }
 
 .material-icons {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .profile-name, .section-name {

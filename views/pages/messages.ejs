@@ -6,7 +6,7 @@
     <title>Your Messages</title>
     <% include ../partials/head %>
     <link rel="stylesheet" href="/css/messages.css">
-    <link rel="stylesheet" href="/css/reset.css">
+    <!-- <link rel="stylesheet" href="/css/reset.css"> -->
 </head>
 
 <body ng-app="myApp" ng-controller="MessagesCtrl">
@@ -15,23 +15,25 @@
     </header>
 
     <!-- main container -->
-    <div class="background main-container" style="margin-top:0; padding-top:0;">
+    <div class="main-container" style="margin-top:0; padding-top:0;">
         <div class="container bootstrap snippet">
             <div class="row" style="padding-top:2em; height:45em; padding-bottom:2em;">
+                <div class="col-md-1"></div>
                 <div class="left col-md-3">
                     <div class="top">
                         <input type="text" placeholder="search chat history"/>
                         <a href="javascript:;" class="search"></a>
                     </div>
-
-                    <ul class="people" ng-repeat="friend in friends">
+                    <div class="chat-list-container">
+                      <ul class="people" ng-repeat="friend in friends">
                         <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
-                            <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
-                            <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
-                            <!-- <span class="time">{{lastMessages[$index].created}}</span> -->
-                            <span class="preview">{{lastMessages[$index].text}}</span>
+                          <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
+                          <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
+                          <!-- <span class="time">{{lastMessages[$index].created}}</span> -->
+                          <span class="preview">{{lastMessages[$index].text}}</span>
                         </li>
-                    </ul>
+                      </ul>
+                    </div>
                 </div>
                 <div class="right col-md-5 bg-lightblue" ng-init="fetchChatWindow()">
                     <div class="top"><span>To: <span class="name">
@@ -58,11 +60,13 @@
 
                     <form class="write" ng-submit="textSubmit()">
                         <a href="javascript:;" class="write-link attach"></a>
-                        <input type="text" ng-model="text" name="text" ng-click="clearText()"/>
+                        <input type="text" ng-model="text" name="text" placeholder="Say something"/>
                         <!-- <a href="javascript:;" class="write-link smiley"></a> -->
                         <a href="javascript:;" class="write-link send"></a>
                     </form>
                 </div>
+                <div class="col-md-1"></div>
+            </div>
         </div>
     </div>
     <span>

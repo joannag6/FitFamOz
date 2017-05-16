@@ -151,7 +151,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         }
     }
 
-    $scope.text = 'type something';
+    $scope.text = '';
 
     $scope.clearText = function () {
         $scope.text = '';

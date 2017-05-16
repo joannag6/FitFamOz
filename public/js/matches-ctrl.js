@@ -74,6 +74,10 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     }
     User.showMatches({ id: $scope.currUserID }, query, function(data) {
         $scope.users = data;
+        $scope.matches = angular.copy($scope.users); // deep copy
+
+        $scope.totalPages = Math.ceil($scope.matches.length/$scope.pageSize);
+        $scope.pagedData = $scope.matches;
         if ($scope.users.length == 0) {
           // No matches found
           $scope.otherQuery = $scope.$storage.matchType ? "activities" : "location";
@@ -189,4 +193,26 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     });
     console.log($scope.filteredUsers);
   };
+
+  //Client-side pagination example
+  $scope.currentPage = 0;
+  $scope.pageSize = 6;
+  $scope.totalPages = 0;
+  $scope.pagedData = [];
+
+  $scope.pageButtonDisabled = function(dir) {
+    if (dir == -1) {
+      return $scope.currentPage == 0;
+    }
+    return $scope.currentPage >=
+           $scope.matches.length/$scope.pageSize - 1;
+  };
+
+  $scope.paginate = function(nextPrevMultiplier) {
+    $scope.currentPage += (nextPrevMultiplier * 1);
+    $scope.pagedData = $scope.matches
+      .slice($scope.currentPage*$scope.pageSize,
+             $scope.currentPage*$scope.pageSize + $scope.pageSize);
+  };
+
 });

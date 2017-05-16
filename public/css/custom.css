@@ -841,8 +841,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 #search-friend-bar {
-  padding-left: 250px;
-
+  padding-top: 20px;
 }
 
 #no-friends {

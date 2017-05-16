@@ -99,7 +99,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   font-size: 16px;
   color: white;
   font-weight: bold;
-  border: 12px solid rgba(255, 255, 255, 0.8); /* white */;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
   border-radius: 10px;
 }
 
@@ -288,7 +288,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   border-radius: 10px;
   height: 100%;
   margin: 10px 10px;
-  min-height: 450px;
+  min-height: 500px;
   min-width: 240px;
   padding-bottom: 30px;
   padding-left: 0px;
@@ -714,6 +714,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   display: inline-block;
   float: right;
   margin-top: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
+  border-radius: 10px;
 }
 
 #match-toggle-text {
@@ -775,8 +777,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: black;
   font-weight: normal;
   text-align: left;
-  max-height: 55px;
-  min-height: 55px;
+  max-height: 35px;
+  min-height: 35px;
   overflow: hidden;
 }
 
@@ -787,8 +789,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 #sidebar-filter {
-  padding-left: 60px;
+  padding-left: 50px;
   display: inline-block;
+  color: white;
 }
 
 .filter-headings {
@@ -816,6 +819,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   margin-top: 15px;
   color: white;
   width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
+  border-radius: 10px;
 }
 
 #match-next {
@@ -836,8 +841,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 #search-friend-bar {
-  padding-left: 250px;
-
+  padding-top: 20px;
 }
 
 #no-friends {

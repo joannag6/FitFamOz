@@ -819,7 +819,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   margin-top: 15px;
   color: white;
   width: 100%;
-  border: 5px solid rgba(255, 255, 255, 0.3); /* white */;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
   border-radius: 10px;
 }
 

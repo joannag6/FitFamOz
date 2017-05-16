@@ -28,7 +28,7 @@
                         <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
                             <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
                             <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
-                            <span class="time">{{lastMessages[$index].created}}</span>
+                            <!-- <span class="time">{{lastMessages[$index].created}}</span> -->
                             <span class="preview">{{lastMessages[$index].text}}</span>
                         </li>
                     </ul>
@@ -39,9 +39,9 @@
                     </span></span>
                     </div>
                     <div class="chat active-chat">
-                        <div class="conversation-start">
+                        <!-- <div class="conversation-start">
                             <span>Today, 6:48 PM</span>
-                        </div>
+                        </div> -->
                         <span ng-model="curMessages" ng-repeat="message in curMessages">
                             <span ng-if="isAuthorMe(message)">
                                 <div class="bubble me">

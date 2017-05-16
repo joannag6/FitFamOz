@@ -7,11 +7,9 @@ var Conversation = mongoose.model('Conversation');
 
 var createConversation = function(req,res){
     var conversation = new Conversation({
-        "user1" : req.body.user1,
-        "user2" : req.body.user2,
+        "chatID": req.body.chatID,
         "convo" : req.body.convo
     });
-    console.log(conversation);
     conversation.save(function(err,newConvo){
         if(err){
             console.log(err.errmsg);
@@ -33,17 +31,8 @@ var findAllChats = function(req,res){
 };
 
 var updateChat = function(req, res) {
-    var u1 = req.params.user1;
-    var u2 = req.params.user2;
 
-    var query = {
-        user1 : u1,
-        user2 : u2
-    };
-
-    console.log(query);
-
-    Conversation.findOne(query,function(err,conversation){
+    Conversation.findOne({chatID : req.params.chatID},function(err,conversation){
         if(!err){
             conversation.convo = req.body.convo;
             conversation.save(function (err) {
@@ -61,15 +50,8 @@ var updateChat = function(req, res) {
 }
 
 var findChat = function(req,res){
-    var u1 = req.params.user1;
-    var u2 = req.params.user2;
 
-    var query = {
-        user1 : u1,
-        user2 : u2
-    };
-
-    Conversation.findOne(query,function(err,conversation){
+    Conversation.findOne({chatID : req.params.chatID},function(err,conversation){
         if(!err){
             res.send(conversation);
         }else{

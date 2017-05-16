@@ -14,7 +14,7 @@
     <div class="container-fluid">
 
       <!-- Sidebar filter -->
-      <div class="container col-lg-4" id="sidebar-filter">
+      <div class="container col-lg-5" id="sidebar-filter">
         <h2 id="header-friends">MY FRIENDS</h2>
         <h4>Filters</h4>
         <form class="form-horizontal">
@@ -69,7 +69,7 @@
       </div>
 
       <!-- Friends -->
-      <div class="container col-lg-8" id="profile-view-content">
+      <div class="container col-lg-7" id="profile-view-content">
 
         <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
           <div class="form-inline">
@@ -114,7 +114,6 @@
                   </tr>
                 </table>
               </div>
-              <br>
               <button type="button" class="btn btn-blue" data-toggle="modal" data-target="{{ '#friendprofile' + $index }}" id="view-btn">
                 <i class="material-icons">remove_red_eye</i> View More
               </button>
@@ -203,7 +202,7 @@
       <div class="col-sm-3 col-center">
       <!-- Pagination -->
       <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><i class="material-icons">navigate_before</i></button>&nbsp;&nbsp;
-      <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">NEXT <i class="material-icons">navigate_next</i></button>
+      <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><i class="material-icons">navigate_next</i></button>
       </div>
       <br><br>
     </div>

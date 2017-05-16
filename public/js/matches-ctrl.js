@@ -196,7 +196,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
 
   //Client-side pagination example
   $scope.currentPage = 0;
-  $scope.pageSize = 3;
+  $scope.pageSize = 6;
   $scope.totalPages = 0;
   $scope.pagedData = [];
 

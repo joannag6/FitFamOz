@@ -714,7 +714,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   display: inline-block;
   float: right;
   margin-top: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
+  border: 3px solid rgba(255, 255, 255, 0.3); /* white */;
   border-radius: 10px;
 }
 
@@ -725,12 +725,20 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   vertical-align: middle;
 }
 
-.toggle-on.btn, .toggle-off.btn {
+.toggle-on.btn {
+  background-color: #C05243; /* red */
+}
+
+.toggle-off.btn {
   background-color: #126BAB; /* blue */
 }
 
-.toggle-on.btn:hover, .toggle-off.btn:hover {
-  background-color: #0e5385; /* darker blue */
+.toggle-on.btn:hover {
+  background-color: #126BAB; /* blue */
+}
+
+.toggle-off.btn:hover {
+  background-color: #C05243; /* red */
 }
 
 .no-matches-message {
@@ -742,9 +750,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #C05243; /* red */
   font-size: 16px;
   font-weight: bold;
-  margin: 10px;
+  margin: 5px;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .profile-view img {
@@ -754,7 +762,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
    display: block;
    height: 100px;
    margin: 0 auto;
-   margin-top: 30px;
+   margin-top: 20px;
  }
 
 .profile-view {
@@ -780,6 +788,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   max-height: 35px;
   min-height: 35px;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 #profile-view {

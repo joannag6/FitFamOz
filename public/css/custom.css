@@ -714,7 +714,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   display: inline-block;
   float: right;
   margin-top: 10px;
-  border: 5px solid rgba(255, 255, 255, 0.3); /* white */;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
   border-radius: 10px;
 }
 
@@ -789,7 +789,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 #sidebar-filter {
-  padding-left: 60px;
+  padding-left: 50px;
   display: inline-block;
   color: white;
 }

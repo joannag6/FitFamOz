@@ -73,7 +73,7 @@
 
         <div class="col-xs-10 col-sm-11 profile-view" id="search-friend-bar">
           <div class="form-inline">
-            <i class="material-icons search-icon" style="color:white;">search</i>&nbsp
+            <i class="material-icons search-icon" style="color:white;">search</i>&nbsp&nbsp
             <input
               class="form-control"
               type="text"
@@ -200,12 +200,12 @@
 
       </div>
       <br>
-      <div class="container">
+      <div class="col-sm-3 col-center">
       <!-- Pagination -->
       <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><i class="material-icons">navigate_before</i></button>&nbsp;&nbsp;
-      <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">NEXT PAGE <i class="material-icons">navigate_next</i></button>
+      <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)">NEXT <i class="material-icons">navigate_next</i></button>
       </div>
-
+      <br><br>
     </div>
     </div>
   </body>

@@ -924,9 +924,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: rgba(255, 255, 255, 0.8); /* light blue */
   border-radius: 10px;
   height: 100%;
-  margin: 5px;
+  margin: 7px;
   margin-top: 5px;
-  min-width: 240px;
+  min-width: 220px;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;

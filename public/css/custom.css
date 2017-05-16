@@ -777,8 +777,8 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: black;
   font-weight: normal;
   text-align: left;
-  max-height: 55px;
-  min-height: 55px;
+  max-height: 35px;
+  min-height: 35px;
   overflow: hidden;
 }
 

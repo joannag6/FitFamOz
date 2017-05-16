@@ -41,9 +41,10 @@ var updateChat = function(req, res) {
         user2 : u2
     };
 
+    console.log(query);
+
     Conversation.findOne(query,function(err,conversation){
         if(!err){
-            console.log("updating chat");
             conversation.convo = req.body.convo;
             conversation.save(function (err) {
                 if (err){
@@ -52,7 +53,7 @@ var updateChat = function(req, res) {
                 else{
                     res.json({message: "Chat Updated!"});
                 }
-            })
+            });
         }else{
             res.sendStatus(404);
         }

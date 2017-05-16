@@ -102,7 +102,7 @@ myApp.controller("FriendsCtrl", ["$scope", "User", function($scope, User) {
 
   //Client-side pagination example
   $scope.currentPage = 0;
-  $scope.pageSize = 6;
+  $scope.pageSize = 3;
   $scope.totalPages = 0;
   $scope.pagedData = [];
 

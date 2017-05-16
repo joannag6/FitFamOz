@@ -99,7 +99,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   font-size: 16px;
   color: white;
   font-weight: bold;
-  border: 5px solid rgba(255, 255, 255, 0.3); /* white */;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* white */;
   border-radius: 10px;
 }
 

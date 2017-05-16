@@ -20,9 +20,9 @@ module.exports = function(app) {
 
     //routes for Conversation model
     app.get('/chat', chatController.findAllChats);
-    app.get('/chat/:user1/:user2', chatController.findChat);
+    app.get('/chat/:chatID', chatController.findChat);
     app.post('/chat', chatController.createConversation);
-    app.put('/chat/:user1/:user2', chatController.updateChat);
+    app.put('/chat/:chatID', chatController.updateChat);
     app.delete('/chat/:id', function (req, res) {
         var ChatInx = req.params.id;
         Conversation.findByIdAndRemove(ChatInx, function (err, chat) {

@@ -4,10 +4,15 @@
 var mongoose = require('mongoose');
 
 var Conversation = mongoose.Schema({
-    user1 : String,
-    user2 : String,
+    chatID : {
+      type: String,
+      index: {
+        unique: true,
+        required: true
+      }
+    },
     convo : [{
-        author: {type: String, enum:['you', 'me']},
+        author: String,
         text: String,
         created: Date
     }]

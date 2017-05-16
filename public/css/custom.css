@@ -742,6 +742,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 .no-matches-message {
+  color: #fff;
   font-size: 1.5em;
   margin: 100px;
 }
@@ -854,7 +855,7 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
 }
 
 #no-friends {
-  color: #5A5C58;
+  color: #fff;
   display: block;
   margin-right: 50px;
   margin-top: 120px;

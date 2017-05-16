@@ -162,7 +162,7 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
   $scope.filterActivities = function() {
     var index = 0;
     $scope.filteredUsers = angular.copy($scope.users); // deep copy
-    console.log($scope.filteredUsers);
+    // console.log($scope.filteredUsers);
     $scope.users.forEach(function (user) {
         // for each activity filter, if not in there, remove from out
         var found = false;
@@ -191,7 +191,9 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
           index += 1; // increase index
         }
     });
-    console.log($scope.filteredUsers);
+    // console.log($scope.filteredUsers);
+    // Refresh pagination
+    $scope.paginate(0);
   };
 
   //Client-side pagination example
@@ -205,12 +207,12 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
       return $scope.currentPage == 0;
     }
     return $scope.currentPage >=
-           $scope.matches.length/$scope.pageSize - 1;
+           $scope.filteredUsers.length/$scope.pageSize - 1;
   };
 
   $scope.paginate = function(nextPrevMultiplier) {
     $scope.currentPage += (nextPrevMultiplier * 1);
-    $scope.pagedData = $scope.matches
+    $scope.pagedData = $scope.filteredUsers
       .slice($scope.currentPage*$scope.pageSize,
              $scope.currentPage*$scope.pageSize + $scope.pageSize);
   };

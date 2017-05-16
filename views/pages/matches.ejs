@@ -226,30 +226,12 @@
           <br><br>
           <div class="col-sm-3 col-center">
           <!-- Pagination -->
-          <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><i class="material-icons">navigate_before</i></button>&nbsp;&nbsp;
-          <button class="btn btn-pagination" ng-if="friends.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><i class="material-icons">navigate_next</i></button>
+          <button class="btn btn-pagination" ng-if="matches.length > 0" ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><i class="material-icons">navigate_before</i></button>&nbsp;&nbsp;
+          <button class="btn btn-pagination" ng-if="matches.length > 0" ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><i class="material-icons">navigate_next</i></button>
           </div>
           <br><br>
         </div>
       </div>
     </div>
   </body>
-  <script>
-  $(document).ready(function(){
-      $("#matches-btn").click(function(){
-        addAct = `<div class="form-inline col-xs-7">
-          <input class="form-control" type="activities" placeholder="Find an activity">
-        </div>
-        <div class="form-inline col-xs-3">
-          <select class="form-control" id="skill-level">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-          <br><br>
-        </div>`
-          $("#activity").append(addAct);
-      });
-  });
-  </script>
 </html>

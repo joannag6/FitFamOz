@@ -18,51 +18,51 @@
     <div class="background main-container" style="margin-top:0; padding-top:0;">
         <div class="container bootstrap snippet">
             <div class="row" style="padding-top:2em; height:45em; padding-bottom:2em;">
-            <div class="left col-md-3" ng-init="fetchChatList()">
-                <div class="top">
-                    <input type="text" placeholder="search chat history"/>
-                    <a href="javascript:;" class="search"></a>
-                </div>
-
-                <ul class="people" ng-repeat="friend in friends">
-                    <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
-                        <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
-                        <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
-                        <span class="time">{{lastMessages[$index].created}}</span>
-                        <span class="preview">{{lastMessages[$index].text}}</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="right col-md-5 bg-lightblue" ng-init="fetchChatWindow()">
-                <div class="top"><span>To: <span class="name">
-                    {{friends[openChat].firstName + " " + friends[openChat].lastName}}
-                </span></span>
-                </div>
-                <div class="chat active-chat">
-                    <div class="conversation-start">
-                        <span>Today, 6:48 PM</span>
+                <div class="left col-md-3">
+                    <div class="top">
+                        <input type="text" placeholder="search chat history"/>
+                        <a href="javascript:;" class="search"></a>
                     </div>
-                    <span ng-model="curMessages" ng-repeat="message in curMessages">
-                        <span ng-if="isAuthorMe(message)">
-                            <div class="bubble me">
-                                {{message.text}}
-                            </div>
-                        </span>
-                        <span ng-if="!isAuthorMe(message)">
-                            <div class="bubble you">
-                                {{message.text}}
-                            </div>
-                        </span>
-                    </span>
-                </div>
 
-                <form class="write" ng-submit="textSubmit()">
-                    <a href="javascript:;" class="write-link attach"></a>
-                    <input type="text" ng-model="text" name="text" ng-click="clearText()"/>
-                    <!-- <a href="javascript:;" class="write-link smiley"></a> -->
-                    <a href="javascript:;" class="write-link send"></a>
-                </form>
-            </div>
+                    <ul class="people" ng-repeat="friend in friends">
+                        <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
+                            <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
+                            <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
+                            <!-- <span class="time">{{lastMessages[$index].created}}</span> -->
+                            <span class="preview">{{lastMessages[$index].text}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right col-md-5 bg-lightblue" ng-init="fetchChatWindow()">
+                    <div class="top"><span>To: <span class="name">
+                        {{friends[openChat].firstName + " " + friends[openChat].lastName}}
+                    </span></span>
+                    </div>
+                    <div class="chat active-chat">
+                        <!-- <div class="conversation-start">
+                            <span>Today, 6:48 PM</span>
+                        </div> -->
+                        <span ng-model="curMessages" ng-repeat="message in curMessages">
+                            <span ng-if="isAuthorMe(message)">
+                                <div class="bubble me">
+                                    {{message.text}}
+                                </div>
+                            </span>
+                            <span ng-if="!isAuthorMe(message)">
+                                <div class="bubble you">
+                                    {{message.text}}
+                                </div>
+                            </span>
+                        </span>
+                    </div>
+
+                    <form class="write" ng-submit="textSubmit()">
+                        <a href="javascript:;" class="write-link attach"></a>
+                        <input type="text" ng-model="text" name="text" ng-click="clearText()"/>
+                        <!-- <a href="javascript:;" class="write-link smiley"></a> -->
+                        <a href="javascript:;" class="write-link send"></a>
+                    </form>
+                </div>
         </div>
     </div>
     <span>

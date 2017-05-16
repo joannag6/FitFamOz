@@ -15,16 +15,30 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
+    // This is called with the results from from FB.getLoginStatus().
     $scope.statusChangeCallback = function(response) {
+      // The response object is returned with a status field that lets the
+      // app know the current login status of the person.
+      // Full docs on the response object can be found in the documentation
+      // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        $scope.getCurrUser(response.authResponse.userID);
+        $scope.currAuth = response.authResponse;
+        $scope.getCurrUser();
       } else {
         // The person is not logged into your app or we are unable to tell.
-        // Redirects user to login page.
-        window.location.href = '/';
+        console.log('Please log into this app.');
       }
     };
+
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    $scope.checkLoginState = function() {
+      FB.getLoginStatus(function(response) {
+        $scope.statusChangeCallback(response);
+      });
+    }
 
     window.fbAsyncInit = function() {
       FB.init({
@@ -41,92 +55,95 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
       });
     };
 
-    /* Function to get current user's ID. */
-    $scope.getCurrUser = function(userID) {
-      User.showOne({ id: userID }, function(data) {
+    $scope.getCurrUser = function() {
+      User.showOne({ id: $scope.currAuth.userID }, function(data) {
         $scope.currUser = data;
         $scope.currUserID = $scope.currUser._id;
-        $scope.friends = $scope.currUser.friends;
+        if ($scope.currUser.friends.length > 0) {
+          User.showMatches(
+            { id: $scope.currUser._id },
+            { idList: $scope.currUser.friends },
+            function(data) {
+              $scope.friends = data;
+              $scope.fetchChatList();
+              $scope.friendID = $scope.friends[0]._id;
+            }, function(err) {
+              console.log(err);
+            });
+        }
       }, function(err) {
         console.log(err);
       });
     };
 
     $scope.lastMessages = [];
+    $scope.allConvos = [];
     $scope.curMessages = [];
+    $scope.openChat = 0;
 
     $scope.fetchChatList = function () {
         var messages;
         if ($scope.friends){
             $scope.friends.forEach(function (friend) {
-                messages = function () {
-                    Chat.showChat({user1: $scope.currUserID, user2: friend._id}, function(data) {
-                        if(data){
-                            messages = data.convo;
-                        }
-                        else{
-                            $scope.firstTimeChat = true;
-                        }
-                    }, function (err) {
-                        console.log(err);
-                    });
-                };
-                if(!$scope.firstTimeChat){
-                    messages.reverse();
-                    $scope.lastMessages.push(messages[0]);
-                }
+                Chat.showChat({chatID: $scope.chatID}, function(data) {
+                    if(data.convo){
+                        $scope.lastMessages.push(data.convo.reverse()[0]);
+                        $scope.allConvos.push(data.convo);
+                    }
+                    else{
+                        $scope.createNewConvo(friend._id);
+                        console.log("created new convo");
+                    }
+                }, function (err) {
+                    $scope.createNewConvo(friend._id);
+                    console.log(err);
+                });
             });
         }
     };
 
-    $scope.lastMessages= [
-        {
-            created: "02/04/2017",
-            text: "Hello there. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there2. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there3. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there4. My name is ..."
-        }
-    ]
-
-    $scope.openChat = 0;
-    $scope.firstTimeChat = false;
-
-    $scope.fetchChatWindow = function (friendID) {
-        var chat = function () {
-            Chat.showChat({user1: $scope.currUserID, user2: friendID}, function (data) {
-                chat = data;
-            }, function (err) {
-                console.log(err);
-            });
+    $scope.createNewConvo = function (fid) {
+        $scope.getChatID(fid);
+        console.log($scope.chatID);
+        var new_convo = {
+            chatID: $scope.chatID,
+            convo: []
         };
-        if (chat){
-            $scope.curMessages = chat.convo;
+        Chat.create(new_convo);
+        $scope.curMessages = [];
+    }
+
+    $scope.fetchChatWindow = function () {
+        $scope.getChatID($scope.friendID);
+        console.log($scope.chatID);
+
+        if ($scope.allConvos[$scope.openChat]){
+            $scope.curMessages = $scope.allConvos[$scope.openChat];
         }
         else{
-            $scope.firstTimeChat = true;
+            Chat.showChat({chatID: $scope.chatID}, function(data) {
+                if(data){
+                    $scope.curMessages = data.convo;
+                }
+                else{
+                    $scope.createNewConvo($scope.friendID);
+                    console.log("created new convo");
+                }
+            }, function (err) {
+                $scope.createNewConvo($scope.friendID);
+                console.log(err);
+            });
         }
     };
 
     $scope.toggleOpenChat = function (index) {
         $scope.openChat = index;
         $scope.friendID = $scope.friends[$scope.openChat]._id;
-        console.log("fetching chat history!");
-        $scope.fetchChatWindow($scope.friendID);
-        $scope.updateChat();
+        $scope.fetchChatWindow();
     }
 
     $scope.isAuthorMe = function (data){
-        if (data.author == "me"){
+        if (data.author == $scope.currUserID){
             return true;
         }
         else{
@@ -143,31 +160,41 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
     $scope.textSubmit = function () {
         if ($scope.text) {
             var newChat = {
-                author: "me",
+                author: $scope.currUserID,
                 created: Date.now(),
                 text: $scope.text
             };
-            $scope.curMessages.push(newChat);
+            if ($scope.curMessages){
+                $scope.curMessages.push(newChat);
+            }
+            else{
+                $scope.curMessages = [newChat];
+            }
+
+            $scope.updateChat();
             $scope.clearText();
             console.log("text entered!");
         }
     }
 
-    $scope.updateChat = function () {
-        var updated_convo = {
-            user1: $scope.currUserID,
-            user2: $scope.friendID,
-            convo: $scope.curMessages
+    $scope.getChatID = function (fid) {
+        if (fid){
+            var f4ID = fid.slice(-4);
+            var u4ID = $scope.currUserID.slice(-4);
+            var cID = f4ID * u4ID;
+            $scope.chatID = cID.toString();
         }
-        if (!$scope.firstTimeChat){
-            console.log("updating chat");
-            Chat.update({user1: $scope.currUserID, user2: $scope.friendID}, updated_convo);
-        }
-        else{
-            console.log("creating chat");
-            Chat.create(updated_convo);
-        }
+    }
 
-        $scope.curMessages = [];
+    $scope.updateChat = function () {
+        $scope.getChatID($scope.friendID);
+        console.log($scope.chatID);
+
+        var updated_convo = {
+            chatID: $scope.chatID,
+            convo: $scope.curMessages
+        };
+
+        Chat.update({chatID: $scope.chatID}, updated_convo);
     }
 }]);

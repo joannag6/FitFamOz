@@ -882,16 +882,18 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
  * * * * * * * * * * * * * * * * */
 
 #about-us {
-  background-image: url("https://source.unsplash.com/3cCe37VGDiQ");
+  margin-top: -50px;
 }
 
 #submit {
-  font-weight: bold;
+  border-radius: 4px;
   color: white;
-  width: 100%;
-  margin-bottom: 50px;
+  font-weight: bold;
   height: 40px;
-  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
 }
 
 .contactformbox {
@@ -922,12 +924,6 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding-bottom: 30px;
 }
 
-#about-us {
-  color: white;
-  padding-top: 30px;
-  font-weight: bold;
-}
-
 #contactform {
   padding: 20px;
   padding-top: 20px;
@@ -941,9 +937,9 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   background-color: rgba(255, 255, 255, 0.8); /* light blue */
   border-radius: 10px;
   height: 100%;
-  margin: 5px;
+  margin: 7px;
   margin-top: 5px;
-  min-width: 240px;
+  min-width: 220px;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;

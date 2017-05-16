@@ -15,16 +15,30 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
+    // This is called with the results from from FB.getLoginStatus().
     $scope.statusChangeCallback = function(response) {
+      // The response object is returned with a status field that lets the
+      // app know the current login status of the person.
+      // Full docs on the response object can be found in the documentation
+      // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        $scope.getCurrUser(response.authResponse.userID);
+        $scope.currAuth = response.authResponse;
+        $scope.getCurrUser();
       } else {
         // The person is not logged into your app or we are unable to tell.
-        // Redirects user to login page.
-        window.location.href = '/';
+        console.log('Please log into this app.');
       }
     };
+
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    $scope.checkLoginState = function() {
+      FB.getLoginStatus(function(response) {
+        $scope.statusChangeCallback(response);
+      });
+    }
 
     window.fbAsyncInit = function() {
       FB.init({
@@ -41,88 +55,69 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
       });
     };
 
-    /* Function to get current user's ID. */
-    $scope.getCurrUser = function(userID) {
-      User.showOne({ id: userID }, function(data) {
+    $scope.getCurrUser = function() {
+      User.showOne({ id: $scope.currAuth.userID }, function(data) {
         $scope.currUser = data;
         $scope.currUserID = $scope.currUser._id;
-        $scope.friends = $scope.currUser.friends;
+        if ($scope.currUser.friends.length > 0) {
+          User.showMatches(
+            { id: $scope.currUser._id },
+            { idList: $scope.currUser.friends },
+            function(data) {
+              $scope.friends = data;
+            //   $scope.fetchChatList();
+              $scope.friendID = $scope.friends[0]._id;
+            }, function(err) {
+              console.log(err);
+            });
+        }
       }, function(err) {
         console.log(err);
       });
     };
 
+    $scope.firstTimeChat = false;
     $scope.lastMessages = [];
     $scope.curMessages = [];
 
-    $scope.fetchChatList = function () {
-        var messages;
-        if ($scope.friends){
-            $scope.friends.forEach(function (friend) {
-                messages = function () {
-                    Chat.showChat({user1: $scope.currUserID, user2: friend._id}, function(data) {
-                        if(data){
-                            messages = data.convo;
-                        }
-                        else{
-                            $scope.firstTimeChat = true;
-                        }
-                    }, function (err) {
-                        console.log(err);
-                    });
-                };
-                if(!$scope.firstTimeChat){
-                    messages.reverse();
-                    $scope.lastMessages.push(messages[0]);
-                }
-            });
-        }
-    };
-
-    $scope.lastMessages= [
-        {
-            created: "02/04/2017",
-            text: "Hello there. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there2. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there3. My name is ..."
-        },
-        {
-            created: "02/04/2017",
-            text: "Hello there4. My name is ..."
-        }
-    ]
+    // $scope.fetchChatList = function () {
+    //     var messages;
+    //     if ($scope.friends){
+    //         $scope.friends.forEach(function (friend) {
+    //             messages = function () {
+    //                 Chat.showChat({user1: $scope.currUserID, user2: friend._id}, function(data) {
+    //                     if(data){
+    //                         messages = data.convo;
+    //                         messages.reverse();
+    //                         $scope.lastMessages.push(messages[0]);
+    //                     }
+    //                     else{
+    //                         $scope.firstTimeChat = true;
+    //                     }
+    //                 }, function (err) {
+    //                     console.log(err);
+    //                 });
+    //             };
+    //         });
+    //     }
+    // };
 
     $scope.openChat = 0;
-    $scope.firstTimeChat = false;
 
-    $scope.fetchChatWindow = function (friendID) {
-        var chat = function () {
-            Chat.showChat({user1: $scope.currUserID, user2: friendID}, function (data) {
-                chat = data;
-            }, function (err) {
-                console.log(err);
-            });
-        };
-        if (chat){
-            $scope.curMessages = chat.convo;
-        }
-        else{
-            $scope.firstTimeChat = true;
-        }
+    $scope.fetchChatWindow = function () {
+        Chat.showChat({user1: $scope.currUserID, user2: $scope.friendID}, function (data) {
+            $scope.activeChat = data;
+            $scope.curMessages = $scope.activeChat.convo;
+        }, function (err) {
+            console.log(err);
+        });
     };
 
     $scope.toggleOpenChat = function (index) {
         $scope.openChat = index;
-        $scope.friendID = $scope.friends[$scope.openChat]._id;
-        console.log("fetching chat history!");
-        $scope.fetchChatWindow($scope.friendID);
         $scope.updateChat();
+        $scope.friendID = $scope.friends[$scope.openChat]._id;
+        $scope.fetchChatWindow();
     }
 
     $scope.isAuthorMe = function (data){
@@ -158,16 +153,16 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
             user1: $scope.currUserID,
             user2: $scope.friendID,
             convo: $scope.curMessages
-        }
-        if (!$scope.firstTimeChat){
-            console.log("updating chat");
-            Chat.update({user1: $scope.currUserID, user2: $scope.friendID}, updated_convo);
+        };
+        if ($scope.firstTimeChat){
+            Chat.$save(updated_convo);
+            $scope.curMessages = [];
+            $scope.firstTimeChat = false;
         }
         else{
-            console.log("creating chat");
-            Chat.create(updated_convo);
+            Chat.update({user1: $scope.currUserID, user2: $scope.friendID}, updated_convo);
+            $scope.curMessages = [];
+            $scope.firstTimeChat = false;
         }
-
-        $scope.curMessages = [];
     }
 }]);

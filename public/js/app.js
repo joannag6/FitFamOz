@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ["ngResource", "ngStorage", "ui.toggle"]);
+var myApp = angular.module("myApp", ["ngResource", "ngStorage", "ui.toggle", "luegg.directives"]);
 
 // Google Login
 function onLoadFunction(){

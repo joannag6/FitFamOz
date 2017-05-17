@@ -159,6 +159,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
 
     $scope.textSubmit = function () {
         if ($scope.text) {
+            console.log($scope.text);
             var newChat = {
                 author: $scope.currUserID,
                 created: Date.now(),

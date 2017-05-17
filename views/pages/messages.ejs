@@ -6,7 +6,9 @@
     <title>Your Messages</title>
     <% include ../partials/head %>
     <link rel="stylesheet" href="/css/messages.css">
-    <!-- <link rel="stylesheet" href="/css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.a.css">
+
 </head>
 
 <body ng-app="myApp" ng-controller="MessagesCtrl">
@@ -59,10 +61,8 @@
                     </div>
 
                     <form class="write" ng-submit="textSubmit()">
-                        <a href="" class="write-link attach"></a>
-                        <input type="text" ng-model="text" name="text" placeholder="Say something"/>
-                        <!-- <a href="javascript:;" class="write-link smiley"></a> -->
-                        <a href="" class="write-link send" ng-click="textSubmit()"></a>
+                        <input type="text" ng-model="text" name="text" id="emojis" class="emojiable-option" placeholder="Say something">
+                        <span class="write-link send" ng-click="textSubmit()"></span>
                     </form>
                 </div>
                 <div class="col-md-1"></div>
@@ -71,7 +71,24 @@
     </div>
     <span>
     <% include ../partials/footer%>
-    <!-- <script src="js/chat-box.js"></script> -->
+    <script type="text/javascript" src="js/jquery.emojis.js"></script>
+    <script type="text/javascript" src="js/jquery.emojipicker.js"></script>
+    <script>
+    $(document).ready(function(e) {
+
+        $('#emojis').emojiPicker({
+          height: '200px',
+          width:  '300px'
+        });
+        $('.emoji-selector').on("click", function () {
+            $('#emojis').emojiPicker('toggle');
+        });
+        // keyup event is fired
+        $(".emojiable-question, .emojiable-option").on("keyup", function () {
+          //console.log("emoji added, input val() is: " + $(this).val());
+        });
+    });
+    </script>
     </span>
 </body>
 

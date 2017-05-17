@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+#emojiPickerWrap {margin:10px 0 0 0;}
+
 .bg-lightblue{
   background-color: rgba(255, 255, 255, 0.8); /* white */
 }

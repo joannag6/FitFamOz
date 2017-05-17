@@ -59,6 +59,9 @@ ul {
   border-top-left-radius: 4px;
   height: 100%;
   width: 33.33%;
+  overflow: scroll;
+  padding: 0px;
+  padding-right: 15px;
 }
 .container .left .top {
   padding: 15px;
@@ -96,14 +99,13 @@ ul {
   outline: none;
 }
 .container .left a.search {
-  display: block;
-  float: left;
+  display: inline-block;
+  float: right;
   width: 42px;
   height: 42px;
-  margin-left: 10px;
   border: 1px solid #e6e6e6;
-  background-color: #126BAB; /* blue */
-  background-image: url("http://s11.postimg.org/dpuahewmn/name_type.png");
+  background-color: #126BAB;
+  background-image: url(http://s11.postimg.org/dpuahewmn/name_type.png);
   background-repeat: no-repeat;
   background-position: top 12px left 14px;
   -moz-border-radius: 50%;

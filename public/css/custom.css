@@ -2,11 +2,12 @@
 html, body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
-}
-
-#index-body {
   height: 100%;
 }
+
+/*html {
+  height: 100%;
+}*/
 
 #index-background {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("https://source.unsplash.com/3cCe37VGDiQ");
@@ -728,20 +729,28 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   vertical-align: middle;
 }
 
+.toggle {
+  border-color: #994135; /* darker red */
+}
+
+.toggle:hover {
+  border-color: #893a2f; /* darkest red */
+}
+
 .toggle-on.btn {
   background-color: #C05243; /* red */
 }
 
 .toggle-off.btn {
-  background-color: #126BAB; /* blue */
+  background-color: #C05243; /* red */
 }
 
 .toggle-on.btn:hover {
-  background-color: #126BAB; /* blue */
+  background-color: #994135; /* darker red */
 }
 
 .toggle-off.btn:hover {
-  background-color: #C05243; /* red */
+  background-color: #994135; /* darker red */
 }
 
 .no-matches-message {

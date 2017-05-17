@@ -515,6 +515,14 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
    border-bottom: solid 1px white;
  }
 
+.activity-level-header {
+  color: #808080; /* mid grey */
+  display: inline-block;
+  float: right;
+  margin: 0px 20px;
+      margin-top: -15px;
+}
+
  .material-icons.back-button {
    cursor: pointer;
    font-size: 30px;
@@ -757,6 +765,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   color: #fff;
   font-size: 1.5em;
   margin: 100px;
+}
+
+.no-matches-message a, .no-friends a {
+  color: #fff;
 }
 
 .match-profile-name {

@@ -10,6 +10,9 @@
 
       <div class="signup-form-contents">
         <div class="funkyradio">
+          <div class="activity-level-header" ng-if="chosenActivities.length > 0">
+            Skill Level
+          </div>
           <div ng-repeat="activity in activities">
             <div class="funkyradio-primary">
               <input

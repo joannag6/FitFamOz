@@ -107,7 +107,8 @@ myApp.controller("IndexCtrl", ["$scope", "User", function($scope, User) {
     "Golf",
     "Surfing",
     "Football",
-    "Soccer"
+    "Soccer",
+    "Dancing"
   ];
 
   $scope.levels = ["Low", "Medium", "High"];

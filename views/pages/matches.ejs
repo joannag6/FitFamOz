@@ -88,7 +88,7 @@
            <a ng-click="toggleMatch()">{{ otherQuery }}</a>
           {{ "?" }}
         </div>
-        <div class="no-matches-message" ng-if="filteredUsers.length == 0">
+        <div class="no-matches-message" ng-if="filteredUsers.length == 0 && !otherQuery">
           No matches found matching these filters. Try another filter?
         </div>
 

@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-#emojiPickerWrap {margin:10px 0 0 0;}
+.emojiPickerIconWrap {
+  width: inherit;
+}
 
 .bg-lightblue{
   background-color: rgba(255, 255, 255, 0.8); /* white */
@@ -68,7 +70,6 @@ ul {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
   height: 100%;
-  width: 33.33%;
   overflow: scroll;
   padding: 0px;
   padding-right: 15px;
@@ -220,7 +221,6 @@ ul {
   border-top-right-radius: 4px;
   position: relative;
   float: left;
-  width: 50%;
   height: 100%;
 }
 .container .right .top {
@@ -321,9 +321,11 @@ ul {
   bottom: 29px;
   left: 30px;
   height: 42px;
+  margin-right: 10%;
   padding-left: 8px;
   border: 1px solid #e6e6e6;
   background-color: #eceff1;
+  width: auto;
   width: -moz-calc(100% - 58px);
   width: -webkit-calc(100% - 58px);
   width: -o-calc(100% - 58px);
@@ -369,7 +371,7 @@ ul {
   float: right;
   width: 20px;
   height: 42px;
-  margin-left: 11px;
+  margin: 0px 10px;
   content: '';
   background-image: url("http://s30.postimg.org/nz9dho0pp/send.png");
   background-repeat: no-repeat;

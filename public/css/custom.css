@@ -855,6 +855,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding: 0px;
 }
 
+#filter-level-header {
+  margin-right: 34px;
+}
+
 .delete-activity-filter {
   cursor: pointer;
   margin-left: 10px;

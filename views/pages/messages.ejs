@@ -26,6 +26,7 @@
                         <input type="text" placeholder="search chat history"/>
                         <a href="javascript:;" class="search"></a>
                     </div>
+                    <!-- list of friends -->
                     <div class="chat-list-container">
                       <div ng-if="!friends" class="loader-container">
                         <div class="loader">
@@ -39,12 +40,14 @@
                         </li>
                       </ul>
                     </div>
+                    <!-- end list of friends -->
                 </div>
                 <div class="right col-md-6 col-xs-12 bg-lightblue" ng-init="fetchChatWindow()">
                     <div class="top"><span>To: <span class="name">
                         {{friends[openChat].firstName + " " + friends[openChat].lastName}}
                     </span></span>
                     </div>
+                    <!-- chat window -->
                     <div class="chat active-chat">
                         <span ng-model="curMessages" ng-repeat="message in curMessages">
                             <span ng-if="isAuthorMe(message)">
@@ -59,10 +62,13 @@
                             </span>
                         </span>
                     </div>
+                    <!-- end chat window -->
+                    <!-- chat input box -->
                     <form class="write" ng-submit="textSubmit()">
                         <input type="text" ng-model="text" name="text" id="emojis" class="emojiable-option" placeholder="Say something">
                         <span class="write-link send" ng-click="textSubmit()"></span>
                     </form>
+                    <!-- end chat input box -->
                 </div>
                 <div class="col-md-1"></div>
             </div>
@@ -74,7 +80,7 @@
     <script type="text/javascript" src="js/jquery.emojipicker.js"></script>
     <script>
     $(document).ready(function(e) {
-
+        //add emoji functionality to input
         $('#emojis').emojiPicker({
           height: '200px',
           width:  '300px',

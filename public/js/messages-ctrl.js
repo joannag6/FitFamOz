@@ -81,6 +81,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
     $scope.curMessages = [];
     $scope.openChat = 0;
 
+    //traverse through array of friends and grab the last message sent
     $scope.fetchChatList = function () {
         var messages;
         if ($scope.friends){
@@ -104,6 +105,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         }
     };
 
+    //create new entry in DB if this is the first time the two users chat
     $scope.createNewConvo = function (fid) {
         $scope.getChatID(fid);
         var new_convo = {
@@ -132,12 +134,17 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         }
     };
 
+    //open different chat window for each friend
     $scope.toggleOpenChat = function (index) {
         $scope.openChat = index;
+        //get id of chosen friend
         $scope.friendID = $scope.friends[$scope.openChat]._id;
+        //fetch chat history
         $scope.fetchChatWindow();
     }
 
+    //check if this authenticated user is the author of that message
+    //using user's id
     $scope.isAuthorMe = function (data){
         if (data.author == $scope.currUserID){
             return true;
@@ -153,6 +160,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         $scope.text = '';
     }
 
+    //submit text for input box
     $scope.textSubmit = function () {
         if ($scope.text) {
             console.log($scope.text);
@@ -167,13 +175,15 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
             else{
                 $scope.curMessages = [newChat];
             }
-
+            //update chat after every submit
             $scope.updateChat();
             $scope.clearText();
             console.log("text entered!");
         }
     }
 
+    //generate unique chat id between 2 users using
+    //product of each one's last 4 digit
     $scope.getChatID = function (fid) {
         if (fid){
             var f4ID = fid.slice(-4);
@@ -183,6 +193,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         }
     }
 
+    // update Chat object on DB
     $scope.updateChat = function () {
         $scope.getChatID($scope.friendID);
         console.log($scope.chatID);

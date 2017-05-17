@@ -85,10 +85,11 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
         var messages;
         if ($scope.friends){
             $scope.friends.forEach(function (friend) {
+                $scope.getChatID(friend._id);
                 Chat.showChat({chatID: $scope.chatID}, function(data) {
                     if(data.convo){
                         $scope.lastMessages.push(data.convo.reverse()[0]);
-                        $scope.allConvos.push(data.convo);
+                        data.convo.reverse();
                     }
                     else{
                         $scope.createNewConvo(friend._id);
@@ -96,6 +97,7 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
                     }
                 }, function (err) {
                     $scope.createNewConvo(friend._id);
+                    console.log("making new convo here")
                     console.log(err);
                 });
             });
@@ -104,7 +106,6 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
 
     $scope.createNewConvo = function (fid) {
         $scope.getChatID(fid);
-        console.log($scope.chatID);
         var new_convo = {
             chatID: $scope.chatID,
             convo: []
@@ -114,23 +115,18 @@ myApp.controller("MessagesCtrl", ["$scope", "User", "Chat", function($scope, Use
     }
 
     $scope.fetchChatWindow = function () {
-        $scope.getChatID($scope.friendID);
-        console.log($scope.chatID);
+        if ($scope.friendID){
+            $scope.getChatID($scope.friendID);
+            console.log($scope.chatID);
 
-        if ($scope.allConvos[$scope.openChat]){
-            $scope.curMessages = $scope.allConvos[$scope.openChat];
-        }
-        else{
             Chat.showChat({chatID: $scope.chatID}, function(data) {
                 if(data){
                     $scope.curMessages = data.convo;
                 }
                 else{
-                    $scope.createNewConvo($scope.friendID);
-                    console.log("created new convo");
+                    //do nothing
                 }
             }, function (err) {
-                $scope.createNewConvo($scope.friendID);
                 console.log(err);
             });
         }

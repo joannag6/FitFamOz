@@ -14,27 +14,18 @@ myApp.factory("User", ["$resource", "$http", function($resource, $http) {
 }]);
 
 myApp.factory("Chat", ["$resource", "$http", function($resource, $http) {
-    var main_url = "/chat";
-    var params = {};
+    var main_url = "/chat/:chatID";
+    var params = {chatID: "@chatID"};
     return $resource(main_url, params,
         {
             'create': { method: 'POST'},
             'showChat': {
                 method: 'GET',
                 isArray: false,
-                url: "/chat/:chatID",
-                params: {
-                    chatID: "@chatID"
-                }
             },
             'update': {
                 method: 'PUT',
                 isArray: false,
-                url: "/chat/:chatID",
-                params: {
-                    chatID: "@chatID"
-                }
-        }
-    }
-    );
+            }
+        });
 }]);

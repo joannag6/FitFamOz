@@ -35,8 +35,7 @@
                         <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
                           <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />
                           <span class="match-profile-name name">{{ friend.firstName + " " + friend.lastName }}</span>
-                          <!-- <span class="time">{{lastMessages[$index].created}}</span> -->
-                          <span class="preview">{{lastMessages[$index].text}}</span>
+                          <span class="preview"></span>
                         </li>
                       </ul>
                     </div>
@@ -47,9 +46,6 @@
                     </span></span>
                     </div>
                     <div class="chat active-chat">
-                        <!-- <div class="conversation-start">
-                            <span>Today, 6:48 PM</span>
-                        </div> -->
                         <span ng-model="curMessages" ng-repeat="message in curMessages">
                             <span ng-if="isAuthorMe(message)">
                                 <div class="bubble me">
@@ -63,7 +59,6 @@
                             </span>
                         </span>
                     </div>
-
                     <form class="write" ng-submit="textSubmit()">
                         <input type="text" ng-model="text" name="text" id="emojis" class="emojiable-option" placeholder="Say something">
                         <span class="write-link send" ng-click="textSubmit()"></span>
@@ -82,7 +77,8 @@
 
         $('#emojis').emojiPicker({
           height: '200px',
-          width:  '300px'
+          width:  '300px',
+          position: 'left'
         });
         $('.emoji-selector').on("click", function () {
             $('#emojis').emojiPicker('toggle');

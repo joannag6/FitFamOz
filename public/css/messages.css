@@ -333,6 +333,19 @@ ul {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+
+.emojiPickerIcon{
+    position: absolute;
+    right: 5px;
+}
+
+#emojis{
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: -o-calc(100% - 100px);
+    width: calc(100% - 100px);
+}
+
 .container .right .write input {
   font-size: 16px;
   float: left;

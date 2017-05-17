@@ -153,6 +153,10 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding: 0px;
 }
 
+.navbar-header {
+  margin-top: 3px;
+}
+
 .navbar-brand {
   height: auto;
   padding: 0px 20px;

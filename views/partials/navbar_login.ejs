@@ -42,7 +42,8 @@
                      role="button"
                      aria-haspopup="true"
                      aria-expanded="false">
-                      <img class="profilepic-icon" ng-src="{{ currUser.picUrl }}" alt="profile pic">
+                      <div class="profilepic-icon" ng-if="!currUser"></div>
+                      <img class="profilepic-icon" ng-if="currUser" ng-src="{{ currUser.picUrl }}" alt="profile pic">
                   </a>
                   <ul class="dropdown-menu">
                       <li><a href="/myprofile" class="btn btn-red">Edit Your Profile</a> </li>

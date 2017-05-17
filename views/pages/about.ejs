@@ -3,17 +3,13 @@
 <head>
     <title>About Us</title>
     <% include ../partials/head %>
+    <% include ../partials/footer%>
 </head>
-<body id="main-body">
+<body id="index-background" ng-app="myApp" ng-controller="FriendsCtrl">
   <header>
       <% include ../partials/navbar_login%>
   </header>
 
   <% include ../partials/about-content%>
-
-  <footer>
-      <% include ../partials/footer%>
-  </footer>
-
 </body>
 </html>

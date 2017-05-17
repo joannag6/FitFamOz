@@ -491,6 +491,11 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
   padding: 20px 40px;
 }
 
+#note {
+  color: #808080; /* mid grey */
+  text-align: center;
+}
+
 .error-text {
   font-size: 1em;
   margin: 5px 0px 5px 0px;
@@ -519,12 +524,17 @@ a.btn, a.btn:link, a.btn:visited, a.btn:active, a.btn:hover {
    border-bottom: solid 1px white;
  }
 
+.activity-name-header {
+  color: #808080; /* mid grey */
+  margin-left: 45px;
+  margin-top: -15px;
+}
+
 .activity-level-header {
   color: #808080; /* mid grey */
-  display: inline-block;
   float: right;
   margin: 0px 20px;
-      margin-top: -15px;
+  margin-top: -20px;
 }
 
  .material-icons.back-button {

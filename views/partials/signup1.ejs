@@ -10,6 +10,9 @@
 
       <div class="signup-form-contents">
         <div class="funkyradio">
+          <div class="activity-name-header" ng-if="chosenActivities.length > 0">
+            Name
+          </div>
           <div class="activity-level-header" ng-if="chosenActivities.length > 0">
             Skill Level
           </div>
@@ -34,6 +37,7 @@
               </label>
             </div>
           </div>
+          <div id="note">* You can change these later!</div>
         </div>
 
         <div class="form-group">

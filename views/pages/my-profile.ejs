@@ -5,7 +5,7 @@
     <% include ../partials/head %>
     <% include ../partials/footer%>
   </head>
-  <body id="matches" ng-app="myApp" ng-controller="MyProfileCtrl">
+  <body id="my-profile" ng-app="myApp" ng-controller="MyProfileCtrl">
       <header>
           <% include ../partials/navbar_login%>
       </header>
@@ -16,9 +16,9 @@
           </div>
         </div>
         <div class="row" ng-if="currUser">
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-0">
           </div>
-          <div class="col-sm-3 profile-summary">
+          <div class="col-md-3 col-sm-12 col-xs-12 profile-summary">
             <div class="profilepic">
               <img ng-src="{{ currUser.picUrl }}" alt="profilepic">
             </div>
@@ -76,7 +76,7 @@
             </div>
           </div>
 
-          <div class="col-sm-5 profile-details">
+          <div class="col-md-5 col-sm-12 col-xs-12 profile-details">
             <div class="section-name">Profile Details</div>
             <form action="" method="" id="editprofile">
               <!-- GET USER DETAILS FROM DB AND SHOW HERE. -->
@@ -135,7 +135,7 @@
              show-days-in-month=42>
             </mp-calendar>
           </div> -->
-          <div class="col-sm-2">
+          <div class="col-md-2 col-sm-0">
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@
     <div class="container-fluid">
 
       <!-- Sidebar filter -->
-      <div class="container col-lg-5" id="sidebar-filter">
+      <div class="container col-lg-4 col-xs-12" id="sidebar-filter">
         <div class="match-toggle-container">
           <div id="match-toggle-text">MY MATCHES</div>
           <toggle ng-model="$storage.matchType"
@@ -39,16 +39,11 @@
               </i>
             </div>
           </div>
-            <div class="form-inline col-xs-7 filter-headings">
-              <h5>Activities</h5>
-            </div>
-            <div class="form-inline col-xs-5">
-              <h5>Skill Level</h5>
-            </div>
             <div class="form-group row"
                 id="activity"
                 ng-repeat="activityFilter in activityFilters">
               <div class="form-inline col-xs-7">
+                <h5>Activities</h5>
                 <input class="form-control"
                     type="activities"
                     placeholder="Find an activity"
@@ -56,6 +51,7 @@
                     ng-change="addActivityFilterName($index, name)">
               </div>
               <div class="form-inline col-xs-5">
+                <h5 id="filter-level-header">Skill Level</h5>
                 <select class="form-control"
                     id="skill-level"
                     ng-model="level"
@@ -78,7 +74,7 @@
       </div>
 
       <!-- Matches -->
-      <div class="container col-lg-7" id="profile-view-content">
+      <div class="container col-lg-8" id="profile-view-content">
         <div ng-if="!users" class="loader-container">
           <div class="loader">
           </div>

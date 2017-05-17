@@ -54,6 +54,15 @@ ul {
   transform: translate(-50%, -50%);
 }*/
 
+.loader-container {
+  height: 400px;
+}
+
+.loader {
+  display: inline-block;
+  margin: 100px 0px 0px 30px;
+}
+
 .container .left {
   background-color: #fff;
   border: 1px solid #e6e6e6;
@@ -89,6 +98,7 @@ ul {
   float: left;
   width: 80%;
   height: 42px;
+  margin-left: 15px;
   padding: 0 15px;
   border: 1px solid #e6e6e6;
   background-color: #eceff1;
@@ -105,6 +115,7 @@ ul {
   float: right;
   width: 42px;
   height: 42px;
+  margin-right: -15px;
   border: 1px solid #e6e6e6;
   background-color: #126BAB;
   background-image: url(http://s11.postimg.org/dpuahewmn/name_type.png);

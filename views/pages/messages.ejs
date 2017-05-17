@@ -27,6 +27,10 @@
                         <a href="javascript:;" class="search"></a>
                     </div>
                     <div class="chat-list-container">
+                      <div ng-if="!friends" class="loader-container">
+                        <div class="loader">
+                        </div>
+                      </div>
                       <ul class="people" ng-repeat="friend in friends">
                         <li class="person" data-chat="person6" ng-init="openChat = 0" ng-click="toggleOpenChat($index)">
                           <img class="profilepic-icon-sm" ng-src="{{ friend.picUrl }}" alt="profile pic" />

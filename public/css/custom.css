@@ -10,20 +10,29 @@ html, body {
 }*/
 
 #index-background {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("https://source.unsplash.com/3cCe37VGDiQ");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("https://source.unsplash.com/3cCe37VGDiQ") no-repeat center center fixed;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   min-height: 100%;
 }
 
 #user-profile, #my-profile {
-  background-image: url("https://source.unsplash.com/dDCf0-c4RTU");
+  background: url("https://source.unsplash.com/dDCf0-c4RTU") no-repeat center center fixed;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   min-height: 100%;
 }
 
 #matches {
-  background-image: url("https://source.unsplash.com/y1eZFrr4MQ0");
+  background: url("https://source.unsplash.com/y1eZFrr4MQ0") no-repeat center center fixed;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   min-height: 100%;
 }
 

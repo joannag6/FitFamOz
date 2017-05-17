@@ -175,16 +175,16 @@
                                   <span ng-if="!removeBtn">Added Friend</span>
                                   <span ng-if="removeBtn">Remove Friend?</span>
                                 </div>                              </div>
-                              <div class="row">
+                              <!-- <div class="row">
                                 <a href="#" class="btn btn-blue"><i class="material-icons">tag_faces</i> Rate {{ user.firstName }} </a>
-                              </div>
+                              </div> -->
                               <div class="row">
                                 <a href="/messages" class="btn btn-blue"><i class="material-icons">message</i> Message {{ user.firstName }}</a>
                               </div>
                               <div class="row">
                                 <!-- <input id="report-button" type="submit" class="btn btn-light-blue" value="Report user"
                                   onclick="return confirm('Are you sure you want to report this user?')"/> -->
-                                <a class="btn btn-light-blue" ng-click="reportUser()"><i class="material-icons">report</i> Report {{ user.firstName }}</a>
+                                <a class="btn btn-light-blue" ng-click="reportUser(user)"><i class="material-icons">report</i> Report {{ user.firstName }}</a>
                               </div>
                             </div>
                           </div>

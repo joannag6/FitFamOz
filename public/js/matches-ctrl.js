@@ -134,6 +134,19 @@ myApp.controller("MatchesCtrl", function($scope, $localStorage, User) {
     }
   };
 
+  $scope.reportUser = function(user) {
+    if (window.confirm("Are you sure you want to report "+user.firstName+"?")) {
+      for (var i=0; i<$scope.users.length; i++) {
+        if ($scope.users[i]._id == user._id) {
+          $scope.users.splice(i, 1);
+          window.alert(user.firstName+" has been removed from your matches.");
+          $scope.filterActivities();
+          return;
+        }
+      }
+    }
+  }
+
   $scope.activityFilters = [ {name: '', level: ''} ];
 
   $scope.addActivityFilterName = function(i, name) {
